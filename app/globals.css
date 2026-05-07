@@ -1,0 +1,275 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans-custom);
+  --font-mono: var(--font-mono-custom);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1d1d1f;
+  --card: #ffffff;
+  --card-foreground: #1d1d1f;
+  --popover: #ffffff;
+  --popover-foreground: #1d1d1f;
+  --primary: #0066cc;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f7;
+  --secondary-foreground: #1d1d1f;
+  --muted: #f5f5f7;
+  --muted-foreground: #7a7a7a;
+  --accent: #0066cc;
+  --accent-foreground: #ffffff;
+  --destructive: #fb2c36;
+  --border: #e0e0e0;
+  --input: #d2d2d7;
+  --ring: #0071e3;
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1d1d1f;
+  --sidebar-primary: #0066cc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0066cc;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0e0e0;
+  --sidebar-ring: #0071e3;
+
+  /* Blue-tinted shadow system (inspired by Stripe) */
+  --shadow-blue-soft: rgba(0, 102, 204, 0.06);
+  --shadow-blue-mid: rgba(0, 102, 204, 0.12);
+  --shadow-blue-strong: rgba(0, 102, 204, 0.18);
+  --shadow-dark: rgba(0, 0, 0, 0.08);
+  --shadow-dark-strong: rgba(0, 0, 0, 0.12);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Apple-style pill button ── */
+.apple-pill {
+  border-radius: 9999px;
+  padding: 11px 22px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.apple-pill:active {
+  transform: scale(0.95);
+}
+
+.apple-pill-sm {
+  border-radius: 9999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.apple-pill-sm:active {
+  transform: scale(0.95);
+}
+
+/* ── Section styles ── */
+.apple-tile {
+  padding: 96px 0;
+}
+
+@media (min-width: 768px) {
+  .apple-tile {
+    padding: 120px 0;
+  }
+}
+
+.apple-section-spacing {
+  padding: 96px 0;
+}
+
+@media (min-width: 768px) {
+  .apple-section-spacing {
+    padding: 128px 0;
+  }
+}
+
+/* ── Apple-style section label badge ── */
+.apple-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #f5f5f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #7a7a7a;
+  letter-spacing: -0.12px;
+}
+
+/* ── Apple header compression ── */
+.apple-headline {
+  font-weight: 600;
+  letter-spacing: -0.28px;
+  line-height: 1.07;
+}
+
+/* ── Glass card effect ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ── Card with blue-tinted elevation (Stripe-inspired) ── */
+.card-elevated {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 18px;
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.04),
+    0px 2px 8px rgba(0, 0, 0, 0.04),
+    0px 8px 24px rgba(0, 102, 204, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-elevated:hover {
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.04),
+    0px 4px 12px rgba(0, 0, 0, 0.06),
+    0px 16px 40px rgba(0, 102, 204, 0.10);
+  transform: translateY(-2px);
+}
+
+/* ── Vercel-style shadow-as-border ── */
+.shadow-border {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Subtle gradient divider ── */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 102, 204, 0.15),
+    transparent
+  );
+}
+
+/* ── Section transition fade ── */
+.section-transition {
+  position: relative;
+}
+
+.section-transition::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 300px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.06),
+    transparent
+  );
+}
+
+/* ── Focus ring ── */
+.focus-ring-blue {
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.focus-ring-blue:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #0066cc, #2997ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Step connector line ── */
+.step-connector {
+  position: relative;
+}
+
+.step-connector::after {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 20px;
+  width: 1px;
+  height: calc(100% - 48px);
+  background: linear-gradient(to bottom, rgba(0, 102, 204, 0.2), transparent);
+}
+
+@media (min-width: 768px) {
+  .step-connector::after {
+    content: none;
+  }
+}

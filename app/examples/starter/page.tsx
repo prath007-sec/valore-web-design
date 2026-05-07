@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Check, Sparkles, Globe, Smartphone, Search } fro
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
+  transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
 });
 
 export default function StarterExample() {

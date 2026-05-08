@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     }
 
     case "invoice.payment_succeeded": {
-      const invoice = event.data.object as Stripe.Invoice;
+      const invoice = event.data.object as any;
       if (invoice.subscription && invoice.billing_reason === "subscription_cycle") {
         const cust = await stripe.customers.retrieve(invoice.customer as string);
         const custEmail = (cust as Stripe.Customer).email || "No email";
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
     }
 
     case "invoice.payment_failed": {
-      const failedInvoice = event.data.object as Stripe.Invoice;
+      const failedInvoice = event.data.object as any;
       if (failedInvoice.subscription) {
         const cust = await stripe.customers.retrieve(failedInvoice.customer as string);
         const custEmail = (cust as Stripe.Customer).email || "No email";

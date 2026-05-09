@@ -159,7 +159,7 @@ export default function BlogPage() {
                 letterSpacing: "-0.374px",
               }}
             >
-              Let&apos;s talk about what you need. I&apos;ll send over a free
+              Let&apos;s talk about what you need. We&apos;ll send over a free
               mockup and quote.
             </p>
             <Link

@@ -18,7 +18,7 @@ export default function Contact() {
           Let&apos;s talk.
         </h2>
         <p className="mx-auto mb-10 max-w-md text-lg leading-relaxed text-[#71717b]">
-          Tell me about your idea and I&apos;ll send over a free mockup and
+          Tell us about your idea and we&apos;ll send over a free mockup and
           quote — no strings attached.
         </p>
 

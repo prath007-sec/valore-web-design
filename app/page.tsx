@@ -33,7 +33,7 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* Two ways I can help */}
+      {/* Two ways we can help */}
       <AnimatedSection>
         <section className="bg-[#f5f5f7]">
           <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
@@ -48,7 +48,7 @@ export default function Home() {
                 lineHeight: "1.1",
               }}
             >
-              Two ways I can help.
+              Two ways we can help.
             </h2>
             <p
               className="mx-auto mt-4 mb-12 max-w-lg text-center text-[#7a7a7a]"
@@ -81,7 +81,7 @@ export default function Home() {
                   style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
                 >
                   A custom site built from scratch — responsive, performant, and
-                  tailored to your brand. You describe what you need, and I make
+                  tailored to your brand. You describe what you need, and we make
                   it real.
                 </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
@@ -118,7 +118,7 @@ export default function Home() {
                   className="text-[#7a7a7a] mb-5"
                   style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
                 >
-                  Already have a website that feels outdated or slow? I&apos;ll
+                  Already have a website that feels outdated or slow? We&apos;ll
                   polish the design, modernize the stack, and bring it up to
                   speed — no rebuild from scratch required.
                 </p>
@@ -158,7 +158,7 @@ export default function Home() {
                   letterSpacing: "-0.374px",
                 }}
               >
-                A selection of sites I&apos;ve built. More examples available on request.
+                A selection of sites we&apos;ve built. More examples available on request.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -508,7 +508,7 @@ export default function Home() {
             <div className="grid gap-10 text-left md:grid-cols-4 md:gap-8">
               {[
                 { num: "01", title: "Strategy", desc: "We map out goals, audience, and structure before any code is written." },
-                { num: "02", title: "Design & Build", desc: "I design and develop using modern tools — responsive, fast, and polished." },
+                { num: "02", title: "Design & Build", desc: "We design and develop using modern tools — responsive, fast, and polished." },
                 { num: "03", title: "Review & Refine", desc: "You review a live preview, give feedback, and we iterate." },
                 { num: "04", title: "Launch & Support", desc: "Deploy to production with SSL, analytics, and ongoing support." },
               ].map((step, i) => (
@@ -547,12 +547,12 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* Trust section — How I work */}
+      {/* Trust section — How we work */}
       <AnimatedSection delay={0.1}>
         <section className="bg-white">
           <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
             <div className="text-center">
-              <div className="apple-badge mb-5">How I work</div>
+              <div className="apple-badge mb-5">How we work</div>
             </div>
             <h2
               className="text-[#1d1d1f] font-semibold text-center"
@@ -587,7 +587,7 @@ export default function Home() {
                 {
                   icon: CreditCard,
                   title: "Stripe-secured payments",
-                  desc: 'Setup fees and monthly retainers run through Stripe. PCI-compliant, no card details ever touch my systems.',
+                  desc: 'Setup fees and monthly retainers run through Stripe. PCI-compliant, no card details ever touch our systems.',
                 },
                 {
                   icon: Key,
@@ -661,7 +661,7 @@ export default function Home() {
                 letterSpacing: "-0.374px",
               }}
             >
-              Tell me about your idea and I&apos;ll send over a free mockup and
+              Tell us about your idea and we&apos;ll send over a free mockup and
               quote — no strings attached.
             </p>
             <Link

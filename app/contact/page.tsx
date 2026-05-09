@@ -129,8 +129,8 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Tell me about your project — what you&apos;re building, your goals,
-            and your timeline. I&apos;ll review everything and get back to you
+            Tell us about your project — what you&apos;re building, your goals,
+            and your timeline. We&apos;ll review everything and get back to you
             with a tailored proposal.
           </motion.p>
         </div>
@@ -312,7 +312,7 @@ export default function ContactPage() {
                           fontWeight: 500,
                         }}
                       >
-                        Tell me about your project{" "}
+                        Tell us about your project{" "}
                         <span className="text-[#0066cc]">*</span>
                       </label>
                       <textarea
@@ -346,7 +346,7 @@ export default function ContactPage() {
                           className="w-full text-[13px] text-[#7a7a7a] file:mr-3 file:rounded-full file:border-0 file:bg-[#0066cc]/10 file:px-4 file:py-1.5 file:text-[13px] file:font-medium file:text-[#0066cc] hover:file:bg-[#0066cc]/20 file:cursor-pointer cursor-pointer"
                         />
                         <p className="mt-1.5 text-[11px] text-[#a1a1a1]" style={{ letterSpacing: "-0.08px" }}>
-                          Images are sent along with your message directly to my inbox.
+                          Images are sent along with your message directly to our inbox.
                         </p>
                       </div>
                     </div>
@@ -390,8 +390,8 @@ export default function ContactPage() {
                         letterSpacing: "-0.08px",
                       }}
                     >
-                      No spam, no commitments. Your message and images go straight to my inbox.
-                      I&apos;ll respond personally within 24 hours.
+                      No spam, no commitments. Your message and images go straight to our inbox.
+                      We&apos;ll respond within 24 hours.
                     </p>
                   </form>
               </motion.div>
@@ -418,7 +418,7 @@ export default function ContactPage() {
                     className="text-[#7a7a7a] mt-2"
                     style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
                   >
-                    I typically respond within 24 hours. Most inquiries get a
+                    We typically respond within 24 hours. Most inquiries get a
                     reply same-day.
                   </p>
                 </div>
@@ -483,8 +483,8 @@ export default function ContactPage() {
                   </h3>
                   <ul className="space-y-2.5">
                     {[
-                      "I review your project details",
-                      "I send a tailored proposal & mockup",
+                      "We review your project details",
+                      "We send a tailored proposal & mockup",
                       "We refine scope & timeline together",
                       "You approve and we start building",
                     ].map((step, i) => (

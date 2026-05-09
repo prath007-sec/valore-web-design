@@ -27,7 +27,7 @@ const processSteps = [
     icon: Palette,
     title: "Design & Build",
     summary:
-      "I design and develop your site using modern tools — responsive, fast, and polished.",
+      "We design and develop your site using modern tools — responsive, fast, and polished.",
     details: [
       "Wireframing key pages based on sitemap",
       "Custom design mockups in Figma",

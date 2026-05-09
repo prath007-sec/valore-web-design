@@ -208,7 +208,7 @@ export default function NextjsVsWordPress() {
                 }}
               >
                 Not sure which path is right for your project? Reach out and
-                I&apos;ll help you figure it out — no pressure, just honest
+                we&apos;ll help you figure it out — no pressure, just honest
                 advice.
               </p>
             </article>

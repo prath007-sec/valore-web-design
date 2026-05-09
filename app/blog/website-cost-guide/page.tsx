@@ -74,9 +74,9 @@ export default function WebsiteCostGuide() {
                   letterSpacing: "-0.224px",
                 }}
               >
-                One of the most common questions I hear is: &ldquo;How much does a
+                One of the most common questions we hear is: &ldquo;How much does a
                 website cost?&rdquo; The honest answer is &mdash; it depends. But
-                let me give you a transparent breakdown so you know what to expect.
+                let us give you a transparent breakdown so you know what to expect.
               </p>
 
               <h2
@@ -229,7 +229,7 @@ export default function WebsiteCostGuide() {
                   letterSpacing: "-0.224px",
                 }}
               >
-                If you&apos;re unsure what you need, reach out. I&apos;m happy to
+                If you&apos;re unsure what you need, reach out. We&apos;re happy to
                 give you a free assessment and quote — no strings attached.
               </p>
             </article>

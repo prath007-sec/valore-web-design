@@ -78,7 +78,7 @@ const faqs = [
   {
     question: "What kind of websites do you build?",
     answer:
-      "I build responsive, modern websites ranging from single landing pages to full-scale web applications. Every site is custom-built for your brand, with a focus on performance, accessibility, and clean design.",
+      "We build responsive, modern websites ranging from single landing pages to full-scale web applications. Every site is custom-built for your brand, with a focus on performance, accessibility, and clean design.",
   },
   {
     question: "How long does a typical project take?",
@@ -88,7 +88,7 @@ const faqs = [
   {
     question: "Will my site work on mobile devices?",
     answer:
-      "Absolutely. Every site I build is fully responsive and tested across phones, tablets, and desktops. Mobile-first design is the standard, not an add-on.",
+      "Absolutely. Every site we build is fully responsive and tested across phones, tablets, and desktops. Mobile-first design is the standard, not an add-on.",
   },
   {
     question: "Who hosts the website and owns the domain?",
@@ -98,17 +98,17 @@ const faqs = [
   {
     question: "What if I need updates after launch?",
     answer:
-      "Premium clients receive priority same-day support. For everyone else, I offer ongoing maintenance and updates at an hourly rate. Small text or image tweaks are often included at no extra charge in the first 30 days.",
+      "Premium clients receive priority same-day support. For everyone else, we offer ongoing maintenance and updates at an hourly rate. Small text or image tweaks are often included at no extra charge in the first 30 days.",
   },
   {
     question: "Do you work with CMS platforms like WordPress?",
     answer:
-      "I can integrate a headless CMS so you can update content yourself without touching code. I typically use modern static-site and headless CMS workflows rather than traditional WordPress, but I'm happy to discuss what fits your needs best.",
+      "We can integrate a headless CMS so you can update content yourself without touching code. We typically use modern static-site and headless CMS workflows rather than traditional WordPress, but we're happy to discuss what fits your needs best.",
   },
   {
     question: "How do payments work?",
     answer:
-      "All payments go through Stripe — PCI-compliant and secure. Full payment is required upfront before work begins. You approve a mockup first, then pay, and I build your website. Simple and transparent.",
+      "All payments go through Stripe — PCI-compliant and secure. Full payment is required upfront before work begins. You approve a mockup first, then pay, and we build your website. Simple and transparent.",
   },
 ];
 
@@ -423,7 +423,7 @@ export default function PricingPage() {
               className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
               style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
             >
-              Reach out directly and I&apos;ll get back to you within 24 hours — no
+              Reach out directly and we&apos;ll get back to you within 24 hours — no
               obligation, no pressure.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

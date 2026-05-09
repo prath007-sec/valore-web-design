@@ -9,7 +9,7 @@ const steps = [
     number: "02",
     label: "Design & Build",
     description:
-      "I design and develop your site using modern tools — responsive, fast, and polished.",
+      "We design and develop your site using modern tools — responsive, fast, and polished.",
   },
   {
     number: "03",

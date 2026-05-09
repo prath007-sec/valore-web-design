@@ -389,7 +389,7 @@ export default function PremiumExample() {
               </span>
             </h2>
             <p className="text-[#a1a1aa] mt-4 mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-              Let&apos;s talk about your project. I&apos;ll send over a free mockup
+              Let&apos;s talk about your project. We&apos;ll send over a free mockup
               and a detailed quote — no strings attached.
             </p>
             <div className="flex flex-col items-center gap-4">

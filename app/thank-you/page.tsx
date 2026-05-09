@@ -48,7 +48,7 @@ export default function ThankYouPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          Thank you for reaching out! I&apos;ve received your message and will
+          Thank you for reaching out! We&apos;ve received your message and will
           reply very soon — so be on the lookout for an email from{" "}
           <strong className="text-[#1d1d1f]">
             hello@valorewebdesign.com
@@ -79,7 +79,7 @@ export default function ThankYouPage() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           If you don&apos;t receive a reply within 24 hours, please check your
-          spam folder. You can always reach me directly at{" "}
+          spam folder. You can always reach us directly at{" "}
           <a
             href="mailto:hello@valorewebdesign.com"
             className="text-[#0066cc] hover:underline"

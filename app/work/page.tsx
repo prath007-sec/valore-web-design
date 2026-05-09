@@ -15,7 +15,7 @@ const projects = [
     location: "St. Louis, MO",
     tagline: "Minimalist e-commerce for a modern furniture brand.",
     description:
-      "LÜM Studio is a St. Louis-based furniture brand focused on minimal, timeless designs. I built a clean e-commerce storefront that reflects their stripped-down aesthetic while providing a full shopping experience.",
+      "LÜM Studio is a St. Louis-based furniture brand focused on minimal, timeless designs. We built a clean e-commerce storefront that reflects their stripped-down aesthetic while providing a full shopping experience.",
     elements: [
       { icon: ShoppingCart, text: "Full e-commerce cart & checkout flow", color: "#2997ff" },
       { icon: Globe, text: "Newsletter signup with discount incentive", color: "#a855f7" },
@@ -34,7 +34,7 @@ const projects = [
     location: "New York, NY",
     tagline: "Professional showcase for an architecture firm.",
     description:
-      "Vanguard Architects needed a website that communicates their expertise in urban planning, interior architecture, and sustainable design. I created a bold, professional site that highlights their portfolio and global presence.",
+      "Vanguard Architects needed a website that communicates their expertise in urban planning, interior architecture, and sustainable design. We created a bold, professional site that highlights their portfolio and global presence.",
     elements: [
       { icon: Layers, text: "Service showcase with detailed offerings", color: "#2997ff" },
       { icon: Globe, text: "Multi-location office presence", color: "#a855f7" },
@@ -53,7 +53,7 @@ const projects = [
     location: "Los Angeles, CA",
     tagline: "Immersive creative studio portfolio.",
     description:
-      "Echo & Pulse is a creative studio specializing in digital experiences that blend sound, motion, and light. I built an immersive, futuristic website that showcases their work in motion design, brand identity, and interactive media.",
+      "Echo & Pulse is a creative studio specializing in digital experiences that blend sound, motion, and light. We built an immersive, futuristic website that showcases their work in motion design, brand identity, and interactive media.",
     elements: [
       { icon: Layers, text: "Kinetic typography & motion design", color: "#2997ff" },
       { icon: Palette, text: "Bold monochrome contrast with accent colors", color: "#a855f7" },
@@ -229,7 +229,7 @@ export default function WorkPage() {
             className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
             style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
           >
-            Let&apos;s talk about your project. I&apos;ll send over a free mockup and
+            Let&apos;s talk about your project. We&apos;ll send over a free mockup and
             quote.
           </p>
           <Link

@@ -64,6 +64,25 @@ const projects = [
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Netlify"],
     color: "#34d399",
   },
+  {
+    id: "harbor-hearth",
+    name: "Harbor & Hearth",
+    url: "https://harbor-hearth.vercel.app/",
+    image: "/work/harbor-hearth.png",
+    location: "Ann Arbor, MI",
+    tagline: "Premium property management showcase with live listings.",
+    description:
+      "Harbor & Hearth is a boutique property management firm in Ann Arbor, Michigan. We built a warm, inviting website that showcases their services, displays 15+ live property listings with filters, and includes an interactive market trends chart.",
+    elements: [
+      { icon: Layers, text: "Filterable property listings with 15+ units", color: "#2997ff" },
+      { icon: Globe, text: "Market intelligence chart with live data", color: "#a855f7" },
+      { icon: Monitor, text: "Fully responsive across all devices", color: "#34d399" },
+      { icon: Palette, text: "Warm, earth-toned design system", color: "#fbbf24" },
+      { icon: Zap, text: "Clean URLs & instant page loads", color: "#f87171" },
+    ],
+    tech: ["HTML", "CSS", "JavaScript", "Chart.js", "Vercel"],
+    color: "#b85c3a",
+  },
 ];
 
 export default function WorkPage() {

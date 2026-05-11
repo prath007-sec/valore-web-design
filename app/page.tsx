@@ -166,6 +166,7 @@ export default function Home() {
                 { name: "LÜM Studio", location: "St. Louis, MO", image: "/work/lum-studio.png", slug: "lum-studio" },
                 { name: "Vanguard Architects", location: "New York, NY", image: "/work/vangaurd.png", slug: "vanguard-architects" },
                 { name: "Echo & Pulse", location: "Los Angeles, CA", image: "/work/echo-and-pulse.png", slug: "echo-pulse" },
+                { name: "Harbor & Hearth", location: "Ann Arbor, MI", image: "/work/harbor-hearth.png", slug: "harbor-hearth" },
               ].map((project, i) => (
                 <Link
                   key={project.slug}

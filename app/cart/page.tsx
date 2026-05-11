@@ -7,9 +7,9 @@ import { ArrowLeft, Trash2, ShoppingBag, ArrowRight, Check } from "lucide-react"
 import { useCart } from "@/components/CartContext";
 
 const MAINTENANCE_PRICES: Record<string, { monthly: number; yearly: number }> = {
-  Starter: { monthly: 29, yearly: 290 },
-  Growth: { monthly: 49, yearly: 490 },
-  Premium: { monthly: 99, yearly: 990 },
+  Starter: { monthly: 39, yearly: 390 },
+  Growth: { monthly: 69, yearly: 690 },
+  Premium: { monthly: 129, yearly: 1290 },
 };
 
 export default function CartPage() {

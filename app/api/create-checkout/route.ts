@@ -4,9 +4,9 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
 const MAINTENANCE_PRICE_IDS: Record<string, string> = {
-  Starter: "price_1TUp0qJFDaRM78F21qigRn4A",
-  Growth: "price_1TUp2KJFDaRM78F2taXBe99g",
-  Premium: "price_1TUp2yJFDaRM78F2XOUgJVpo",
+  Starter: "price_1TVxVAJFDaRM78F23J8ZRlBI",
+  Growth: "price_1TVxVrJFDaRM78F2EYQdjDfG",
+  Premium: "price_1TVxWFJFDaRM78F2aAOlpHKT",
 };
 
 export async function POST(req: Request) {

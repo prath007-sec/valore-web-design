@@ -85,10 +85,10 @@ export default function PackageCard({
         </div>
         <div className="mt-1.5">
           <span className="text-[12px] text-[#0066cc] font-medium">
-            + maintenance {title === "Starter" ? "$29/mo" : title === "Growth" ? "$49/mo" : "$99/mo"}
+            + maintenance {title === "Starter" ? "$39/mo" : title === "Growth" ? "$69/mo" : "$129/mo"}
           </span>
           <span className="text-[11px] text-[#7a7a7a] ml-1">
-            or {title === "Starter" ? "$290" : title === "Growth" ? "$490" : "$990"}/yr
+            or {title === "Starter" ? "$390" : title === "Growth" ? "$690" : "$1,290"}/yr
           </span>
         </div>
       </div>

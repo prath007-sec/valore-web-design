@@ -13,8 +13,8 @@ const packages = [
   {
     title: "Starter",
     description:
-      "A clean, single-page presence to establish your brand online. Perfect for freelancers and small projects.",
-    price: "$399",
+      "A polished single-page presence to establish your brand online. Ideal for professionals and growing practices.",
+    price: "$699",
     ctaText: "Get started",
     timeline: "1 week",
     features: [
@@ -31,8 +31,8 @@ const packages = [
   {
     title: "Growth",
     description:
-      "A multi-page site with modern performance and SEO. Ideal for businesses ready to scale.",
-    price: "$899",
+      "A multi-page site built for performance and search visibility. Designed for established businesses and firms.",
+    price: "$1,499",
     ctaText: "Go growth",
     timeline: "2-3 weeks",
     features: [
@@ -50,18 +50,17 @@ const packages = [
   {
     title: "Premium",
     description:
-      "The full package — a complete website with everything included. Best value for ambitious projects.",
-    price: "$1,199",
+      "A full-scale custom website with no compromises. The best choice for ambitious brands and firms.",
+    price: "$2,499",
     highlighted: true,
     ctaText: "Best value →",
     timeline: "4-6 weeks",
     features: [
-      { text: "Full custom website", included: true },
-      { text: "Backend & database setup", included: true },
-      { text: "Authentication & user management", included: true },
-      { text: "Custom animations & interactions", included: true },
+      { text: "Full custom website — unlimited pages", included: true },
+      { text: "Advanced animations & micro-interactions", included: true },
+      { text: "Content strategy & page architecture", included: true },
       { text: "Full SEO & performance audit", included: true },
-      { text: "Priority support & maintenance", included: true },
+      { text: "Priority support & maintenance included", included: true },
       { text: "Custom domain included", included: true },
       { text: "Dedicated project timeline", included: true },
     ],
@@ -69,9 +68,9 @@ const packages = [
 ];
 
 const PACKAGE_PRICES: Record<string, number> = {
-  Starter: 399,
-  Growth: 899,
-  Premium: 1199,
+  Starter: 699,
+  Growth: 1499,
+  Premium: 2499,
 };
 
 const faqs = [
@@ -279,9 +278,9 @@ export default function PricingPage() {
             {/* Price cards row */}
             <div className="grid grid-cols-3 gap-6 mb-14">
               {[
-                { name: "Starter", price: "$399", tag: "One-time", maint: "$29/mo", badge: false },
-                { name: "Growth", price: "$899", tag: "One-time", maint: "$49/mo", badge: false },
-                { name: "Premium", price: "$1,199", tag: "One-time", maint: "$99/mo", badge: "Best value" },
+                { name: "Starter", price: "$699", tag: "One-time", maint: "$39/mo", badge: false },
+                { name: "Growth", price: "$1,499", tag: "One-time", maint: "$69/mo", badge: false },
+                { name: "Premium", price: "$2,499", tag: "One-time", maint: "$129/mo", badge: "Best value" },
               ].map((plan) => (
                 <div key={plan.name} className={`card-elevated p-6 text-center relative ${plan.badge ? "ring-1 ring-[#0066cc]" : ""}`}>
                   {plan.badge && (
@@ -303,7 +302,7 @@ export default function PricingPage() {
                 {
                   category: "Pricing",
                   rows: [
-                    { label: "One-time price", values: ["$399", "$899", "$1,199"] },
+                    { label: "One-time price", values: ["$699", "$1,499", "$2,499"] },
                     { label: "Delivery time", values: ["1 week", "2–3 weeks", "4–6 weeks"] },
                   ],
                 },
@@ -311,7 +310,7 @@ export default function PricingPage() {
                   category: "Features",
                   rows: [
                     { label: "Custom design & layout", values: [true, true, true] },
-                    { label: "Responsive pages", values: ["1 page", "Up to 5 pages", "Full website"] },
+                    { label: "Responsive pages", values: ["1 page", "Up to 5 pages", "Unlimited"] },
                     { label: "Mobile optimized", values: [true, true, true] },
                     { label: "Custom animations", values: [false, true, true] },
                     { label: "Contact form", values: ["Basic", "Form + newsletter", true] },
@@ -319,8 +318,8 @@ export default function PricingPage() {
                     { label: "Performance optimization", values: [false, true, true] },
                     { label: "CMS integration", values: [false, true, true] },
                     { label: "Custom domain", values: ["Netlify or own", "Included", "Included"] },
-                    { label: "Backend & database", values: [false, false, true] },
-                    { label: "Authentication", values: [false, false, true] },
+                    { label: "Advanced animations", values: [false, true, true] },
+                    { label: "Content strategy", values: [false, false, true] },
                     { label: "Priority support", values: [false, false, true] },
                     { label: "Dedicated timeline", values: [false, false, true] },
                   ],
@@ -328,8 +327,8 @@ export default function PricingPage() {
                 {
                   category: "Maintenance",
                   rows: [
-                    { label: "Monthly", values: ["$29/mo", "$49/mo", "$99/mo"] },
-                    { label: "Yearly", values: ["$290/yr", "$490/yr", "$990/yr"] },
+                    { label: "Monthly", values: ["$39/mo", "$69/mo", "$129/mo"] },
+                    { label: "Yearly", values: ["$390/yr", "$690/yr", "$1,290/yr"] },
                   ],
                 },
               ].map((section, si) => (

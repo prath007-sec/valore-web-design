@@ -328,26 +328,26 @@ export default function Home() {
               {[
                 {
                   title: "Starter",
-                  price: "$399",
-                  numPrice: 399,
+                  price: "$699",
+                  numPrice: 699,
                   desc: "Single-page responsive website with custom design.",
                   features: ["Custom design", "Mobile-optimized", "Basic SEO"],
                   timeline: "1 week",
                 },
                 {
                   title: "Growth",
-                  price: "$899",
-                  numPrice: 899,
+                  price: "$1,499",
+                  numPrice: 1499,
                   desc: "Multi-page site with modern performance and SEO.",
                   features: ["Up to 5 pages", "Animations", "CMS integration"],
                   timeline: "2-3 weeks",
                 },
                 {
                   title: "Premium",
-                  price: "$1,199",
-                  numPrice: 1199,
-                  desc: "Full-scale website with everything included.",
-                  features: ["Custom website", "Backend & DB", "Priority support"],
+                  price: "$2,499",
+                  numPrice: 2499,
+                  desc: "Full-scale custom website with priority support.",
+                  features: ["Custom website", "Advanced animations", "Priority support"],
                   highlighted: true,
                   timeline: "4-6 weeks",
                 },
@@ -410,10 +410,10 @@ export default function Home() {
                     <span className="text-[#7a7a7a] text-xs ml-1">one-time</span>
                     <div className="mt-2">
                       <span className="text-[11px] text-[#0066cc] font-medium">
-                        + maintenance {pkg.title === "Starter" ? "$29/mo" : pkg.title === "Growth" ? "$49/mo" : "$99/mo"}
+                        + maintenance {pkg.title === "Starter" ? "$39/mo" : pkg.title === "Growth" ? "$69/mo" : "$129/mo"}
                       </span>
                       <span className="text-[10px] text-[#7a7a7a] ml-1">
-                        or {pkg.title === "Starter" ? "$290" : pkg.title === "Growth" ? "$490" : "$990"}/yr
+                        or {pkg.title === "Starter" ? "$390" : pkg.title === "Growth" ? "$690" : "$1,290"}/yr
                       </span>
                     </div>
                   </div>

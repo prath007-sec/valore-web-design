@@ -25,7 +25,6 @@ const packages = [
       { text: "Contact form integration", included: true },
       { text: "Netlify subdomain or your own domain", included: true },
       { text: "CMS integration", included: false },
-      { text: "Ongoing maintenance", included: false },
     ],
   },
   {
@@ -44,7 +43,6 @@ const packages = [
       { text: "Performance optimization", included: true },
       { text: "Contact form + newsletter", included: true },
       { text: "Custom domain included", included: true },
-      { text: "Ongoing maintenance", included: false },
     ],
   },
   {
@@ -57,9 +55,13 @@ const packages = [
     timeline: "4-6 weeks",
     features: [
       { text: "Full custom website — unlimited pages", included: true },
+      { text: "Custom design & animations", included: true },
+      { text: "Mobile & tablet optimized", included: true },
+      { text: "CMS integration (Sanity, Contentful)", included: true },
+      { text: "Contact form + newsletter", included: true },
+      { text: "Full SEO & performance audit", included: true },
       { text: "Advanced animations & micro-interactions", included: true },
       { text: "Content strategy & page architecture", included: true },
-      { text: "Full SEO & performance audit", included: true },
       { text: "Priority support & maintenance included", included: true },
       { text: "Custom domain included", included: true },
       { text: "Dedicated project timeline", included: true },

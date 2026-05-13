@@ -9,6 +9,7 @@ import { useEffect } from "react";
 export default function WhyCustomWebsites() {
   useEffect(() => {
     document.title = "Why Custom Websites Beat Templates | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Discover why custom-built websites outperform templates in branding, performance, SEO, and long-term value for your business.");
   }, []);
 
   return (

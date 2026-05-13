@@ -179,6 +179,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
 export default function PricingPage() {
   useEffect(() => {
     document.title = "Pricing | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Transparent pricing for custom websites — from $699 to $2,499. One-time payment with optional monthly maintenance. Free mockup included.");
   }, []);
   const { addItem } = useCart();
   const router = useRouter();

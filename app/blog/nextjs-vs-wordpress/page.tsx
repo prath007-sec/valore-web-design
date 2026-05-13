@@ -9,6 +9,7 @@ import { useEffect } from "react";
 export default function NextjsVsWordPress() {
   useEffect(() => {
     document.title = "Next.js vs. WordPress | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Compare Next.js and WordPress for modern website development. Performance, SEO, security, and cost — find out which platform is right for your business.");
   }, []);
 
   return (

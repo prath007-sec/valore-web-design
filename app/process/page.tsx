@@ -72,6 +72,7 @@ const processSteps = [
 export default function ProcessPage() {
   useEffect(() => {
     document.title = "Process | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Our 4-step website development process: Strategy, Design & Build, Review & Refine, Launch & Support. No surprises, just results.");
   }, []);
 
   return (

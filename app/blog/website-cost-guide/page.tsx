@@ -9,6 +9,7 @@ import { useEffect } from "react";
 export default function WebsiteCostGuide() {
   useEffect(() => {
     document.title = "How Much Does a Custom Website Cost? | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "A transparent breakdown of custom website pricing in 2026. Learn what goes into the cost, what to expect, and how to budget for your project.");
   }, []);
 
   return (

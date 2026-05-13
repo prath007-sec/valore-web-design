@@ -88,6 +88,7 @@ const projects = [
 export default function WorkPage() {
   useEffect(() => {
     document.title = "Our Work | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "View our portfolio of custom-built websites for businesses nationwide. From e-commerce to professional services, see real projects we've built.");
   }, []);
   return (
     <>

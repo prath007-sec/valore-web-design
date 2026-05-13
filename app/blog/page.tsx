@@ -39,6 +39,7 @@ const posts = [
 export default function BlogPage() {
   useEffect(() => {
     document.title = "Blog | Valore Web Design";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Expert articles on custom web design, website costs, Next.js vs WordPress, and tips for building a better business website.");
   }, []);
 
   return (

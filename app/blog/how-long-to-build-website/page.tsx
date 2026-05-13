@@ -142,7 +142,8 @@ export default function HowLongToBuildWebsite() {
               >
                 Your responsiveness during this phase has a major impact on the
                 overall timeline. The faster you can provide content and feedback,
-                the sooner the project moves forward.
+                the sooner the project moves forward. That&apos;s why we keep our
+                process lean — fewer meetings, more building.
               </p>
 
               <h2
@@ -347,6 +348,11 @@ export default function HowLongToBuildWebsite() {
                 A custom website is an investment in your business. While it takes
                 longer than dragging and dropping a template, the result is a site
                 that actually works for you — fast, unique, and built to grow.
+
+                At Valore, we stick to these timelines and keep you in the loop at
+                every stage. If you&apos;re tired of vague estimates and want a
+                clear timeline before any work begins, that&apos;s exactly how we
+                operate.
               </p>
             </article>
           </div>

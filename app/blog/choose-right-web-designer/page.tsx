@@ -215,6 +215,19 @@ export default function ChooseRightWebDesigner() {
                   </li>
                 ))}
               </ul>
+              <p
+                className="text-[#7a7a7a] mb-6"
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  letterSpacing: "-0.224px",
+                }}
+              >
+                For what it&apos;s worth, these are the exact standards we hold
+                ourselves to. Every Valore project starts with a mockup before a
+                single line of code is written, you own everything at the end, and
+                we&apos;re around for ongoing support after launch.
+              </p>
 
               <h2
                 className="text-[#1d1d1f] font-semibold mt-8 mb-3"
@@ -277,7 +290,9 @@ export default function ChooseRightWebDesigner() {
               >
                 For most small businesses, a skilled freelancer or small studio
                 hits the sweet spot — professional quality at a reasonable price,
-                with a direct line of communication.
+                with a direct line of communication. That&apos;s exactly the model
+                we run at Valore: you work directly with the person building your
+                site, no account managers, no layers.
               </p>
 
               <p
@@ -291,6 +306,17 @@ export default function ChooseRightWebDesigner() {
                 Take your time, do your research, and trust your instincts. The
                 right web designer is out there — and they&apos;ll be just as
                 excited about your project as you are.
+              </p>
+              <p
+                className="text-[#7a7a7a] mt-4"
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  letterSpacing: "-0.224px",
+                }}
+              >
+                If that sounds like what you&apos;re looking for, we&apos;d love
+                to hear about your project.
               </p>
             </article>
           </div>

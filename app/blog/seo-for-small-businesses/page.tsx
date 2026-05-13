@@ -288,6 +288,19 @@ export default function SEOForSmallBusinesses() {
                   </li>
                 ))}
               </ul>
+              <p
+                className="text-[#7a7a7a] mb-6"
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  letterSpacing: "-0.224px",
+                }}
+              >
+                Every site we build at Valore ships with all of this baked in
+                from day one. Clean semantic code, fast load times, proper heading
+                structure, and a generated sitemap — so you don&apos;t have to
+                worry about the technical side.
+              </p>
 
               <div className="gradient-divider my-8" />
 
@@ -319,7 +332,9 @@ export default function SEOForSmallBusinesses() {
               >
                 Focus on answering your customers&apos; questions. What problems
                 do they have? What information are they looking for? Write content
-                that genuinely helps, and the rankings will follow.
+                that genuinely helps, and the rankings will follow. That&apos;s
+                exactly the approach we take with every site we build — and it&apos;s
+                the same approach that makes this blog useful to you.
               </p>
 
               <p
@@ -335,6 +350,10 @@ export default function SEOForSmallBusinesses() {
                 research, on-page optimization, and local SEO — then build from
                 there. Even small improvements can make a meaningful difference in
                 how customers find your business.
+
+                And if you&apos;d rather focus on running your business while
+                someone else handles the SEO foundations, that&apos;s exactly what
+                we&apos;re here for.
               </p>
             </article>
           </div>

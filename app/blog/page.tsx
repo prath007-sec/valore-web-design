@@ -8,6 +8,33 @@ import { useEffect } from "react";
 
 const posts = [
   {
+    slug: "seo-for-small-businesses",
+    title: "SEO for Small Businesses: A Beginner's Guide",
+    excerpt:
+      "Learn the fundamentals of SEO — from keyword research to local search — and start ranking higher without hiring an agency.",
+    date: "May 12, 2026",
+    readTime: "7 min read",
+    category: "SEO",
+  },
+  {
+    slug: "choose-right-web-designer",
+    title: "How to Choose the Right Web Designer for Your Business",
+    excerpt:
+      "A practical guide to hiring a web designer — what to look for, questions to ask, and red flags to avoid.",
+    date: "May 12, 2026",
+    readTime: "8 min read",
+    category: "Guides",
+  },
+  {
+    slug: "how-long-to-build-website",
+    title: "How Long Does It Take to Build a Custom Website?",
+    excerpt:
+      "A realistic timeline for custom website development and what affects delivery speed.",
+    date: "May 12, 2026",
+    readTime: "6 min read",
+    category: "Process",
+  },
+  {
     slug: "website-cost-guide",
     title: "How Much Does a Custom Website Cost in 2026?",
     excerpt:

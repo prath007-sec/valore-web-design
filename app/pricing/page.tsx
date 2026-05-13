@@ -103,7 +103,7 @@ const faqs = [
   {
     question: "How long does a typical project take?",
     answer:
-      "A single-page site usually takes 3–5 business days. Multi-page sites and web applications typically take 1–3 weeks depending on scope and complexity. You'll get a clear timeline before we start.",
+      "A single-page site usually takes about 1 week. Multi-page sites take 2–3 weeks, and full-scale custom websites with advanced features take 4–6 weeks depending on scope and complexity. You'll get a clear timeline before we start.",
   },
   {
     question: "Will my site work on mobile devices?",
@@ -118,7 +118,7 @@ const faqs = [
   {
     question: "What if I need updates after launch?",
     answer:
-      "Premium clients receive priority same-day support. For everyone else, we offer ongoing maintenance and updates at an hourly rate. Small text or image tweaks are often included at no extra charge in the first 30 days.",
+      "We offer monthly maintenance subscriptions starting at $39/mo — covering updates, monitoring, and support. Premium clients receive priority support with faster response times. Small text or image tweaks are often included at no extra charge in the first 30 days.",
   },
   {
     question: "Do you work with CMS platforms like WordPress?",

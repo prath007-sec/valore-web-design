@@ -100,7 +100,7 @@ export default function PremiumExample() {
                 className="relative inline-flex items-center gap-2 rounded-full bg-white text-[#1d1d1f] hover:bg-[#f5f5f7] transition-all active:scale-[0.97] font-medium shadow-xl"
                 style={{ padding: "14px 30px", fontSize: "16px", lineHeight: "1" }}
               >
-                Start with Premium — $1,199 <ArrowRight className="h-4 w-4" />
+                Start with Premium — $2,499 <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </motion.div>
@@ -410,7 +410,7 @@ export default function PremiumExample() {
                   className="relative inline-flex items-center gap-2 rounded-full bg-white text-[#1d1d1f] hover:bg-[#f5f5f7] transition-all active:scale-[0.97] font-medium shadow-xl"
                   style={{ padding: "15px 34px", fontSize: "16px", lineHeight: "1" }}
                 >
-                  Start with Premium — $1,199 <ArrowRight className="h-4 w-4" />
+                  Start with Premium — $2,499 <ArrowRight className="h-4 w-4" />
                 </Link>
               </motion.div>
               <p className="text-[#52525b] text-xs">

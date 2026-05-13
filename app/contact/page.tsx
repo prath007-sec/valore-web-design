@@ -35,7 +35,7 @@ export default function ContactPage() {
 
   useEffect(() => {
     document.title = "Contact | Valore Web Design";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Get in touch for a free website mockup and quote. No obligation, same-day response. Let's build something great together.");
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Get in touch for a free website mockup and quote. No obligation, we typically respond within 24 hours. Let's build something great together.");
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

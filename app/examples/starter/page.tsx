@@ -139,7 +139,7 @@ export default function StarterExample() {
               className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97] text-sm"
               style={{ padding: "11px 22px", fontWeight: 500, lineHeight: "1" }}
             >
-              Get started for $399 <Sparkles className="h-3.5 w-3.5" />
+              Get started for $699 <Sparkles className="h-3.5 w-3.5" />
             </Link>
             <Link
               href="/examples/growth"

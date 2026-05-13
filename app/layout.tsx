@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Valore Web Design",
   },
   description:
-    "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $399.",
+    "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $699.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Valore Web Design",
     description:
-      "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $399.",
+      "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $699.",
     url: siteUrl,
     siteName: "Valore Web Design",
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Valore Web Design",
     description:
-      "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $399.",
+      "Professional custom websites built with modern technology. Serving businesses nationwide — from Missouri to California, New York to Texas — with affordable web design, development, and SEO. Starting at $699.",
     images: ["/og-image.png"],
   },
   robots: {

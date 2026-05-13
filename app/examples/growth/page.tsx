@@ -193,11 +193,12 @@ export default function GrowthExample() {
               From strategy to launch.
             </h2>
           </motion.div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-4">
             {[
               { step: "01", title: "Strategy", desc: "Goals, audience, sitemap — planned before we write a line of code." },
               { step: "02", title: "Design & Build", desc: "Polished design + development with animations and CMS setup." },
-              { step: "03", title: "Launch & Grow", desc: "Deploy to production with SEO, analytics, and ongoing support." },
+              { step: "03", title: "Review & Refine", desc: "You review a live preview, give feedback, and we iterate." },
+              { step: "04", title: "Launch & Support", desc: "Deploy to production with SSL, analytics, and ongoing support." },
             ].map((step, i) => (
               <motion.div
                 key={step.step}
@@ -247,7 +248,7 @@ export default function GrowthExample() {
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0066cc] to-[#7c3aed] text-white hover:opacity-90 transition-all active:scale-[0.97] shadow-lg shadow-[#0066cc]/20"
                 style={{ padding: "13px 28px", fontSize: "15px", fontWeight: 500, lineHeight: "1" }}
               >
-                Start with Growth — $899 <ArrowRight className="h-4 w-4" />
+                Start with Growth — $1,499 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/examples/premium"

@@ -150,6 +150,20 @@ export default function StarterExample() {
           </motion.div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Pricing", item: "https://valorewebdesign.com/pricing" },
+              { "@type": "ListItem", position: 2, name: "Starter Example", item: "https://valorewebdesign.com/examples/starter" },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

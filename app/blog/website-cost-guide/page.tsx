@@ -271,6 +271,52 @@ export default function WebsiteCostGuide() {
           </div>
         </section>
       </AnimatedSection>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "How Much Does a Custom Website Cost in 2026?",
+                item: "https://valorewebdesign.com/blog/website-cost-guide",
+              },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "How Much Does a Custom Website Cost in 2026?",
+            description:
+              "A transparent breakdown of what goes into custom website pricing and what you can expect to pay.",
+            datePublished: "2026-05-01",
+            dateModified: "2026-05-01",
+            author: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://valorewebdesign.com/blog/website-cost-guide",
+            },
+            image: "https://valorewebdesign.com/og-image.png",
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

@@ -216,6 +216,52 @@ export default function WhyCustomWebsites() {
           </div>
         </section>
       </AnimatedSection>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Why Custom Websites Beat Templates Every Time",
+                item: "https://valorewebdesign.com/blog/why-custom-websites",
+              },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "Why Custom Websites Beat Templates Every Time",
+            description:
+              "Discover the key advantages of custom-built websites over template-based solutions for branding, performance, SEO, and long-term value.",
+            datePublished: "2026-04-15",
+            dateModified: "2026-04-15",
+            author: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://valorewebdesign.com/blog/why-custom-websites",
+            },
+            image: "https://valorewebdesign.com/og-image.png",
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

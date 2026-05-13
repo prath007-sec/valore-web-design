@@ -466,6 +466,24 @@ export default function PricingPage() {
           </div>
         </section>
       </AnimatedSection>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: f.answer,
+              },
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

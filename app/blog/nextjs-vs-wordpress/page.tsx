@@ -250,6 +250,52 @@ export default function NextjsVsWordPress() {
           </div>
         </section>
       </AnimatedSection>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Next.js vs. WordPress: Which Is Right for You?",
+                item: "https://valorewebdesign.com/blog/nextjs-vs-wordpress",
+              },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: "Next.js vs. WordPress: Which Is Right for You?",
+            description:
+              "A detailed comparison of Next.js and WordPress for modern website development, covering performance, security, SEO, and cost.",
+            datePublished: "2026-04-22",
+            dateModified: "2026-04-22",
+            author: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Valore Web Design",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://valorewebdesign.com/blog/nextjs-vs-wordpress",
+            },
+            image: "https://valorewebdesign.com/og-image.png",
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

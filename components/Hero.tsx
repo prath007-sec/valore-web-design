@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           Modern, performant, and built with care. From landing pages to
-          full-scale applications — one line of code at a time.
+          full-scale applications — serving clients nationwide.
         </motion.p>
 
         {/* CTAs */}

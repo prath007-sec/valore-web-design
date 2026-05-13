@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Valore Web Design | Custom Websites — Missouri";
+    document.title = "Valore Web Design";
   }, []);
 
   const { addItem } = useCart();

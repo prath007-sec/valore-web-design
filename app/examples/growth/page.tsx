@@ -259,6 +259,20 @@ export default function GrowthExample() {
           </motion.div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Pricing", item: "https://valorewebdesign.com/pricing" },
+              { "@type": "ListItem", position: 2, name: "Growth Example", item: "https://valorewebdesign.com/examples/growth" },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </>
   );
 }

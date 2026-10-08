@@ -20,6 +20,16 @@ interface ProjectItem {
 
 const projects: ProjectItem[] = [
   {
+    id: "sonix-matrix",
+    name: "SONIX Matrix",
+    businessType: "Neural Audio Workstation",
+    location: "Tactile Sound Hardware",
+    description: "Tactile quantum dot-matrix synthesizer with real-time Web Audio synthesis and illuminated music logo display.",
+    url: "https://sonix-matrix-audio.vercel.app/",
+    image: "/work/sonix-matrix.png",
+    ctaText: "Visit Live Site",
+  },
+  {
     id: "kicks-chicken",
     name: "Kick's Chicken",
     businessType: "Restaurant Web Architecture",

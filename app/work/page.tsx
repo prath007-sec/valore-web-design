@@ -3,11 +3,36 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Globe, Sparkles, Zap, Utensils, ShoppingCart, Layers, Building } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Globe, Sparkles, Zap, Utensils, ShoppingCart, Layers, Building, Music } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect, useState } from "react";
 
 const projects = [
+  {
+    id: "sonix-matrix",
+    name: "SONIX Matrix",
+    url: "https://sonix-matrix-audio.vercel.app/",
+    image: "/work/sonix-matrix.png",
+    location: "Audio / DSP Hardware",
+    tagline: "Tactile quantum dot-matrix synthesizer & generative spatial audio workstation.",
+    description:
+      "SONIX Matrix MK-IV is a tactile generative synthesizer and audio workstation driven by an illuminated quantum dot matrix interface. Powered by a 24x24 optical micro-array, 64-voice analog-modelled DSP, and real-time Web Audio API synthesis.",
+    problem:
+      "Modern sound design workstations separate producers from tactile physical intuition, relying on generic knob-and-fader screens that lack real-time optical expressiveness.",
+    solution:
+      "Engineered an interactive optical dot-matrix web architecture featuring suspended requestAnimationFrame loops, real-time Web Audio harmonic synthesis, dynamic audio visualizers (♫ Music Logo, Spectrum Analyzer, Vinyl Grooves, Studio Monitors), and zero-latency hardware control modeling.",
+    result:
+      "Delivered sub-millisecond tactile responsiveness directly in the browser, complete with full DAW ecosystem bridging and an international pre-order launch platform.",
+    elements: [
+      "Custom 24x24 optical micro-array canvas with visibility-gated RAF loop",
+      "Interactive Web Audio API polyphonic chord & arpeggio synthesis",
+      "Dynamic visualizer modes (♫ Music Logo, Equalizer, Vinyl, Studio Monitors)",
+      "Interactive browser sound audition deck with live gain & filter modulation",
+      "Comprehensive hardware engineering showcase with full DAW ecosystem compatibility",
+    ],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "HTML5 Canvas", "Web Audio API", "Vercel Edge"],
+    icon: Music,
+  },
   {
     id: "kicks-chicken",
     name: "Kick's Chicken",

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Compass, ArrowLeft } from "lucide-react";
 import ValoreLogo from "@/components/ui/ValoreLogo";
@@ -7,6 +8,9 @@ import RollingText from "@/components/ui/RollingText";
 import ScrambleText from "@/components/ui/ScrambleText";
 
 export default function NotFound() {
+  useEffect(() => {
+    document.title = "404 Not Found | Valore";
+  }, []);
   const quickLinks = [
     { label: "Flagship Homepage", href: "/", desc: "Core studio overview & capabilities" },
     { label: "Selected Commissions", href: "/work", desc: "Live production portfolio & case studies" },

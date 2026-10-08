@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 export default function SEOForSmallBusinesses() {
   useEffect(() => {
-    document.title = "SEO for Small Businesses: Architecture Guide | Studio Valore";
+    document.title = "SEO for Small Businesses: Architecture Guide | Valore";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Learn the fundamentals of SEO for small businesses. Keyword research, on-page optimization, local SEO, and practical tips to rank higher without hiring an agency.");
   }, []);
 

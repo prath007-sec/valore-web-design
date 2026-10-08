@@ -7,7 +7,7 @@ import { ShieldCheck, Lock, EyeOff, FileText } from "lucide-react";
 
 export default function PrivacyPage() {
   useEffect(() => {
-    document.title = "Privacy Policy & Data Governance | Studio Valore";
+    document.title = "Privacy Policy | Valore";
   }, []);
 
   return (

@@ -7,7 +7,7 @@ import { Scale, FileText } from "lucide-react";
 
 export default function TermsPage() {
   useEffect(() => {
-    document.title = "Terms of Engagement & Service | Studio Valore";
+    document.title = "Terms of Engagement | Valore";
   }, []);
 
   return (

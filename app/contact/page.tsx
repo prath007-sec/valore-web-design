@@ -27,7 +27,7 @@ export default function ContactPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Contact & Consultation | Valore AI & Web Architecture";
+    document.title = "Direct Consultation | Valore";
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

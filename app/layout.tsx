@@ -11,21 +11,21 @@ const siteUrl = "https://valorewebdesign.com";
 
 export const metadata: Metadata = {
   title: {
-    default: "Studio Valore — Custom Web Architecture & Digital Systems",
-    template: "%s | Studio Valore",
+    default: "Valore",
+    template: "%s | Valore",
   },
   description:
-    "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+    "Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Studio Valore — Custom Web Architecture & Digital Systems",
+    title: "Valore",
     description:
-      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+      "Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     url: siteUrl,
-    siteName: "Studio Valore",
+    siteName: "Valore",
     locale: "en_US",
     type: "website",
     images: [
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Studio Valore — Custom Web Architecture by Pratham Verma",
+        alt: "Valore — Custom Web Architecture by Pratham Verma",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Valore — Custom Web Architecture & Digital Systems",
+    title: "Valore",
     description:
-      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+      "Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -112,11 +112,12 @@ export default function RootLayout({
                   {
                     "@type": "Organization",
                     "@id": `${siteUrl}/#organization`,
-                    name: "Studio Valore",
+                    name: "Valore",
+                    alternateName: ["Studio Valore", "Valore Web Design", "Valore Digital Identity"],
                     url: siteUrl,
                     email: "contact@valorewebdesign.com",
                     description:
-                      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+                      "Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
                     foundingDate: "2025",
                     founder: [
                       { "@type": "Person", name: "Pratham Verma", jobTitle: "Founder & Lead Architect" }
@@ -130,20 +131,69 @@ export default function RootLayout({
                     "@type": "WebSite",
                     "@id": `${siteUrl}/#website`,
                     url: siteUrl,
-                    name: "Studio Valore",
+                    name: "Valore",
+                    alternateName: ["Studio Valore", "Valore Web Design"],
                     publisher: { "@id": `${siteUrl}/#organization` },
                     inLanguage: "en-US",
+                    potentialAction: {
+                      "@type": "SearchAction",
+                      target: `${siteUrl}/work?q={search_term_string}`,
+                      "query-input": "required name=search_term_string",
+                    },
                   },
                   {
                     "@type": "WebPage",
                     "@id": `${siteUrl}/#webpage`,
                     url: siteUrl,
                     inLanguage: "en-US",
-                    name: "VALORE | Digital Identity Firm & AI Consulting",
+                    name: "Valore",
                     isPartOf: { "@id": `${siteUrl}/#website` },
                     about: { "@id": `${siteUrl}/#organization` },
                     description:
-                      "VALORE is an elite digital identity firm and AI consulting practice by Pratham Verma. We solve digital problems through strategy, pristine digital identities, automated systems, and scalable AI workflows.",
+                      "Valore is an elite digital identity firm and custom web architecture studio by Pratham Verma. High-performance digital platforms engineered without compromise.",
+                  },
+                  {
+                    "@type": "ItemList",
+                    "@id": `${siteUrl}/#site-navigation`,
+                    name: "Main Site Navigation",
+                    description: "Key architectural navigation endpoints and service domains for Valore",
+                    itemListElement: [
+                      {
+                        "@type": "SiteNavigationElement",
+                        position: 1,
+                        name: "Selected Works",
+                        description: "Production portfolio and case studies across restaurant ordering, e-commerce, and enterprise web applications.",
+                        url: `${siteUrl}/work`,
+                      },
+                      {
+                        "@type": "SiteNavigationElement",
+                        position: 2,
+                        name: "Investment & Scopes",
+                        description: "Milestone pricing specifications, fixed-scope investment tiers, and deliverables.",
+                        url: `${siteUrl}/pricing`,
+                      },
+                      {
+                        "@type": "SiteNavigationElement",
+                        position: 3,
+                        name: "Engineering Process",
+                        description: "5-stage delivery: live interactive mockup walkthrough, Stripe rails, digital agreement, and 1-week build.",
+                        url: `${siteUrl}/process`,
+                      },
+                      {
+                        "@type": "SiteNavigationElement",
+                        position: 4,
+                        name: "Direct Consultation",
+                        description: "Initiate project specification or schedule a 1:1 call directly with lead architect Pratham Verma.",
+                        url: `${siteUrl}/contact`,
+                      },
+                      {
+                        "@type": "SiteNavigationElement",
+                        position: 5,
+                        name: "Insights & Strategy",
+                        description: "Engineering essays on Next.js performance, web architecture, and digital conversion.",
+                        url: `${siteUrl}/blog`,
+                      },
+                    ],
                   },
                 ],
               }).replace(/</g, "\\u003c"),

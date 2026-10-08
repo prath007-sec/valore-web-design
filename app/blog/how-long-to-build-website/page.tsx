@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 export default function HowLongToBuildWebsite() {
   useEffect(() => {
-    document.title = "How Long to Build a Custom Website? | Studio Valore";
+    document.title = "How Long to Build a Custom Website? | Valore";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "A realistic timeline for custom website development. How long each phase takes, what affects delivery speed, and how to get your site launched faster.");
   }, []);
 

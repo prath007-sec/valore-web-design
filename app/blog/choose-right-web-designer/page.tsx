@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 export default function ChooseRightWebDesigner() {
   useEffect(() => {
-    document.title = "Choosing a Web Designer Guide | Studio Valore";
+    document.title = "Choosing a Web Designer Guide | Valore";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "A practical guide to hiring a web designer. Learn what to look for, questions to ask, red flags to avoid, and how to find the right fit for your business.");
   }, []);
 

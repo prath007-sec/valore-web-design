@@ -82,7 +82,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
 
 export default function PricingPage() {
   useEffect(() => {
-    document.title = "Pricing & Engagement Models | Valore Digital Identity Firm & AI Consulting";
+    document.title = "Investment & Scopes | Valore";
   }, []);
 
   return (

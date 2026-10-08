@@ -66,7 +66,7 @@ const posts = [
 
 export default function BlogPage() {
   useEffect(() => {
-    document.title = "Insights & Strategy | VALORE";
+    document.title = "Insights & Strategy | Valore";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Expert articles on custom digital systems, performance architecture, and business conversion strategies.");
   }, []);
 

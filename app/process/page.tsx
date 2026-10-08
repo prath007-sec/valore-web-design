@@ -99,7 +99,7 @@ const processSteps = [
 
 export default function ProcessPage() {
   useEffect(() => {
-    document.title = "Delivery Architecture & Engineering Process | Studio Valore";
+    document.title = "Engineering Process | Valore";
   }, []);
 
   return (

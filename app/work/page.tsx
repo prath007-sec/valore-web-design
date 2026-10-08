@@ -110,7 +110,7 @@ const projects = [
 
 export default function WorkPage() {
   useEffect(() => {
-    document.title = "Portfolio & Case Studies | Valore Web Design & AI";
+    document.title = "Selected Works | Valore";
   }, []);
 
   return (

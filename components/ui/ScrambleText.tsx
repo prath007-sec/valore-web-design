@@ -104,6 +104,17 @@ export default function ScrambleText({
     };
   }, [triggerOnView, startScramble, delay]);
 
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    setDisplayText(text);
+    isScramblingRef.current = false;
+    startScramble();
+  }, [text, startScramble]);
+
   const handleMouseEnter = () => {
     if (scrambleOnHover && !isScramblingRef.current) {
       startScramble();

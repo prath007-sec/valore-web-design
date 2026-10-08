@@ -9,21 +9,21 @@ const siteUrl = "https://valore.co";
 
 export const metadata: Metadata = {
   title: {
-    default: "VALORE | Digital Identity Firm & AI Consulting",
-    template: "%s | VALORE | Digital Identity Firm & AI Consulting",
+    default: "Studio Valore — Bespoke Web Architecture & Digital Systems",
+    template: "%s | Studio Valore",
   },
   description:
-    "VALORE is an elite digital identity firm and AI consulting practice by Pratham Verma. We solve digital problems through strategy, pristine digital identities, automated back-office systems, and high-performance AI workflows.",
+    "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "VALORE | Digital Identity Firm & AI Consulting",
+    title: "Studio Valore — Bespoke Web Architecture & Digital Systems",
     description:
-      "VALORE is an elite digital identity firm and AI consulting practice by Pratham Verma. We solve digital problems through strategy, digital identity, systems automation, and AI workflows that scale.",
+      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     url: siteUrl,
-    siteName: "VALORE",
+    siteName: "Studio Valore",
     locale: "en_US",
     type: "website",
     images: [
@@ -31,15 +31,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VALORE — Digital Identity Firm & AI Consulting by Pratham Verma",
+        alt: "Studio Valore — Bespoke Web Architecture by Pratham Verma",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VALORE | Digital Identity Firm & AI Consulting",
+    title: "Studio Valore — Bespoke Web Architecture & Digital Systems",
     description:
-      "VALORE is an elite digital identity firm and AI consulting practice by Pratham Verma. We solve digital problems with modern digital identities and AI workflows that scale.",
+      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -57,21 +57,20 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   keywords: [
-    "digital identity firm",
-    "AI consulting",
-    "VALORE AI consulting",
-    "Pratham Verma AI",
-    "AI automation for business",
-    "24/7 AI customer service chatbot",
-    "automated back-office systems",
-    "high-performance digital identity",
-    "enterprise brand design",
-    "SEO organic rank growth",
-    "Next.js bespoke software"
+    "bespoke web architecture",
+    "Studio Valore",
+    "Pratham Verma",
+    "custom web development",
+    "Next.js engineering",
+    "brand identity systems",
+    "high-performance web design",
+    "Stripe integration",
+    "edge infrastructure",
+    "Springfield MO web designer"
   ],
   authors: [{ name: "Pratham Verma" }],
   creator: "Pratham Verma",
-  publisher: "VALORE",
+  publisher: "Studio Valore",
   category: "technology",
   verification: {
     google: "N0klCKsH5SX8xHlbIF2dSdOo4_eT1M9WIfnVdI5NHBA",
@@ -111,14 +110,14 @@ export default function RootLayout({
                   {
                     "@type": "Organization",
                     "@id": `${siteUrl}/#organization`,
-                    name: "VALORE",
+                    name: "Studio Valore",
                     url: siteUrl,
                     email: "contact@valorewebdesign.com",
                     description:
-                      "VALORE is an elite digital identity firm and AI consulting practice by Pratham Verma. We solve digital problems through strategy, pristine digital identities, automated systems, and scalable AI workflows.",
+                      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
                     foundingDate: "2026",
                     founder: [
-                      { "@type": "Person", name: "Pratham Verma", jobTitle: "Founder & Lead AI Consultant" }
+                      { "@type": "Person", name: "Pratham Verma", jobTitle: "Founder & Lead Architect" }
                     ],
                     sameAs: [],
                     areaServed: [
@@ -129,7 +128,7 @@ export default function RootLayout({
                     "@type": "WebSite",
                     "@id": `${siteUrl}/#website`,
                     url: siteUrl,
-                    name: "VALORE",
+                    name: "Studio Valore",
                     publisher: { "@id": `${siteUrl}/#organization` },
                     inLanguage: "en-US",
                   },

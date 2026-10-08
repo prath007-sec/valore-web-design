@@ -67,13 +67,13 @@ export const Component = () => {
       <MeshGradientCanvas
         className="absolute inset-0 w-full h-full"
         colors={["#000000", "#1a1a1a", "#2e2e2e", "#ffffff"]}
-        speed={0.25}
+        speed={0.85}
         backgroundColor="#000000"
       />
       <MeshGradientCanvas
         className="absolute inset-0 w-full h-full opacity-40"
         colors={["#000000", "#ffffff", "#2e2e2e"]}
-        speed={0.15}
+        speed={0.5}
         wireframe="true"
         backgroundColor="transparent"
       />

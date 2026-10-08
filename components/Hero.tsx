@@ -24,12 +24,6 @@ const scopeOptions = [
   { value: "ai-workflows", label: "AI & Automated Workflows" },
 ];
 
-const budgetOptions = [
-  { value: "launch", label: "$2,000 – $4,000", shortLabel: "$2k – $4k" },
-  { value: "commercial", label: "$4,000 – $8,000", shortLabel: "$4k – $8k" },
-  { value: "enterprise", label: "$8,000+", shortLabel: "$8k+" },
-];
-
 export default function Hero() {
   const router = useRouter();
 
@@ -37,7 +31,7 @@ export default function Hero() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [scope, setScope] = useState("custom-web");
-  const [budget, setBudget] = useState("commercial");
+  const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -56,7 +50,7 @@ export default function Hero() {
           name,
           email,
           projectType: scopeOptions.find((o) => o.value === scope)?.label || scope,
-          budget: budgetOptions.find((b) => b.value === budget)?.label || budget,
+          budget: budget.trim() ? budget.trim() : "Not specified",
           message: message || "Requested preliminary architecture spec via Hero Form.",
         }),
       });
@@ -87,13 +81,13 @@ export default function Hero() {
   return (
     <section className="relative min-h-[94vh] flex flex-col justify-center bg-background text-foreground pt-32 pb-20 overflow-hidden transition-colors duration-300">
       {/* ─── KINETIC SHADER MESH GRADIENT (INTEGRATED AMBIENT CANVAS) ─── */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-35 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-25 dark:opacity-40 overflow-hidden">
         <MeshGradient
           className="w-full h-full"
           colors={["#000000", "#1a1a1a", "#2e2e2e", "#ffffff"]}
-          speed={0.18}
-          distortion={0.3}
-          swirl={0.1}
+          speed={0.85}
+          distortion={0.35}
+          swirl={0.15}
         />
       </div>
 
@@ -310,26 +304,28 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    {/* Target Investment Tier Buttons */}
+                    {/* Target Investment / Budget Input */}
                     <div>
-                      <label className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">
-                        Target Investment
-                      </label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {budgetOptions.map((b) => (
-                          <button
-                            key={b.value}
-                            type="button"
-                            onClick={() => setBudget(b.value)}
-                            className={`py-2 px-2 rounded-xl font-mono text-[10.5px] text-center transition-all border cursor-pointer ${
-                              budget === b.value
-                                ? "border-foreground bg-foreground text-background font-bold shadow-sm"
-                                : "border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30"
-                            }`}
-                          >
-                            {b.shortLabel}
-                          </button>
-                        ))}
+                      <div className="flex items-center justify-between mb-1">
+                        <label
+                          htmlFor="hero-budget-input"
+                          className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
+                        >
+                          Target Investment
+                        </label>
+                        <span className="font-mono text-[9px] text-muted-foreground/60 uppercase">
+                          Enter Target Budget
+                        </span>
+                      </div>
+                      <div className="relative">
+                        <input
+                          id="hero-budget-input"
+                          type="text"
+                          value={budget}
+                          onChange={(e) => setBudget(e.target.value)}
+                          placeholder="e.g. $3,500 or $5,000 – $8,000"
+                          className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
+                        />
                       </div>
                     </div>
 

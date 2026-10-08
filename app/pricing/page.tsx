@@ -1,134 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PackageCard from "@/components/PackageCard";
 import AnimatedSection from "@/components/AnimatedSection";
-import { CreditCard, MessageCircle, ChevronDown, Mail, ArrowRight, Check } from "lucide-react";
+import PricingQuoteSection from "@/components/PricingQuoteSection";
+import DiscoveryScheduler from "@/components/DiscoveryScheduler";
+import { ChevronDown, MessageCircle, ArrowRight, Mail, Sparkles, Clock, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useCart } from "@/components/CartContext";
-import { useRouter } from "next/navigation";
-
-const TIER_FEATURES: Record<string, { text: string; included: boolean }[]> = {
-  Starter: [
-    { text: "Custom design & layout", included: true },
-    { text: "Single-page responsive website", included: true },
-    { text: "Mobile optimized", included: true },
-    { text: "Custom animations", included: false },
-    { text: "Contact form integration", included: true },
-    { text: "Basic SEO setup", included: true },
-    { text: "Performance optimization", included: false },
-    { text: "CMS integration", included: false },
-    { text: "Netlify subdomain or your own domain", included: true },
-    { text: "Advanced animations", included: false },
-    { text: "Content strategy", included: false },
-    { text: "Priority support", included: false },
-    { text: "Dedicated timeline", included: false },
-  ],
-  Growth: [
-    { text: "Custom design & layout", included: true },
-    { text: "Up to 5 responsive pages", included: true },
-    { text: "Mobile & tablet optimized", included: true },
-    { text: "Custom animations", included: true },
-    { text: "Contact form + newsletter", included: true },
-    { text: "Full SEO optimization", included: true },
-    { text: "Performance optimization", included: true },
-    { text: "CMS integration (Sanity, Contentful)", included: true },
-    { text: "Custom domain included", included: true },
-    { text: "Advanced animations", included: false },
-    { text: "Content strategy", included: false },
-    { text: "Priority support", included: false },
-    { text: "Dedicated timeline", included: false },
-  ],
-  Premium: [
-    { text: "Custom design & layout", included: true },
-    { text: "Unlimited responsive pages", included: true },
-    { text: "Mobile & tablet optimized", included: true },
-    { text: "Custom animations", included: true },
-    { text: "Contact form + newsletter", included: true },
-    { text: "Full SEO & performance audit", included: true },
-    { text: "Performance optimization", included: true },
-    { text: "CMS integration (Sanity, Contentful)", included: true },
-    { text: "Custom domain included", included: true },
-    { text: "Advanced animations & micro-interactions", included: true },
-    { text: "Content strategy & page architecture", included: true },
-    { text: "Priority support & maintenance included", included: true },
-    { text: "Dedicated project timeline", included: true },
-  ],
-};
-
-const packages = [
-  {
-    title: "Starter",
-    description:
-      "A polished single-page presence to establish your brand online. Ideal for professionals and growing practices.",
-    price: "$699",
-    ctaText: "Get started",
-    timeline: "1 week",
-    features: TIER_FEATURES.Starter,
-  },
-  {
-    title: "Growth",
-    description:
-      "A multi-page site built for performance and search visibility. Designed for established businesses and firms.",
-    price: "$1,499",
-    ctaText: "Go growth",
-    timeline: "2-3 weeks",
-    features: TIER_FEATURES.Growth,
-  },
-  {
-    title: "Premium",
-    description:
-      "A full-scale custom website with no compromises. The best choice for ambitious brands and firms.",
-    price: "$2,499",
-    highlighted: true,
-    ctaText: "Best value →",
-    timeline: "4-6 weeks",
-    features: TIER_FEATURES.Premium,
-  },
-];
-
-const PACKAGE_PRICES: Record<string, number> = {
-  Starter: 699,
-  Growth: 1499,
-  Premium: 2499,
-};
 
 const faqs = [
   {
-    question: "What kind of websites do you build?",
+    question: "Why do you provide tailored scopes instead of flat fixed rates?",
     answer:
-      "We build responsive, modern websites ranging from single landing pages to full-scale web applications. Every site is custom-built for your brand, with a focus on performance, accessibility, and clean design.",
+      "Every business has distinct operational bottlenecks. A local business needing a digital footprint and local SEO has completely different requirements than a growing enterprise wanting a custom 24/7 AI customer service chatbot and automated CRM pipeline. We deliver a comprehensive, tailored preliminary blueprint and scope aligned directly with your ROI.",
   },
   {
-    question: "How long does a typical project take?",
+    question: "What specific bottlenecks does your AI consulting solve?",
     answer:
-      "A single-page site usually takes about 1 week. Multi-page sites take 2–3 weeks, and full-scale custom websites with advanced features take 4–6 weeks depending on scope and complexity. You'll get a clear timeline before we start.",
+      "We focus on high-impact automations: 24/7 AI customer chatbots to qualify leads while you sleep, automated lead routing to notify your team via SMS/Slack within 3 seconds, automated CRM data entry to eliminate spreadsheet chaos, and custom internal workflow tools saving 10 to 20 hours of manual labor every week.",
   },
   {
-    question: "Will my site work on mobile devices?",
+    question: "How long does a typical custom build take?",
     answer:
-      "Absolutely. Every site we build is fully responsive and tested across phones, tablets, and desktops. Mobile-first design is the standard, not an add-on.",
+      "Rapid Web Launch deployments deliver in approximately 1 week. Full Growth Platforms integrated with 24/7 AI chatbots typically deliver in 1 to 2 weeks. Ongoing AI retainers are flexible monthly partnerships with zero long-term lock-in.",
   },
   {
-    question: "Who hosts the website and owns the domain?",
+    question: "Do I retain full legal ownership of the code and AI assets?",
     answer:
-      "You do. Domains are registered in your name, hosting accounts are under your control, and the source code is yours. You walk away with full ownership of everything.",
+      "Yes, 100%. Upon final handoff, you receive full intellectual property ownership of your Next.js source code, custom API credentials, AI prompt archives, domain DNS setups, and database assets.",
   },
   {
-    question: "What if I need updates after launch?",
+    question: "How do client payments and milestones work?",
     answer:
-      "We offer monthly maintenance subscriptions starting at $39/mo — covering updates, monitoring, and support. Premium clients receive priority support with faster response times. Small text or image tweaks are often included at no extra charge in the first 30 days.",
+      "All invoices are processed securely through Stripe with PCI-compliant checkout. Projects follow a structured milestone schedule: 50% upon project kickoff and 50% upon production deployment and final sign-off.",
   },
   {
-    question: "Do you work with CMS platforms like WordPress?",
+    question: "What does the 15-minute discovery call entail?",
     answer:
-      "We can integrate a headless CMS so you can update content yourself without touching code. We typically use modern static-site and headless CMS workflows rather than traditional WordPress, but we're happy to discuss what fits your needs best.",
-  },
-  {
-    question: "How do payments work?",
-    answer:
-      "All payments go through Stripe — PCI-compliant and secure. Full payment is required upfront before work begins. You approve a mockup first, then pay, and we build your website. Simple and transparent.",
+      "You will speak directly with Pratham Verma, lead AI consultant and architect. We examine your current digital presence, pinpoint your largest operational bottlenecks, and determine if an AI workflow or custom web architecture will generate measurable ROI for your business.",
   },
 ];
 
@@ -137,38 +46,32 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
 
   return (
     <motion.div
-      className="border-b border-[#e0e0e0]"
+      className="border-b border-border transition-colors duration-300"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
       viewport={{ once: true }}
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
+        className="w-full flex items-center justify-between py-5 text-left cursor-pointer group text-foreground"
       >
-        <span
-          className="text-[#1d1d1f] font-medium pr-4"
-          style={{ fontSize: "17px", letterSpacing: "-0.374px", lineHeight: "1.4" }}
-        >
+        <span className="font-semibold pr-4 font-sans tracking-wide text-sm sm:text-base uppercase text-foreground">
           {question}
         </span>
         <ChevronDown
-          className="h-5 w-5 text-[#7a7a7a] flex-shrink-0 transition-transform duration-250"
+          className="h-4 w-4 text-muted-foreground group-hover:text-[#D4AF37] flex-shrink-0 transition-transform duration-300"
           style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
         style={{
-          maxHeight: open ? "200px" : "0px",
+          maxHeight: open ? "220px" : "0px",
           opacity: open ? 1 : 0,
         }}
       >
-        <p
-          className="pb-5 text-[#7a7a7a]"
-          style={{ fontSize: "15px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
-        >
+        <p className="pb-5 text-muted-foreground text-xs sm:text-sm font-sans leading-relaxed">
           {answer}
         </p>
       </div>
@@ -178,241 +81,77 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
 
 export default function PricingPage() {
   useEffect(() => {
-    document.title = "Pricing | Valore Web Design";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Transparent pricing for custom websites — from $699 to $2,499. One-time payment with optional monthly maintenance. Free mockup included.");
+    document.title = "Pricing & Engagement Models | Valore Digital Identity Firm & AI Consulting";
   }, []);
-  const { addItem } = useCart();
-  const router = useRouter();
-
-  const handleCheckout = (title: string) => {
-    addItem({
-      id: `package-${title.toLowerCase()}`,
-      name: `${title} Package`,
-      price: PACKAGE_PRICES[title],
-      type: "package",
-      packageTier: title as "Starter" | "Growth" | "Premium",
-    });
-    router.push("/cart");
-  };
 
   return (
     <>
       {/* Hero */}
-      <section className="pt-24 bg-white">
-        <div className="mx-auto max-w-[980px] px-6 text-center">
+      <section className="pt-32 pb-12 bg-background transition-colors duration-300 relative">
+        <div className="mx-auto max-w-[1000px] px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center gap-3 mb-6"
           >
-            <div className="apple-badge mb-6">Pricing</div>
+            <div className="apple-badge">
+              <Clock className="h-3.5 w-3.5 text-[#D4AF37]" />
+              Tailored Engagement Models
+            </div>
           </motion.div>
+
           <motion.h1
-            className="text-[#1d1d1f] font-semibold"
+            className="text-foreground font-sans font-bold uppercase tracking-tight"
             style={{
-              fontSize: "clamp(2rem, 4.5vw, 3rem)",
-              letterSpacing: "-0.28px",
-              lineHeight: "1.1",
+              fontSize: "clamp(2.2rem, 5vw, 3.75rem)",
+              lineHeight: "1.06",
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Simple, upfront pricing.
+            Tailored Scope. Zero Locked Surprises.
           </motion.h1>
+
           <motion.p
-            className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-            style={{
-              fontSize: "17px",
-              lineHeight: "1.6",
-              letterSpacing: "-0.374px",
-            }}
+            className="mx-auto mt-4 max-w-xl text-muted-foreground font-sans text-base leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            No surprises, no hidden fees. Pick a package or reach out for a
-            custom quote.
+            Choose a tailored engagement model below or schedule a 15-minute discovery call to receive a custom project scope tailored to your business.
           </motion.p>
         </div>
       </section>
 
-      {/* Package cards */}
+      {/* Pricing Models Section */}
+      <PricingQuoteSection />
+
+      {/* FAQ Section */}
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="grid gap-8 md:grid-cols-3">
-              {packages.map((pkg, i) => (
-                <div key={pkg.title} className="relative">
-                  {pkg.highlighted && (
-                    <div
-                      className="absolute -inset-4 rounded-3xl pointer-events-none opacity-60"
-                      style={{
-                        background:
-                          "radial-gradient(ellipse at center, rgba(0,102,204,0.25) 0%, rgba(124,58,237,0.12) 40%, transparent 70%)",
-                        filter: "blur(40px)",
-                      }}
-                    />
-                  )}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-                  >
-                    <PackageCard
-                      {...pkg}
-                      exampleHref={pkg.title === "Starter" ? "/examples/starter" : pkg.title === "Growth" ? "/examples/growth" : "/examples/premium"}
-                      onCheckout={() => handleCheckout(pkg.title)}
-                      timeline={pkg.timeline}
-                    />
-                  </motion.div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Compare plans */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-white">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="text-center mb-14">
-              <div className="apple-badge mb-5">Compare plans</div>
-              <h2
-                className="text-[#1d1d1f] font-semibold"
-                style={{
-                  fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                  letterSpacing: "-0.28px",
-                  lineHeight: "1.1",
-                }}
-              >
-                Pick the right fit.
-              </h2>
-              <p
-                className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-                style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
-              >
-                Every package is a one-time payment. Add optional maintenance for ongoing support.
-              </p>
-            </div>
-
-            {/* Price cards row */}
-            <div className="grid grid-cols-3 gap-6 mb-14">
-              {[
-                { name: "Starter", price: "$699", tag: "One-time", maint: "$39/mo", badge: false },
-                { name: "Growth", price: "$1,499", tag: "One-time", maint: "$69/mo", badge: false },
-                { name: "Premium", price: "$2,499", tag: "One-time", maint: "$129/mo", badge: "Best value" },
-              ].map((plan) => (
-                <div key={plan.name} className={`card-elevated p-6 text-center relative ${plan.badge ? "ring-1 ring-[#0066cc]" : ""}`}>
-                  {plan.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#0066cc] px-4 py-1 z-10">
-                      <span className="text-xs font-semibold text-white" style={{ fontSize: "11px", letterSpacing: "-0.12px", lineHeight: "1" }}>Best value</span>
-                    </div>
-                  )}
-                  <p className="text-[#7a7a7a] text-xs font-medium mb-2" style={{ letterSpacing: "0.02em" }}>{plan.name}</p>
-                  <p className="text-[#1d1d1f] font-semibold" style={{ fontSize: "32px", letterSpacing: "-0.374px", lineHeight: "1" }}>{plan.price}</p>
-                  <p className="text-[#7a7a7a] text-xs mt-1.5 mb-3">{plan.tag}</p>
-                  <p className="text-[11px] text-[#0066cc] font-medium">+ {plan.maint} maintenance</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Feature comparison */}
-            <div className="max-w-[780px] mx-auto">
-              {[
-                {
-                  category: "Pricing",
-                  rows: [
-                    { label: "One-time price", values: ["$699", "$1,499", "$2,499"] },
-                    { label: "Delivery time", values: ["1 week", "2–3 weeks", "4–6 weeks"] },
-                  ],
-                },
-                {
-                  category: "Features",
-                  rows: [
-                    { label: "Custom design & layout", values: [true, true, true] },
-                    { label: "Responsive pages", values: ["1 page", "Up to 5 pages", "Unlimited"] },
-                    { label: "Mobile optimized", values: [true, true, true] },
-                    { label: "Custom animations", values: [false, true, true] },
-                    { label: "Contact form", values: ["Basic", "Form + newsletter", true] },
-                    { label: "SEO", values: ["Basic", "Full", "Full + audit"] },
-                    { label: "Performance optimization", values: [false, true, true] },
-                    { label: "CMS integration", values: [false, true, true] },
-                    { label: "Custom domain", values: ["Netlify or own", "Included", "Included"] },
-                    { label: "Advanced animations", values: [false, false, true] },
-                    { label: "Content strategy", values: [false, false, true] },
-                    { label: "Priority support", values: [false, false, true] },
-                    { label: "Dedicated timeline", values: [false, false, true] },
-                  ],
-                },
-                {
-                  category: "Maintenance",
-                  rows: [
-                    { label: "Monthly", values: ["$39/mo", "$69/mo", "$129/mo"] },
-                    { label: "Yearly", values: ["$390/yr", "$690/yr", "$1,290/yr"] },
-                  ],
-                },
-              ].map((section, si) => (
-                <div key={section.category} className={si > 0 ? "mt-10" : ""}>
-                  <p className="text-[11px] font-semibold text-[#7a7a7a] uppercase tracking-[0.08em] mb-3 px-1">{section.category}</p>
-                  <div className="rounded-2xl border border-[#e8e8ed] overflow-hidden">
-                    {section.rows.map((row, ri) => (
-                      <div
-                        key={row.label}
-                        className={`grid grid-cols-4 items-center px-4 sm:px-6 ${
-                          ri % 2 === 0 ? "bg-[#fbfbfd]" : "bg-white"
-                        }`}
-                        style={{ minHeight: "48px" }}
-                      >
-                        <p className="text-[13px] text-[#1d1d1f] font-medium" style={{ letterSpacing: "-0.2px" }}>{row.label}</p>
-                        {row.values.map((val, vi) => (
-                          <p key={vi} className="text-[13px] text-center" style={{ letterSpacing: "-0.2px" }}>
-                            {val === true ? (
-                              <span className="text-[#0066cc] font-semibold">✓</span>
-                            ) : val === false ? (
-                              <span className="text-[#d2d2d7]">—</span>
-                            ) : typeof val === "string" && val.startsWith("$") ? (
-                              <span className="text-[#1d1d1f] font-semibold">{val}</span>
-                            ) : (
-                              <span className="text-[#7a7a7a]">{val}</span>
-                            )}
-                          </p>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[720px] px-6 apple-section-spacing">
+        <section className="bg-card border-y border-border transition-colors duration-300">
+          <div className="mx-auto max-w-[800px] px-6 apple-section-spacing">
             <div className="text-center mb-12">
-              <div className="apple-badge mb-5">FAQ</div>
+              <div className="apple-badge mb-4">
+                <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
+                Frequently Asked
+              </div>
               <h2
-                className="text-[#1d1d1f] font-semibold"
+                className="text-foreground font-sans font-bold uppercase tracking-tight"
                 style={{
                   fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                  letterSpacing: "-0.28px",
                   lineHeight: "1.1",
                 }}
               >
-                Frequently asked questions.
+                Engagement F.A.Q.
               </h2>
-              <p
-                className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-                style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
-              >
-                Everything you might want to know before starting a project.
+              <p className="mx-auto mt-3 max-w-md text-muted-foreground font-sans text-sm">
+                Clear answers regarding our 24-hour turnaround, AI integrations, code ownership, and retainers.
               </p>
             </div>
-            <div className="card-elevated p-8">
+
+            <div className="apple-bento-card p-6 sm:p-8 bg-background">
               {faqs.map((faq, i) => (
                 <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
               ))}
@@ -421,70 +160,8 @@ export default function PricingPage() {
         </section>
       </AnimatedSection>
 
-      {/* Still have questions CTA */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-white">
-          <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
-            <div className="mb-5">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0066cc]/10 mb-4">
-                <MessageCircle className="h-6 w-6 text-[#0066cc]" />
-              </div>
-            </div>
-            <h2
-              className="text-[#1d1d1f] font-semibold"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              Still have questions?
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
-              style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
-            >
-              Reach out directly and we&apos;ll get back to you within 24 hours — no
-              obligation, no pressure.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-                style={{ padding: "13px 28px", fontSize: "15px", fontWeight: 500, lineHeight: "1" }}
-              >
-                Get in touch <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href="mailto:contact@valorewebdesign.com"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[#d2d2d7] text-[#1d1d1f] hover:bg-[#f5f5f7] transition-all active:scale-[0.97]"
-                style={{ padding: "13px 28px", fontSize: "15px", fontWeight: 400, lineHeight: "1" }}
-              >
-                <Mail className="h-4 w-4" />
-                contact@valorewebdesign.com
-              </a>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((f) => ({
-              "@type": "Question",
-              name: f.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: f.answer,
-              },
-            })),
-          }).replace(/</g, "\\u003c"),
-        }}
-      />
+      {/* Direct Booking Scheduler Terminal */}
+      <DiscoveryScheduler id="book-discovery" />
     </>
   );
 }

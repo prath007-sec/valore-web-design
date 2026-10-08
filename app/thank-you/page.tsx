@@ -2,108 +2,194 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
-import { useEffect } from "react";
+import { ArrowRight, CheckCircle2, Calendar, Clock, Sparkles, Mail, Bot, ExternalLink } from "lucide-react";
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function ThankYouPage() {
+function ThankYouContent() {
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name") || "";
+  const date = searchParams.get("date") || "";
+  const time = searchParams.get("time") || "";
+  const topic = searchParams.get("topic") || "";
+  const isConsultation = searchParams.get("type") === "consultation" || Boolean(date && time);
+
   useEffect(() => {
-    document.title = "Thank You | Valore Web Design";
+    document.title = "Discovery Call Confirmed | Valore";
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white pt-14">
-      <div className="mx-auto max-w-[600px] px-6 text-center">
+    <section className="min-h-screen flex items-center justify-center bg-background text-foreground pt-20 pb-16 px-6 relative overflow-hidden">
+      {/* Ambient background light */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#D4AF37]/5 blur-[150px] pointer-events-none rounded-full" />
+
+      <div className="mx-auto max-w-[680px] w-full text-center relative z-10">
+        {/* Animated Checkmark Badge */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
+          initial={{ scale: 0, rotate: -20 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
+          className="w-20 h-20 rounded-3xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[#D4AF37]/20"
         >
-          <div className="w-20 h-20 rounded-full bg-[#0066cc]/10 flex items-center justify-center mx-auto mb-8">
-            <Sparkles className="h-10 w-10 text-[#0066cc]" />
-          </div>
+          <Sparkles className="h-10 w-10 text-[#D4AF37]" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-4"
+        >
+          <span className="apple-badge">
+            <CheckCircle2 className="h-3 w-3 text-[#D4AF37]" />
+            Request Received
+          </span>
         </motion.div>
 
         <motion.h1
-          className="text-[#1d1d1f] font-semibold"
+          className="text-foreground font-sans font-bold uppercase tracking-tight"
           style={{
-            fontSize: "clamp(2rem, 4vw, 2.75rem)",
-            letterSpacing: "-0.28px",
-            lineHeight: "1.1",
+            fontSize: "clamp(2rem, 4.5vw, 3rem)",
+            lineHeight: "1.08",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
         >
-          Glad to be working with you.
+          {name ? `Glad to connect, ${name}.` : "Glad to be working with you."}
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-4 text-[#7a7a7a]"
-          style={{
-            fontSize: "17px",
-            lineHeight: "1.7",
-            letterSpacing: "-0.374px",
-          }}
+          className="mx-auto mt-4 max-w-lg text-muted-foreground font-sans text-sm sm:text-base leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          Thank you for reaching out! We&apos;ve received your message and will
-          reply very soon — so be on the lookout for an email from{" "}
-          <strong className="text-[#1d1d1f]">
-            hello@valorewebdesign.com
-          </strong>
-          .
+          {isConsultation
+            ? "Your 15-minute discovery call request has been registered. Our lead AI consultant, Pratham Verma, will review your submission and connect with you directly."
+            : "Thank you for reaching out! We've received your project details and our lead architect will deliver your customized blueprint directly."}
         </motion.p>
 
+        {/* Scheduled Slot Summary Card */}
+        {isConsultation && date && time && (
+          <motion.div
+            className="apple-bento-card p-6 border border-[#D4AF37]/30 bg-[#121318] text-left mt-8 max-w-md mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+          >
+            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">
+              Confirmed Session Details
+            </span>
+            <div className="space-y-2 text-xs">
+              <div className="flex items-center gap-2 text-foreground font-semibold">
+                <Calendar className="h-4 w-4 text-[#D4AF37]" />
+                <span>{date}</span>
+              </div>
+              <div className="flex items-center gap-2 text-foreground font-semibold">
+                <Clock className="h-4 w-4 text-[#D4AF37]" />
+                <span>{time} (15-Minute Strategy Call)</span>
+              </div>
+              {topic && (
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Bot className="h-4 w-4 text-[#D4AF37]" />
+                  <span>Focus: {topic}</span>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+
+        {/* What Happens Next 3-Step Timeline */}
         <motion.div
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0066cc]/10 text-[#0066cc] px-5 py-2"
-          style={{ fontSize: "14px", lineHeight: "1" }}
-          initial={{ opacity: 0, y: 10 }}
+          className="mt-8 p-6 rounded-3xl bg-card border border-border text-left"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
         >
-          <Mail className="h-4 w-4" />
-          hello@valorewebdesign.com
+          <h3 className="text-foreground font-bold text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
+            <Clock className="h-4 w-4 text-[#D4AF37]" />
+            What Happens Next:
+          </h3>
+          <div className="space-y-3.5 text-xs text-muted-foreground">
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 border border-[#D4AF37]/20">
+                1
+              </span>
+              <div>
+                <strong className="text-foreground font-semibold block">
+                  Calendar Invite & Direct Confirmation
+                </strong>
+                <span>
+                  Check your inbox for a confirmation message from{" "}
+                  <strong className="text-foreground font-mono">contact@valorewebdesign.com</strong> with your Google Meet link.
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 border border-[#D4AF37]/20">
+                2
+              </span>
+              <div>
+                <strong className="text-foreground font-semibold block">
+                  Pre-Call Bottleneck Analysis
+                </strong>
+                <span>
+                  Before we jump on the call, I will conduct an initial audit of your current digital footprint and identify 2–3 high-leverage AI automation opportunities.
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 border border-[#D4AF37]/20">
+                3
+              </span>
+              <div>
+                <strong className="text-foreground font-semibold block">
+                  Tailored Strategic Scope
+                </strong>
+                <span>
+                  Following our consultation, you will receive a transparent, tailored scope with fixed milestones, zero surprise fees, and live staging timeline.
+                </span>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        <motion.p
-          className="mx-auto mt-6 max-w-md text-[#7a7a7a]"
-          style={{
-            fontSize: "14px",
-            lineHeight: "1.6",
-            letterSpacing: "-0.224px",
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          If you don&apos;t receive a reply within 24 hours, please check your
-          spam folder. You can always reach us directly at{" "}
-          <a
-            href="mailto:hello@valorewebdesign.com"
-            className="text-[#0066cc] hover:underline"
-          >
-            hello@valorewebdesign.com
-          </a>
-          .
-        </motion.p>
-
+        {/* CTA Buttons */}
         <motion.div
-          className="mt-10"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.75 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-            style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] text-black font-bold tracking-wider uppercase text-xs px-8 py-3.5 hover:bg-white transition-all shadow-lg shadow-[#D4AF37]/10"
           >
-            Back to home <ArrowRight className="h-4 w-4" />
+            Back to Home <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/work#kicks-chicken"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card font-semibold tracking-wider uppercase text-xs px-6 py-3.5 text-foreground hover:border-[#D4AF37] transition-all"
+          >
+            Explore Kick&apos;s Chicken Case Study <ExternalLink className="h-3.5 w-3.5" />
           </Link>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={
+      <section className="min-h-screen flex items-center justify-center bg-background text-foreground">
+        <p className="text-xs uppercase tracking-widest text-muted-foreground">Loading Confirmation...</p>
+      </section>
+    }>
+      <ThankYouContent />
+    </Suspense>
   );
 }

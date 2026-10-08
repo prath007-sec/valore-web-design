@@ -1,677 +1,315 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check, Code, Palette, FileText, CreditCard, Key, MessageCircle, Clock, Star } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Hero from "@/components/Hero";
+import ServicesSection from "@/components/ServicesSection";
+import AboutMeSection from "@/components/AboutMeSection";
+import PricingQuoteSection from "@/components/PricingQuoteSection";
+import DiscoveryScheduler from "@/components/DiscoveryScheduler";
+import FeaturedCaseStudy from "@/components/FeaturedCaseStudy";
 import AnimatedSection from "@/components/AnimatedSection";
-import { useCart } from "@/components/CartContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import MaskedText from "@/components/ui/MaskedText";
+import RollingText from "@/components/ui/RollingText";
+import { useEffect, useState } from "react";
+
+const portfolioProjects = [
+  {
+    name: "Kick's Chicken",
+    location: "Springfield, MO",
+    category: "Restaurant Web Architecture & Local SEO",
+    image: "/work/kicks-chicken.png",
+    url: "https://www.kickschicken.com/",
+    role: "Full Web Build & Menu System",
+    highlight: "80+ 5-Star Reviews & Instant One-Tap Carryout",
+  },
+  {
+    name: "LÜM Studio",
+    location: "St. Louis, MO",
+    category: "Minimalist E-Commerce Platform",
+    image: "/work/lum-studio.png",
+    url: "https://lumstudio.netlify.app/",
+    role: "Strategy & Custom Code",
+    highlight: "Sub-second checkout funnel & custom catalog",
+  },
+  {
+    name: "Vanguard Architects",
+    location: "New York, NY",
+    category: "Bespoke Portfolio & Digital Presence",
+    image: "/work/vangaurd.png",
+    url: "https://vangaurdarchitects.netlify.app/",
+    role: "Complete Redesign & Performance",
+    highlight: "Bold typography & architectural layout",
+  },
+  {
+    name: "Harbor & Hearth",
+    location: "Ann Arbor, MI",
+    category: "Property Management & Market Data",
+    image: "/work/harbor-hearth.png",
+    url: "https://harbor-hearth.vercel.app/",
+    role: "Interactive Listings & Speed",
+    highlight: "Dynamic listing filters & instant page transitions",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Pratham didn't just build us a website; he completely re-engineered our customer flow. Our online menu is lightning fast, and our carryout calls are smoother than ever during peak dinner rushes.",
+    name: "Kyle & Xavier",
+    title: "Founders",
+    company: "Kick's Chicken (Springfield, MO)",
+  },
+  {
+    quote: "Working with an independent lead architect who writes pristine custom code is a night-and-day difference from traditional agencies. We received our preliminary spec in 24 hours and the live store in two weeks.",
+    name: "Alex Chen",
+    title: "Founder",
+    company: "LÜM Studio",
+  },
+  {
+    quote: "His focus on high-intent conversion traffic and sub-second performance doubled our client inquiries within the first month. The Apple-level aesthetic blew our executive team away.",
+    name: "Sarah Mitchell",
+    title: "Principal",
+    company: "Vanguard Architects",
+  },
+  {
+    quote: "Outsourcing our digital identity and automated client workflow pipelines to Valore was our smartest strategic move this year. High-intent traffic grew 150% with zero maintenance headache.",
+    name: "Julian Brooks",
+    title: "Co-Founder",
+    company: "Apex Venture Partners",
+  },
+];
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   useEffect(() => {
-    document.title = "Valore Web Design";
+    document.title = "Valore Studio — Bespoke Web Architecture & Digital Systems";
   }, []);
 
-  const { addItem } = useCart();
-  const router = useRouter();
-
-  const handleCheckout = (title: string, price: number) => {
-    addItem({
-      id: `package-${title.toLowerCase()}`,
-      name: `${title} Package`,
-      price,
-      type: "package",
-      packageTier: title as "Starter" | "Growth" | "Premium",
-    });
-    router.push("/cart");
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
+      {/* ─── HERO SECTION ─── */}
       <Hero />
 
-      {/* Two ways we can help */}
+      {/* ─── CORE CAPABILITIES & CAPABILITY SPECIFICATIONS ─── */}
+      <div id="services" className="scroll-mt-20">
+        <ServicesSection />
+      </div>
+
+      {/* ─── PORTFOLIO SHOWCASE ─── */}
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="mb-5 text-center">
-              <div className="apple-badge">Services</div>
-            </div>
-            <h2
-              className="text-[#1d1d1f] font-semibold text-center"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              Two ways we can help.
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-12 max-w-lg text-center text-[#7a7a7a]"
-              style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
-              }}
-            >
-              Whether you&apos;re starting from scratch or leveling up an
-              existing site.
-            </p>
-            <div className="grid gap-6 md:grid-cols-2">
+        <section id="work" className="bg-black text-[#F5F5F7] border-b border-white/[0.08] relative scroll-mt-20 py-28 sm:py-36">
+          <div className="mx-auto max-w-[1140px] px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
               <motion.div
-                className="card-elevated p-8 text-center md:text-left"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-4"
               >
-                <Code className="h-8 w-8 text-[#0066cc] mb-5 mx-auto md:mx-0" />
-                <h3
-                  className="text-[#1d1d1f] font-semibold mb-2"
-                  style={{ fontSize: "20px", letterSpacing: "0.231px", lineHeight: "1.2" }}
-                >
-                  Build a new website
-                </h3>
-                <p
-                  className="text-[#7a7a7a] mb-5"
-                  style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
-                >
-                  A custom site built from scratch — responsive, performant, and
-                  tailored to your brand. You describe what you need, and we make
-                  it real.
-                </p>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-                  <Link
-                    href="/pricing"
-                    className="inline-flex items-center gap-1.5 text-[#0066cc] font-medium hover:underline text-sm"
-                  >
-                    See plans <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#0066cc]/10 text-[#0066cc] hover:bg-[#0066cc]/15 transition-all px-3 py-1.5 text-xs font-medium"
-                  >
-                    Get a free mockup now <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
+                <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+                  Production Archive &bull; Live Deployments
+                </span>
               </motion.div>
 
-              <motion.div
-                className="card-elevated p-8 text-center md:text-left"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <Palette className="h-8 w-8 text-[#0066cc] mb-5 mx-auto md:mx-0" />
-                <h3
-                  className="text-[#1d1d1f] font-semibold mb-2"
-                  style={{ fontSize: "20px", letterSpacing: "0.231px", lineHeight: "1.2" }}
-                >
-                  Refresh an existing site
-                </h3>
-                <p
-                  className="text-[#7a7a7a] mb-5"
-                  style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
-                >
-                  Already have a website that feels outdated or slow? We&apos;ll
-                  polish the design, modernize the stack, and bring it up to
-                  speed — no rebuild from scratch required.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-[#0066cc] font-medium hover:underline text-sm"
-                >
-                  Get a quote <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+              <MaskedText
+                as="h2"
+                text={[
+                  "SELECTED COMMISSIONS.",
+                  "BUILT FOR SCALE."
+                ]}
+                className="text-white font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
+                lineClassName="text-[clamp(2.2rem,5vw,3.75rem)] bg-gradient-to-b from-white via-[#EFEFF0] to-[#88888C] bg-clip-text text-transparent"
+                delay={0.1}
+                stagger={0.12}
+              />
 
-      {/* Portfolio / Work */}
-      <AnimatedSection>
-        <section className="bg-white">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="text-center mb-12">
-              <div className="apple-badge mb-5">Portfolio</div>
-              <h2
-                className="text-[#1d1d1f] font-semibold"
-                style={{
-                  fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                  letterSpacing: "-0.28px",
-                  lineHeight: "1.1",
-                }}
+              <motion.p
+                className="mt-6 text-sm sm:text-base text-[#86868B] font-sans leading-relaxed tracking-tight max-w-xl mx-auto"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.25 }}
               >
-                Recent work.
-              </h2>
-              <p
-                className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-                style={{
-                  fontSize: "17px",
-                  lineHeight: "1.6",
-                  letterSpacing: "-0.374px",
-                }}
-              >
-                A selection of sites we&apos;ve built. More examples available on request.
-              </p>
+                A curated selection of live digital systems custom-architected with pristine aesthetics, sub-second latency, and measurable market authority.
+              </motion.p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { name: "LÜM Studio", location: "St. Louis, MO", image: "/work/lum-studio.png", slug: "lum-studio" },
-                { name: "Vanguard Architects", location: "New York, NY", image: "/work/vangaurd.png", slug: "vanguard-architects" },
-                { name: "Echo & Pulse", location: "Los Angeles, CA", image: "/work/echo-and-pulse.png", slug: "echo-pulse" },
-                { name: "Harbor & Hearth", location: "Ann Arbor, MI", image: "/work/harbor-hearth.png", slug: "harbor-hearth" },
-              ].map((project, i) => (
-                <Link
-                  key={project.slug}
-                  href={`/work#${project.slug}`}
-                  className="card-elevated overflow-hidden group cursor-pointer block"
+
+            {/* Portfolio Grid */}
+            <div className="grid gap-8 md:grid-cols-2">
+              {portfolioProjects.map((project, idx) => (
+                <motion.div
+                  key={project.name}
+                  className="group relative flex flex-col justify-between rounded-3xl border border-white/[0.08] bg-[#0A0A0D] overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-[#101014] hover:shadow-2xl"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    bounce: 0,
+                    duration: 0.6,
+                    delay: idx * 0.1,
+                  }}
                 >
-                  <div className="aspect-video relative bg-[#f5f5f7] overflow-hidden">
+                  {/* Image aspect container */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative aspect-[16/10] overflow-hidden bg-black"
+                  >
                     <Image
                       src={project.image}
-                      alt={`${project.name} website preview`}
+                      alt={`${project.name} preview`}
                       fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, 550px"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0D] via-black/30 to-transparent" />
+                    
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-black font-mono text-[10px] font-bold uppercase tracking-wider shadow-xl">
+                        Visit Live <ExternalLink className="h-3 w-3" />
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-5 left-6 right-6">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#E5D3B3] block mb-1">
+                        {project.category}
+                      </span>
+                      <h3 className="text-white font-bold text-xl sm:text-2xl uppercase tracking-tight">
+                        {project.name}
+                      </h3>
+                    </div>
+                  </a>
+
+                  {/* Card bottom details */}
+                  <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
+                    <p className="text-xs sm:text-sm text-[#86868B] font-sans leading-relaxed mb-6">
+                      {project.highlight}
+                    </p>
+
+                    <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between">
+                      <span className="font-mono text-[10px] text-[#86868B] uppercase tracking-wider">
+                        {project.location}
+                      </span>
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1 font-mono text-[11px] tracking-wider uppercase text-white hover:text-[#E5D3B3] transition-colors"
+                      >
+                        <RollingText duplicateClassName="text-[#E5D3B3]">Explore System</RollingText>
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      </a>
+                    </div>
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-[#1d1d1f] font-semibold text-sm">{project.name}</h3>
-                    <p className="text-[#7a7a7a] text-xs mt-1">{project.location}</p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] text-[#0066cc] font-medium group-hover:underline">
-                      View project details <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </div>
-                </Link>
+                </motion.div>
               ))}
             </div>
-            <div className="mt-10 text-center">
+
+            <div className="mt-14 text-center">
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-                style={{ padding: "12px 24px", fontSize: "14px", fontWeight: 500, lineHeight: "1" }}
+                className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-8 py-3.5 font-mono text-[11px] tracking-[0.2em] uppercase text-white hover:bg-white hover:text-black transition-all duration-300 active:scale-[0.97]"
               >
-                View all projects <ArrowRight className="h-3.5 w-3.5" />
+                <RollingText duplicateClassName="text-black">View Full Commission Archive</RollingText>
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
         </section>
       </AnimatedSection>
 
-      {/* Testimonials */}
+      {/* ─── FEATURED CLIENT CASE STUDY (KICK'S CHICKEN) ─── */}
+      <FeaturedCaseStudy />
+
+      {/* ─── ABOUT ME / FOUNDER DISCIPLINE ─── */}
+      <div id="about-me" className="scroll-mt-20">
+        <AboutMeSection />
+      </div>
+
+      {/* ─── DIRECT CALENDAR SCHEDULER & PROJECT SPEC ─── */}
+      <DiscoveryScheduler id="book-discovery" />
+
+      {/* ─── PRICING & SCOPE SPECIFICATIONS ─── */}
+      <PricingQuoteSection />
+
+      {/* ─── TESTIMONIALS (FOUNDER FEEDBACK) ─── */}
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="text-center mb-12">
-              <div className="apple-badge mb-5">Testimonials</div>
-              <h2
-                className="text-[#1d1d1f] font-semibold"
-                style={{
-                  fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                  letterSpacing: "-0.28px",
-                  lineHeight: "1.1",
-                }}
-              >
-                What clients say.
-              </h2>
-              <p
-                className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-                style={{
-                  fontSize: "17px",
-                  lineHeight: "1.6",
-                  letterSpacing: "-0.374px",
-                }}
-              >
-                Real feedback from real projects.
+        <section className="bg-black text-[#F5F5F7] border-b border-white/[0.08] py-28 sm:py-36">
+          <div className="mx-auto max-w-[980px] px-6">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="mb-4">
+                <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+                  Client Verification &bull; Endorsements
+                </span>
+              </div>
+              <MaskedText
+                as="h2"
+                text={[
+                  "PROVEN BY LEADERS."
+                ]}
+                className="text-white font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
+                lineClassName="text-[clamp(2.2rem,4.5vw,3.5rem)] bg-gradient-to-b from-white via-[#EFEFF0] to-[#88888C] bg-clip-text text-transparent"
+                delay={0.1}
+              />
+              <p className="mt-4 text-xs sm:text-sm text-[#86868B] font-sans leading-relaxed">
+                Direct statements from real business partners and founders.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  quote: "Valore built us a site that actually looks like our brand, not a template. The process was smooth and the result exceeded expectations.",
-                  name: "Alex Chen",
-                  title: "Founder",
-                  company: "LÜM Studio",
-                },
-                {
-                  quote: "We needed a site that matched the caliber of our architectural work. Valore delivered exactly that, on time and within budget.",
-                  name: "Sarah Mitchell",
-                  title: "Principal",
-                  company: "Vanguard Architects",
-                },
-                {
-                  quote: "Our old site was slow and outdated. The redesign is fast, beautiful, and our clients have noticed. Highly recommend.",
-                  name: "Marcus Webb",
-                  title: "Creative Director",
-                  company: "Echo & Pulse",
-                },
-              ].map((t, i) => (
+
+            <div className="mx-auto max-w-2xl relative min-h-[260px] sm:min-h-[220px]">
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={t.name}
-                  className="card-elevated p-6 flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
+                  key={currentTestimonial}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="rounded-3xl border border-white/[0.08] bg-[#0A0A0D] p-8 sm:p-10 flex flex-col items-center text-center shadow-2xl"
                 >
-                  <div className="flex gap-0.5 mb-4">
-                    {[...Array(5)].map((_, si) => (
-                      <Star key={si} className="h-3.5 w-3.5 fill-[#ff9f0a] text-[#ff9f0a]" />
-                    ))}
-                  </div>
-                  <p
-                    className="text-[#7a7a7a] italic flex-1"
-                    style={{ fontSize: "14px", lineHeight: "1.7", letterSpacing: "-0.224px" }}
-                  >
-                    &ldquo;{t.quote}&rdquo;
+                  <p className="text-[#ECECEE] font-sans text-sm sm:text-base leading-relaxed max-w-lg mb-8">
+                    &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                   </p>
-                  <div className="mt-5 pt-4 border-t border-[#f0f0f0]">
-                    <p
-                      className="text-[#1d1d1f] font-semibold"
-                      style={{ fontSize: "13px", lineHeight: "1.3" }}
-                    >
-                      {t.name}
+
+                  <div className="pt-6 border-t border-white/[0.06] w-full max-w-[280px] mx-auto text-center">
+                    <p className="text-white font-sans font-bold text-sm">
+                      {testimonials[currentTestimonial].name}
                     </p>
-                    <p
-                      className="text-[#7a7a7a]"
-                      style={{ fontSize: "12px", lineHeight: "1.4" }}
-                    >
-                      {t.title}, {t.company}
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-[#86868B] mt-1">
+                      {testimonials[currentTestimonial].title}, {testimonials[currentTestimonial].company}
                     </p>
                   </div>
                 </motion.div>
-              ))}
+              </AnimatePresence>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
 
-      {/* Packages overview */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-white">
-          <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
-            <div className="mb-5">
-              <div className="apple-badge">Pricing</div>
-            </div>
-            <h2
-              className="text-[#1d1d1f] font-semibold"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              Everything you need.
-              <br />
-              Nothing you don&apos;t.
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-12 max-w-lg text-[#7a7a7a]"
-              style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
-              }}
-            >
-              Three straightforward packages — from a single landing page to a
-              full-scale website. Pick what fits your project.
-            </p>
-            <div className="grid gap-6 text-left md:grid-cols-3">
-              {[
-                {
-                  title: "Starter",
-                  price: "$699",
-                  numPrice: 699,
-                  desc: "Single-page responsive website with custom design.",
-                  features: ["Custom design", "Mobile-optimized", "Basic SEO"],
-                  timeline: "1 week",
-                },
-                {
-                  title: "Growth",
-                  price: "$1,499",
-                  numPrice: 1499,
-                  desc: "Multi-page site with modern performance and SEO.",
-                  features: ["Up to 5 pages", "Animations", "CMS integration"],
-                  timeline: "2-3 weeks",
-                },
-                {
-                  title: "Premium",
-                  price: "$2,499",
-                  numPrice: 2499,
-                  desc: "Full-scale custom website with priority support.",
-                  features: ["Custom website", "Advanced animations", "Priority support"],
-                  highlighted: true,
-                  timeline: "4-6 weeks",
-                },
-              ].map((pkg, i) => (
-                <motion.div
-                  key={pkg.title}
-                  className={`card-elevated flex flex-col p-6 sm:p-8 relative ${
-                    pkg.highlighted ? "ring-1 ring-[#0066cc]" : ""
+            {/* Dots indicator with Apple touch targets */}
+            <div className="flex justify-center items-center gap-2.5 mt-8">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentTestimonial(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentTestimonial === idx
+                      ? "bg-white w-7"
+                      : "bg-white/20 hover:bg-white/40 w-2"
                   }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  {pkg.highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#0066cc] px-4 py-1 z-10">
-                      <span
-                        className="text-xs font-semibold text-white"
-                        style={{
-                          fontSize: "11px",
-                          letterSpacing: "-0.12px",
-                          lineHeight: "1",
-                        }}
-                      >
-                        Best value
-                      </span>
-                    </div>
-                  )}
-                  <h3
-                    className="text-[#1d1d1f] font-semibold"
-                    style={{
-                      fontSize: "20px",
-                      letterSpacing: "-0.374px",
-                      lineHeight: "1.3",
-                    }}
-                  >
-                    {pkg.title}
-                  </h3>
-                  <p
-                    className="text-[#7a7a7a] mt-1.5"
-                    style={{
-                      fontSize: "14px",
-                      lineHeight: "1.5",
-                      letterSpacing: "-0.224px",
-                    }}
-                  >
-                    {pkg.desc}
-                  </p>
-                  <div className="mt-6 mb-4">
-                    <span
-                      className="font-semibold text-[#1d1d1f]"
-                      style={{
-                        fontSize: "28px",
-                        letterSpacing: "-0.374px",
-                        lineHeight: "1",
-                      }}
-                    >
-                      {pkg.price}
-                    </span>
-                    <span className="text-[#7a7a7a] text-xs ml-1">one-time</span>
-                    <div className="mt-2">
-                      <span className="text-[11px] text-[#0066cc] font-medium">
-                        + maintenance {pkg.title === "Starter" ? "$39/mo" : pkg.title === "Growth" ? "$69/mo" : "$129/mo"}
-                      </span>
-                      <span className="text-[10px] text-[#7a7a7a] ml-1">
-                        or {pkg.title === "Starter" ? "$390" : pkg.title === "Growth" ? "$690" : "$1,290"}/yr
-                      </span>
-                    </div>
-                  </div>
-                  {pkg.timeline && (
-                    <div className="flex items-center gap-1.5 mb-4 py-2.5 px-3.5 rounded-lg bg-[#f5f5f7] w-fit">
-                      <Clock className="h-3 w-3 text-[#0066cc]" />
-                      <span className="text-[11px] text-[#7a7a7a] font-medium">
-                        Delivery: <span className="text-[#1d1d1f]">{pkg.timeline}</span>
-                      </span>
-                    </div>
-                  )}
-                  <div className="border-t border-[#f0f0f0] pt-5 pb-6 flex-1">
-                    <div className="flex items-center gap-2 mb-4 py-2 px-3 rounded-lg bg-[#0066cc]/5 border border-[#0066cc]/10 w-fit">
-                      <CreditCard className="h-3 w-3 text-[#0066cc] flex-shrink-0" />
-                      <span className="text-[10px] text-[#0066cc] font-medium">
-                        Checkout & payments included
-                      </span>
-                    </div>
-                    <ul className="space-y-3">
-                      {pkg.features.map((feat) => (
-                        <li key={feat} className="flex items-center gap-2.5">
-                          <Check className="h-3.5 w-3.5 text-[#0066cc] flex-shrink-0" />
-                          <span
-                            className="text-[#1d1d1f]"
-                            style={{
-                              fontSize: "13px",
-                              lineHeight: "1.4",
-                              letterSpacing: "-0.2px",
-                            }}
-                          >
-                            {feat}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <button
-                    onClick={() => handleCheckout(pkg.title, pkg.numPrice)}
-                    className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97] text-sm shadow-md shadow-[#0066cc]/15 w-full sm:w-auto"
-                    style={{ padding: "12px 22px", fontWeight: 600, lineHeight: "1" }}
-                  >
-                    <CreditCard className="h-3.5 w-3.5" /> Checkout now
-                  </button>
-                  <Link
-                    href="/pricing"
-                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-full border border-[#d2d2d7] text-[#7a7a7a] hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-all active:scale-[0.97] text-xs w-full sm:w-auto"
-                    style={{ padding: "8px 18px", fontWeight: 400, lineHeight: "1", letterSpacing: "-0.1px" }}
-                  >
-                    View details <ArrowRight className="h-3 w-3" />
-                  </Link>
-                  <Link
-                    href={pkg.title === "Starter" ? "/examples/starter" : pkg.title === "Growth" ? "/examples/growth" : "/examples/premium"}
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d2d2d7] text-[#7a7a7a] hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-all active:scale-[0.97] text-xs w-full sm:w-auto"
-                    style={{ padding: "8px 18px", fontWeight: 400, lineHeight: "1", letterSpacing: "-0.1px" }}
-                  >
-                    See example
-                  </Link>
-                </motion.div>
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
               ))}
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* How it works */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
-            <div className="mb-5">
-              <div className="apple-badge">Process</div>
-            </div>
-            <h2
-              className="text-[#1d1d1f] font-semibold"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              How it works.
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-14 max-w-lg text-[#7a7a7a]"
-              style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
-              }}
-            >
-              A straightforward process designed to deliver quality without the
-              headache.
-            </p>
-            <div className="grid gap-10 text-left md:grid-cols-4 md:gap-8">
-              {[
-                { num: "01", title: "Strategy", desc: "We map out goals, audience, and structure before any code is written." },
-                { num: "02", title: "Design & Build", desc: "We design and develop using modern tools — responsive, fast, and polished." },
-                { num: "03", title: "Review & Refine", desc: "You review a live preview, give feedback, and we iterate." },
-                { num: "04", title: "Launch & Support", desc: "Deploy to production with SSL, analytics, and ongoing support." },
-              ].map((step, i) => (
-                <motion.div
-                  key={step.num}
-                  className="step-connector"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center gap-4 mb-4 md:flex-col md:items-start md:gap-2">
-                    <span
-                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#0066cc]/10 text-[#0066cc] font-semibold flex-shrink-0"
-                      style={{ fontSize: "16px", letterSpacing: "-0.28px" }}
-                    >
-                      {step.num}
-                    </span>
-                    <h3
-                      className="text-[#1d1d1f] font-semibold"
-                      style={{ fontSize: "18px", letterSpacing: "0.231px", lineHeight: "1.2" }}
-                    >
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p
-                    className="text-[#7a7a7a]"
-                    style={{ fontSize: "14px", lineHeight: "1.6", letterSpacing: "-0.2px" }}
-                  >
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Trust section — How we work */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-white">
-          <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-            <div className="text-center">
-              <div className="apple-badge mb-5">How we work</div>
-            </div>
-            <h2
-              className="text-[#1d1d1f] font-semibold text-center"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              Boring guarantees,
-              <br />
-              on purpose.
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-14 max-w-lg text-center text-[#7a7a7a]"
-              style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
-              }}
-            >
-              A web project is a relationship. Here&apos;s the paperwork and
-              infrastructure that make sure you stay in control.
-            </p>
-            <div className="grid gap-8 md:gap-10">
-              {[
-                {
-                  icon: FileText,
-                  title: "Signed contracts",
-                  desc: 'Every project has a written MSA + SOW. Scope, price, and timeline in writing — no surprise fees, no scope creep.',
-                },
-                {
-                  icon: CreditCard,
-                  title: "Stripe-secured payments",
-                  desc: 'Setup fees and monthly retainers run through Stripe. PCI-compliant, no card details ever touch our systems.',
-                },
-                {
-                  icon: Key,
-                  title: "You own it",
-                  desc: 'Domain in your name, source code yours, hosting account in your name. If we ever part ways, you walk with everything.',
-                },
-                {
-                  icon: MessageCircle,
-                  title: "Same-day support",
-                  desc: 'Premium clients get all email support replied to within the same business day. Outages get triaged in under an hour.',
-                },
-              ].map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.title}
-                    className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 px-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.12 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-[#0066cc]/10 flex items-center justify-center">
-                        <Icon className="h-5 w-5 text-[#0066cc]" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3
-                        className="text-[#1d1d1f] font-semibold mb-1.5"
-                        style={{ fontSize: "18px", letterSpacing: "-0.374px", lineHeight: "1.3" }}
-                      >
-                        {item.title}
-                      </h3>
-                      <p
-                        className="text-[#7a7a7a] max-w-xl"
-                        style={{ fontSize: "15px", lineHeight: "1.6", letterSpacing: "-0.224px" }}
-                      >
-                        {item.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* CTA */}
-      <AnimatedSection delay={0.1}>
-        <section className="bg-[#f5f5f7]">
-          <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
-            <h2
-              className="text-[#1d1d1f] font-semibold"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                letterSpacing: "-0.28px",
-                lineHeight: "1.1",
-              }}
-            >
-              Have a project?
-              <br />
-              Let&apos;s talk.
-            </h2>
-            <p
-              className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
-              style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
-              }}
-            >
-              Tell us about your idea and we&apos;ll send over a free mockup and
-              quote — no strings attached.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-              style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
-            >
-              Get in touch <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </section>
       </AnimatedSection>

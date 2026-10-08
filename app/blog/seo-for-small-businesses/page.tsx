@@ -8,13 +8,13 @@ import { useEffect } from "react";
 
 export default function SEOForSmallBusinesses() {
   useEffect(() => {
-    document.title = "SEO for Small Businesses: A Beginner's Guide | Valore Web Design";
+    document.title = "SEO for Small Businesses: A Beginner's Guide | VALORE";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Learn the fundamentals of SEO for small businesses. Keyword research, on-page optimization, local SEO, and practical tips to rank higher without hiring an agency.");
   }, []);
 
   return (
     <>
-      <section className="pt-24 bg-white">
+      <section className="pt-32 pb-16 bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[720px] px-6">
           <motion.div
             initial={{ opacity: 0, x: -12 }}
@@ -23,7 +23,7 @@ export default function SEOForSmallBusinesses() {
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-sm text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors mb-8"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to blog
             </Link>
@@ -33,29 +33,27 @@ export default function SEOForSmallBusinesses() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center rounded-full bg-[#0066cc]/10 text-[#0066cc] px-3 py-1 text-[11px] font-medium mb-4">
+            <span className="inline-flex items-center rounded-full bg-[#D4AF37]/8 border border-[#D4AF37]/20 text-[#D4AF37] px-3.5 py-1 text-[9px] font-bold uppercase tracking-wider mb-4">
               SEO
             </span>
             <h1
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               SEO for Small Businesses: A Beginner&apos;s Guide
             </h1>
             <div
-              className="mt-4 flex items-center gap-4 text-[#7a7a7a]"
-              style={{ fontSize: "13px" }}
+              className="mt-4 flex items-center gap-4 text-muted-foreground/70 font-sans text-[10px] uppercase tracking-wider font-semibold"
             >
               <span className="flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" />
+                <Calendar className="h-3.5 w-3.5 text-[#D4AF37]" />
                 May 12, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
+                <Clock className="h-3.5 w-3.5 text-[#D4AF37]" />
                 7 min read
               </span>
             </div>
@@ -64,16 +62,11 @@ export default function SEOForSmallBusinesses() {
       </section>
 
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
+        <section className="bg-card border-y border-border text-muted-foreground transition-colors duration-300">
           <div className="mx-auto max-w-[720px] px-6 apple-section-spacing">
             <article>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 If you own a small business, you&apos;ve probably heard that SEO
                 matters. But between running your business and serving your
@@ -81,12 +74,7 @@ export default function SEOForSmallBusinesses() {
                 optimization?
               </p>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 The good news is you don&apos;t need to become an expert. A handful
                 of fundamentals can make a real difference in how customers find
@@ -94,18 +82,12 @@ export default function SEOForSmallBusinesses() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 What is SEO and why does it matter?
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 SEO (search engine optimization) is the practice of making your
                 website more visible in search results like Google. When someone
@@ -114,12 +96,7 @@ export default function SEOForSmallBusinesses() {
                 near the top.
               </p>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Studies show that the first five search results get over 67% of
                 all clicks. If your site isn&apos;t ranking, you&apos;re leaving
@@ -127,18 +104,12 @@ export default function SEOForSmallBusinesses() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Start with keyword research
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Keywords are the phrases people type into search engines. Your
                 goal is to figure out which keywords your potential customers are
@@ -154,32 +125,25 @@ export default function SEOForSmallBusinesses() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 On-page SEO basics
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 On-page SEO refers to optimizations you make directly on your
                 website. These are the easiest to control and have immediate
@@ -195,32 +159,25 @@ export default function SEOForSmallBusinesses() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Local SEO: get found in your area
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 For small businesses, local SEO is often the most important piece.
                 When someone searches for a service near them, Google shows local
@@ -236,32 +193,25 @@ export default function SEOForSmallBusinesses() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Technical SEO: the foundation
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Technical SEO covers the behind-the-scenes factors that affect how
                 search engines crawl and index your site.
@@ -276,25 +226,19 @@ export default function SEOForSmallBusinesses() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Every site we build at Valore ships with all of this baked in
                 from day one. Clean semantic code, fast load times, proper heading
@@ -302,33 +246,22 @@ export default function SEOForSmallBusinesses() {
                 worry about the technical side.
               </p>
 
-              <div className="gradient-divider my-8" />
+              <div className="gradient-divider my-8 bg-border h-[1px] transition-colors duration-300" />
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Content is still king
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Google rewards sites that regularly publish helpful, relevant
                 content. A blog is one of the best ways to do this — each post is
                 another page Google can index and another opportunity to be found.
               </p>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Focus on answering your customers&apos; questions. What problems
                 do they have? What information are they looking for? Write content
@@ -338,12 +271,7 @@ export default function SEOForSmallBusinesses() {
               </p>
 
               <p
-                className="text-[#7a7a7a]"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 font-sans text-xs leading-relaxed"
               >
                 SEO isn&apos;t a one-time task, but you don&apos;t need to do
                 everything at once. Start with the fundamentals — keyword
@@ -361,24 +289,22 @@ export default function SEOForSmallBusinesses() {
       </AnimatedSection>
 
       <AnimatedSection delay={0.1}>
-        <section className="bg-white">
+        <section className="bg-background transition-colors duration-300">
           <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
             <h2
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               Need a website that ranks?
             </h2>
             <p
-              className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
+              className="mx-auto mt-4 mb-8 max-w-md text-muted-foreground transition-colors duration-300 font-sans"
               style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
+                fontSize: "16px",
+                lineHeight: "1.65",
               }}
             >
               Every site we build includes solid SEO foundations. Let&apos;s talk
@@ -386,8 +312,8 @@ export default function SEOForSmallBusinesses() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-              style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] text-[#0A0A0A] hover:bg-foreground hover:text-background transition-all font-semibold tracking-wider uppercase text-xs shadow-lg shadow-[#D4AF37]/10"
+              style={{ padding: "14px 28px" }}
             >
               Get in touch <ArrowRight className="h-4 w-4" />
             </Link>
@@ -402,12 +328,12 @@ export default function SEOForSmallBusinesses() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valore.co/blog" },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "SEO for Small Businesses: A Beginner's Guide",
-                item: "https://valorewebdesign.com/blog/seo-for-small-businesses",
+                item: "https://valore.co/blog/seo-for-small-businesses",
               },
             ],
           }).replace(/</g, "\\u003c"),
@@ -426,17 +352,17 @@ export default function SEOForSmallBusinesses() {
             dateModified: "2026-05-12",
             author: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             publisher: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://valorewebdesign.com/blog/seo-for-small-businesses",
+              "@id": "https://valore.co/blog/seo-for-small-businesses",
             },
-            image: "https://valorewebdesign.com/og-image.png",
+            image: "https://valore.co/og-image.png",
           }).replace(/</g, "\\u003c"),
         }}
       />

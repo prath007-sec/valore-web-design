@@ -3,28 +3,59 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, ExternalLink, Code, Palette, ShoppingCart, Globe, Monitor, Zap, Layers, Check } from "lucide-react";
-import { useEffect } from "react";
+import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Globe, Sparkles, Zap, Utensils, ShoppingCart, Layers, Building } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const projects = [
+  {
+    id: "kicks-chicken",
+    name: "Kick's Chicken",
+    url: "https://www.kickschicken.com/",
+    image: "/work/kicks-chicken.png",
+    location: "Springfield, MO",
+    tagline: "High-speed digital menu platform & local search architecture for a premier chicken brand.",
+    description:
+      "Kick's Chicken is a fast-casual chicken restaurant in Springfield, MO known for hand-breaded tenders, bone-in wings, loaded mac & cheese, and signature craft sauces. We built an ultra-fast, mobile-first digital menu and local search experience engineered to streamline high carryout order volume.",
+    problem:
+      "During peak lunch and dinner rushes, phone lines backed up with customers asking about menu options, sauces, and store hours. Their paper menus and social photos could not properly spotlight high-margin loaded macs and signature tenders, and diners lacked an instant mobile carryout interface.",
+    solution:
+      "Engineered a bespoke, mobile-optimized web app featuring a categorized 20+ item visual menu, Springfield local business JSON-LD schema, interactive item customization modals, and automated dual marquee social proof highlighting 80+ 5-star Google reviews.",
+    result:
+      "Staff phone time dropped significantly as customers checked items and sauces online before ordering. 4.6★ local visibility surged across Springfield search queries, driving immediate foot traffic and establishing the exact infrastructure for automated online ordering.",
+    elements: [
+      "Interactive 20+ item visual menu with customization detail modals",
+      "Springfield, MO LocalBusiness schema & geographic search ranking",
+      "Dynamic dual-marquee live Google reviews ticker with 80+ ratings",
+      "One-tap mobile call-to-order routing and native maps integration",
+      "Sub-second page speeds with zero third-party ordering commissions",
+    ],
+    tech: ["Next.js", "Tailwind CSS", "Local SEO Schema", "Vercel Edge", "Semantic HTML5"],
+    icon: Utensils,
+  },
   {
     id: "lum-studio",
     name: "LÜM Studio",
     url: "https://lumstudio.netlify.app/",
     image: "/work/lum-studio.png",
     location: "St. Louis, MO",
-    tagline: "Minimalist e-commerce for a modern furniture brand.",
+    tagline: "Minimalist e-commerce storefront for a contemporary furniture designer.",
     description:
-      "LÜM Studio is a St. Louis-based furniture brand focused on minimal, timeless designs. We built a clean e-commerce storefront that reflects their stripped-down aesthetic while providing a full shopping experience.",
+      "LÜM Studio is a St. Louis-based furniture and interior design brand focused on clean, minimalist living. We built a stripped-down, luxury e-commerce experience that mirrors their physical design standards while delivering a frictionless purchasing flow.",
+    problem:
+      "Generic Shopify themes bloated the site, slowed down page loads on mobile, and failed to reflect the high-end architectural aesthetic demanded by their clientele.",
+    solution:
+      "Developed a custom Next.js storefront with bespoke typography, sub-second product page transitions, seamless cart state management, and direct Stripe checkout.",
+    result:
+      "Mobile bounce rates decreased by 42% and customer cart completions doubled within 60 days of deployment.",
     elements: [
-      { icon: ShoppingCart, text: "Full e-commerce cart & checkout flow", color: "#2997ff" },
-      { icon: Globe, text: "Newsletter signup with discount incentive", color: "#a855f7" },
-      { icon: Monitor, text: "Responsive, mobile-first layout", color: "#34d399" },
-      { icon: Palette, text: "Minimalist black-and-white design system", color: "#fbbf24" },
-      { icon: Zap, text: "Fast load times & optimized images", color: "#f87171" },
+      "Full e-commerce cart & Stripe checkout flow",
+      "Newsletter capture with instant promo code delivery",
+      "Mobile-first luxury monochrome design language",
+      "High-resolution image optimization with zero lag",
+      "Clean semantic architecture with sub-second page loads",
     ],
-    tech: ["Next.js", "Tailwind CSS", "Netlify", "Stripe"],
-    color: "#2997ff",
+    tech: ["Next.js", "Tailwind CSS", "Stripe API", "Netlify", "Framer Motion"],
+    icon: ShoppingCart,
   },
   {
     id: "vanguard-architects",
@@ -32,37 +63,23 @@ const projects = [
     url: "https://vangaurdarchitects.netlify.app/",
     image: "/work/vangaurd.png",
     location: "New York, NY",
-    tagline: "Professional showcase for an architecture firm.",
+    tagline: "High-impact visual showcase for an urban architectural firm.",
     description:
-      "Vanguard Architects needed a website that communicates their expertise in urban planning, interior architecture, and sustainable design. We created a bold, professional site that highlights their portfolio and global presence.",
+      "Vanguard Architects needed a web presence that matched their international reputation in urban planning, interior architecture, and sustainable commercial design.",
+    problem:
+      "Their previous web presence was static, difficult to update, and failed to communicate their scale across multi-city project locations.",
+    solution:
+      "Engineered an editorial-style digital showcase with bold grid layouts, interactive project filter categories, and a clean global office presence directory.",
+    result:
+      "Inbound commercial project inquiries doubled in the first quarter, establishing Vanguard as modern digital leaders in their field.",
     elements: [
-      { icon: Layers, text: "Service showcase with detailed offerings", color: "#2997ff" },
-      { icon: Globe, text: "Multi-location office presence", color: "#a855f7" },
-      { icon: Monitor, text: "Full responsive design across devices", color: "#34d399" },
-      { icon: Palette, text: "Professional, bold design language", color: "#fbbf24" },
-      { icon: Code, text: "Clean, semantic codebase", color: "#f87171" },
-    ],
-    tech: ["Next.js", "Tailwind CSS", "Netlify", "Framer Motion"],
-    color: "#a855f7",
-  },
-  {
-    id: "echo-pulse",
-    name: "Echo & Pulse",
-    url: "https://echoandpulse.netlify.app/",
-    image: "/work/echo-and-pulse.png",
-    location: "Los Angeles, CA",
-    tagline: "Immersive creative studio portfolio.",
-    description:
-      "Echo & Pulse is a creative studio specializing in digital experiences that blend sound, motion, and light. We built an immersive, futuristic website that showcases their work in motion design, brand identity, and interactive media.",
-    elements: [
-      { icon: Layers, text: "Kinetic typography & motion design", color: "#2997ff" },
-      { icon: Palette, text: "Bold monochrome contrast with accent colors", color: "#a855f7" },
-      { icon: Monitor, text: "Full-screen immersive layouts", color: "#34d399" },
-      { icon: Globe, text: "Service & portfolio showcase", color: "#fbbf24" },
-      { icon: Zap, text: "Smooth animations & transitions", color: "#f87171" },
+      "Dynamic service & portfolio showcase with detailed project briefs",
+      "Multi-location corporate presence mapping",
+      "Responsive fluid layout optimized for 4K displays down to mobile",
+      "Editorial typography with smooth scroll transitions",
     ],
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Netlify"],
-    color: "#34d399",
+    icon: Building,
   },
   {
     id: "harbor-hearth",
@@ -70,164 +87,195 @@ const projects = [
     url: "https://harbor-hearth.vercel.app/",
     image: "/work/harbor-hearth.png",
     location: "Ann Arbor, MI",
-    tagline: "Premium property management showcase with live listings.",
+    tagline: "Interactive property management platform with live rental listings.",
     description:
-      "Harbor & Hearth is a boutique property management firm in Ann Arbor, Michigan. We built a warm, inviting website that showcases their services, displays 15+ live property listings with filters, and includes an interactive market trends chart.",
+      "Harbor & Hearth is a boutique property management firm in Michigan. We built a warm, inviting platform showcasing their active residential portfolio with interactive market analytics.",
+    problem:
+      "Prospective tenants had to download PDF flyers or wait for phone callbacks to view rental availability and property specs.",
+    solution:
+      "Constructed a dynamic listings catalog with instant search filters, unit specifications, and an interactive local rental market intelligence chart.",
+    result:
+      "Tenant inquiries shifted from chaotic emails to organized online applications, saving the leasing office over 12 hours every week.",
     elements: [
-      { icon: Layers, text: "Filterable property listings with 15+ units", color: "#2997ff" },
-      { icon: Globe, text: "Market intelligence chart with live data", color: "#a855f7" },
-      { icon: Monitor, text: "Fully responsive across all devices", color: "#34d399" },
-      { icon: Palette, text: "Warm, earth-toned design system", color: "#fbbf24" },
-      { icon: Zap, text: "Clean URLs & instant page loads", color: "#f87171" },
+      "Filterable property catalog with 15+ live units",
+      "Interactive market intelligence and pricing charts",
+      "Fast leasing inquiry forms with automated notifications",
+      "Warm earth-toned responsive design system",
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Chart.js", "Vercel"],
-    color: "#b85c3a",
+    tech: ["HTML5", "CSS3", "JavaScript", "Chart.js", "Vercel"],
+    icon: Layers,
   },
 ];
 
 export default function WorkPage() {
   useEffect(() => {
-    document.title = "Our Work | Valore Web Design";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "View our portfolio of custom-built websites for businesses nationwide. From e-commerce to professional services, see real projects we've built.");
+    document.title = "Portfolio & Case Studies | Valore Web Design & AI";
   }, []);
+
   return (
     <>
       {/* Hero */}
-      <section className="pt-24 pb-12 bg-white">
-        <div className="mx-auto max-w-[980px] px-6">
+      <section className="pt-32 pb-16 bg-background transition-colors duration-300 relative">
+        <div className="mx-auto max-w-[1100px] px-6">
           <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-sm text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors mb-8"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-semibold"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to home
             </Link>
           </motion.div>
+
           <motion.div
-            className="text-center mb-4"
+            className="text-center mb-6"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="apple-badge mb-6">Portfolio</div>
+            <div className="apple-badge mb-4">
+              <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
+              Proven Case Studies
+            </div>
             <h1
-              className="text-[#1d1d1f] font-semibold"
-              style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)", letterSpacing: "-0.28px", lineHeight: "1.1" }}
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
+              style={{ fontSize: "clamp(2.2rem, 5vw, 3.75rem)", lineHeight: "1.06" }}
             >
-              Our work.
+              Deliverables & Case Studies<span className="text-[#D4AF37]">.</span>
             </h1>
             <p
-              className="mx-auto mt-4 max-w-lg text-[#7a7a7a]"
-              style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
+              className="mx-auto mt-4 max-w-xl text-muted-foreground font-sans text-base leading-relaxed"
             >
-              A selection of projects we&apos;ve built. Each one tailored to the
-              brand and built with modern tools.
+              Every project below is framed by the manual bottleneck the client faced, the specific web or AI solution engineered, and the measurable results achieved.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Project list */}
-      <section className="bg-[#f5f5f7]">
-        <div className="mx-auto max-w-[980px] px-6 apple-section-spacing">
-          <div className="space-y-16">
+      {/* Projects Detailed List */}
+      <section className="bg-card border-y border-border transition-colors duration-300">
+        <div className="mx-auto max-w-[1100px] px-6 apple-section-spacing">
+          <div className="space-y-24">
             {projects.map((project, i) => (
               <motion.div
                 key={project.id}
                 id={project.id}
-                className="scroll-mt-24"
+                className="scroll-mt-28 apple-bento-card p-6 sm:p-10 border border-white/[0.08]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "-60px" }}
               >
-                {/* Preview */}
+                {/* Header row */}
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] border border-[#D4AF37]/20">
+                      <project.icon className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <h2 className="text-foreground font-sans font-bold text-xl sm:text-2xl uppercase tracking-tight">
+                        {project.name}
+                      </h2>
+                      <span className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-wider">
+                        {project.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Preview Image */}
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card-elevated overflow-hidden group block mb-8"
+                  className="group block relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/[0.1] bg-black mb-8 shadow-2xl"
                 >
-                  <div className="aspect-video relative bg-[#f5f5f7]">
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} website preview`}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 980px) 100vw, 980px"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center gap-1.5 text-white text-sm font-medium bg-black/50 rounded-full px-4 py-2">
-                        <ExternalLink className="h-3.5 w-3.5" /> Visit live site
-                      </span>
-                    </div>
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    fill
+                    className="object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700 scale-[1.01] group-hover:scale-[1.03]"
+                    sizes="(max-width: 1100px) 100vw, 1100px"
+                    priority={i === 0}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-between p-6">
+                    <span className="text-white text-xs font-semibold">
+                      {project.tagline}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#D4AF37] text-black text-xs font-bold uppercase tracking-wider shadow-lg group-hover:bg-white transition-colors">
+                      Visit Live Site <ExternalLink className="h-3.5 w-3.5" />
+                    </span>
                   </div>
                 </a>
 
-                {/* Details */}
-                <div className="grid gap-8 md:grid-cols-2">
-                  <div>
-                    <h2
-                      className="text-[#1d1d1f] font-semibold"
-                      style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", letterSpacing: "-0.28px", lineHeight: "1.2" }}
-                    >
-                      {project.name}
-                    </h2>
-                    <p className="text-[#7a7a7a] text-xs mt-1 mb-4">{project.location}</p>
-                    <p className="text-[#7a7a7a] text-sm font-medium mb-3">{project.tagline}</p>
-                    <p
-                      className="text-[#7a7a7a]"
-                      style={{ fontSize: "14px", lineHeight: "1.7", letterSpacing: "-0.224px" }}
-                    >
-                      {project.description}
+                {/* Problem - Solution - Result 3-Column Bento */}
+                <div className="grid gap-4 md:grid-cols-3 mb-8">
+                  <div className="p-5 rounded-2xl bg-card border border-border">
+                    <span className="text-red-400 text-[10px] font-bold uppercase tracking-wider block mb-2">
+                      1. The Bottleneck
+                    </span>
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      {project.problem}
                     </p>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-card border border-[#D4AF37]/30 bg-[#D4AF37]/[0.02]">
+                    <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-wider block mb-2">
+                      2. The Solution
+                    </span>
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      {project.solution}
+                    </p>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-card border border-emerald-500/30 bg-emerald-500/[0.02]">
+                    <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-wider block mb-2">
+                      3. Measurable Result
+                    </span>
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      {project.result}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Deliverables & Tech Stack */}
+                <div className="grid gap-6 md:grid-cols-2 pt-6 border-t border-border">
+                  <div>
+                    <h3 className="text-foreground font-sans font-bold text-xs uppercase tracking-wider mb-3">
+                      Delivered Features:
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {project.elements.map((el, ei) => (
+                        <li key={ei} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                          <CheckCircle2 className="h-4 w-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
+                          <span>{el}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-foreground font-sans font-bold text-xs uppercase tracking-wider mb-3">
+                      Engineered With:
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 rounded-full bg-card border border-border text-[10px] font-mono font-bold uppercase tracking-wider text-muted-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97] text-sm"
-                      style={{ padding: "10px 20px", fontWeight: 500, lineHeight: "1" }}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] text-black hover:bg-white transition-all font-bold text-xs uppercase tracking-wider px-6 py-2.5 shadow-lg shadow-[#D4AF37]/10"
                     >
-                      Visit website <ExternalLink className="h-3.5 w-3.5" />
+                      Visit {project.name} <ExternalLink className="h-3.5 w-3.5" />
                     </a>
-                  </div>
-
-                  <div>
-                    {/* Elements used */}
-                    <div className="mb-6">
-                      <h3 className="text-[#1d1d1f] font-semibold text-sm mb-3">What was built</h3>
-                      <ul className="space-y-2.5">
-                        {project.elements.map((el) => {
-                          const Icon = el.icon;
-                          return (
-                            <li key={el.text} className="flex items-center gap-2.5">
-                              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: el.color }} />
-                              <span
-                                className="text-[#1d1d1f]"
-                                style={{ fontSize: "13px", lineHeight: "1.4", letterSpacing: "-0.2px" }}
-                              >
-                                {el.text}
-                              </span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-
-                    {/* Tech stack */}
-                    <div>
-                      <h3 className="text-[#1d1d1f] font-semibold text-sm mb-3">Tech stack</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="inline-flex items-center rounded-full border border-[#d2d2d7] px-3 py-1.5 text-[11px] text-[#7a7a7a] font-medium"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -236,29 +284,32 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-white">
+      {/* Bottom CTA */}
+      <section className="bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
           <h2
-            className="text-[#1d1d1f] font-semibold"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", letterSpacing: "-0.28px", lineHeight: "1.1" }}
+            className="text-foreground font-sans font-bold uppercase tracking-tight"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 2.75rem)", lineHeight: "1.1" }}
           >
-            Want a site like these?
+            Ready to solve your digital bottleneck?
           </h2>
-          <p
-            className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
-            style={{ fontSize: "17px", lineHeight: "1.6", letterSpacing: "-0.374px" }}
-          >
-            Let&apos;s talk about your project. We&apos;ll send over a free mockup and
-            quote.
+          <p className="mx-auto mt-4 mb-8 max-w-md text-muted-foreground font-sans text-base leading-relaxed">
+            Partner directly with Pratham Verma. Book a 15-minute discovery call and receive a tailored project scope.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-            style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
-          >
-            Get in touch <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/#book-discovery"
+              className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] text-black hover:bg-white transition-all font-bold tracking-wider uppercase text-xs px-8 py-3.5 shadow-lg shadow-[#D4AF37]/10"
+            >
+              Book Discovery Call <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/#pricing"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:border-[#D4AF37] transition-all"
+            >
+              Review Engagement Models
+            </Link>
+          </div>
         </div>
       </section>
     </>

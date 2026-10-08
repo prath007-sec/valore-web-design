@@ -8,13 +8,13 @@ import { useEffect } from "react";
 
 export default function WhyCustomWebsites() {
   useEffect(() => {
-    document.title = "Why Custom Websites Beat Templates | Valore Web Design";
+    document.title = "Why Custom Websites Beat Templates | VALORE";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Discover why custom-built websites outperform templates in branding, performance, SEO, and long-term value for your business.");
   }, []);
 
   return (
     <>
-      <section className="pt-24 bg-white">
+      <section className="pt-32 pb-16 bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[720px] px-6">
           <motion.div
             initial={{ opacity: 0, x: -12 }}
@@ -23,7 +23,7 @@ export default function WhyCustomWebsites() {
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-sm text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors mb-8"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to blog
             </Link>
@@ -33,29 +33,27 @@ export default function WhyCustomWebsites() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center rounded-full bg-[#0066cc]/10 text-[#0066cc] px-3 py-1 text-[11px] font-medium mb-4">
+            <span className="inline-flex items-center rounded-full bg-[#D4AF37]/8 border border-[#D4AF37]/20 text-[#D4AF37] px-3.5 py-1 text-[9px] font-bold uppercase tracking-wider mb-4">
               Design
             </span>
             <h1
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               Why Custom Websites Beat Templates Every Time
             </h1>
             <div
-              className="mt-4 flex items-center gap-4 text-[#7a7a7a]"
-              style={{ fontSize: "13px" }}
+              className="mt-4 flex items-center gap-4 text-muted-foreground/70 font-sans text-[10px] uppercase tracking-wider font-semibold"
             >
               <span className="flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" />
+                <Calendar className="h-3.5 w-3.5 text-[#D4AF37]" />
                 April 15, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
+                <Clock className="h-3.5 w-3.5 text-[#D4AF37]" />
                 5 min read
               </span>
             </div>
@@ -64,16 +62,11 @@ export default function WhyCustomWebsites() {
       </section>
 
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
+        <section className="bg-card border-y border-border text-muted-foreground transition-colors duration-300">
           <div className="mx-auto max-w-[720px] px-6 apple-section-spacing">
             <article>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Templates are tempting. They&apos;re cheap, fast, and easy. But
                 there&apos;s a reason businesses that invest in custom websites
@@ -81,18 +74,12 @@ export default function WhyCustomWebsites() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Your brand is unique — your site should be too
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Templates are built for the average business, not yours. Thousands
                 of other sites use the exact same layout, the same animations, the
@@ -102,18 +89,12 @@ export default function WhyCustomWebsites() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Performance that converts
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Templates come packed with features you don&apos;t need, loading
                 unnecessary code that slows your site down. A 1-second delay in
@@ -123,18 +104,12 @@ export default function WhyCustomWebsites() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 No limitations, no workarounds
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 With a template, you&apos;re limited to what the template allows.
                 Want to add a custom feature? You&apos;ll need to hack it in or
@@ -144,18 +119,12 @@ export default function WhyCustomWebsites() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Long-term value
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 A template might save you money upfront, but you&apos;ll pay for it
                 in lost opportunities, slow performance, and limitations down the
@@ -164,15 +133,10 @@ export default function WhyCustomWebsites() {
                 and a professional image that builds trust with your customers.
               </p>
 
-              <div className="gradient-divider my-8" />
+              <div className="gradient-divider my-8 bg-border h-[1px] transition-colors duration-300" />
 
               <p
-                className="text-[#7a7a7a]"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 font-sans text-xs leading-relaxed"
               >
                 Your website is often the first impression customers have of your
                 business. Make it count. If you&apos;re ready for a site that&apos;s
@@ -184,24 +148,22 @@ export default function WhyCustomWebsites() {
       </AnimatedSection>
 
       <AnimatedSection delay={0.1}>
-        <section className="bg-white">
+        <section className="bg-background transition-colors duration-300">
           <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
             <h2
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               Ready for a site that&apos;s truly yours?
             </h2>
             <p
-              className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
+              className="mx-auto mt-4 mb-8 max-w-md text-muted-foreground transition-colors duration-300 font-sans"
               style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
+                fontSize: "16px",
+                lineHeight: "1.65",
               }}
             >
               Let&apos;s build something custom — starting with a free mockup
@@ -209,8 +171,8 @@ export default function WhyCustomWebsites() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-              style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] text-[#0A0A0A] hover:bg-foreground hover:text-background transition-all font-semibold tracking-wider uppercase text-xs shadow-lg shadow-[#D4AF37]/10"
+              style={{ padding: "14px 28px" }}
             >
               Get in touch <ArrowRight className="h-4 w-4" />
             </Link>
@@ -225,12 +187,12 @@ export default function WhyCustomWebsites() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valore.co/blog" },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Why Custom Websites Beat Templates Every Time",
-                item: "https://valorewebdesign.com/blog/why-custom-websites",
+                item: "https://valore.co/blog/why-custom-websites",
               },
             ],
           }).replace(/</g, "\\u003c"),
@@ -249,17 +211,17 @@ export default function WhyCustomWebsites() {
             dateModified: "2026-04-15",
             author: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             publisher: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://valorewebdesign.com/blog/why-custom-websites",
+              "@id": "https://valore.co/blog/why-custom-websites",
             },
-            image: "https://valorewebdesign.com/og-image.png",
+            image: "https://valore.co/og-image.png",
           }).replace(/</g, "\\u003c"),
         }}
       />

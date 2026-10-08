@@ -8,13 +8,13 @@ import { useEffect } from "react";
 
 export default function HowLongToBuildWebsite() {
   useEffect(() => {
-    document.title = "How Long Does It Take to Build a Custom Website? | Valore Web Design";
+    document.title = "How Long to Build a Custom Website? | VALORE";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "A realistic timeline for custom website development. How long each phase takes, what affects delivery speed, and how to get your site launched faster.");
   }, []);
 
   return (
     <>
-      <section className="pt-24 bg-white">
+      <section className="pt-32 pb-16 bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[720px] px-6">
           <motion.div
             initial={{ opacity: 0, x: -12 }}
@@ -23,7 +23,7 @@ export default function HowLongToBuildWebsite() {
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-sm text-[#7a7a7a] hover:text-[#1d1d1f] transition-colors mb-8"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to blog
             </Link>
@@ -33,29 +33,27 @@ export default function HowLongToBuildWebsite() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center rounded-full bg-[#0066cc]/10 text-[#0066cc] px-3 py-1 text-[11px] font-medium mb-4">
+            <span className="inline-flex items-center rounded-full bg-[#D4AF37]/8 border border-[#D4AF37]/20 text-[#D4AF37] px-3.5 py-1 text-[9px] font-bold uppercase tracking-wider mb-4">
               Process
             </span>
             <h1
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               How Long Does It Take to Build a Custom Website?
             </h1>
             <div
-              className="mt-4 flex items-center gap-4 text-[#7a7a7a]"
-              style={{ fontSize: "13px" }}
+              className="mt-4 flex items-center gap-4 text-muted-foreground/70 font-sans text-[10px] uppercase tracking-wider font-semibold"
             >
               <span className="flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" />
+                <Calendar className="h-3.5 w-3.5 text-[#D4AF37]" />
                 May 12, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
+                <Clock className="h-3.5 w-3.5 text-[#D4AF37]" />
                 6 min read
               </span>
             </div>
@@ -64,16 +62,11 @@ export default function HowLongToBuildWebsite() {
       </section>
 
       <AnimatedSection>
-        <section className="bg-[#f5f5f7]">
+        <section className="bg-card border-y border-border text-muted-foreground transition-colors duration-300">
           <div className="mx-auto max-w-[720px] px-6 apple-section-spacing">
             <article>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 One of the most common questions we hear is: &ldquo;How long will
                 it take?&rdquo; The short answer is that it depends on the scope
@@ -81,31 +74,20 @@ export default function HowLongToBuildWebsite() {
                 know what to expect.
               </p>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
-                A well-executed custom website usually takes 1 to 6 weeks from
+                A well-executed custom website usually takes 1 to 2 weeks from
                 kickoff to launch. Here&apos;s how that time breaks down and what
                 affects the timeline.
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Phase 1: Strategy & planning (3–5 days)
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Every good website starts with a plan. This phase sets the
                 foundation for everything that follows.
@@ -120,25 +102,19 @@ export default function HowLongToBuildWebsite() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Your responsiveness during this phase has a major impact on the
                 overall timeline. The faster you can provide content and feedback,
@@ -147,18 +123,12 @@ export default function HowLongToBuildWebsite() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Phase 2: Design (3–7 days)
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Once the strategy is set, we move into design. You&apos;ll see
                 mockups of what your site will look like before any code is
@@ -172,25 +142,19 @@ export default function HowLongToBuildWebsite() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p
-                className="text-[#7a7a7a] mb-6"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-6 font-sans text-xs leading-relaxed"
               >
                 Simple single-page sites may be designed in a couple of days.
                 Multi-page projects with custom illustrations, animations, or
@@ -198,18 +162,12 @@ export default function HowLongToBuildWebsite() {
               </p>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
-                Phase 3: Development (5–14 days)
+                Phase 3: Development (4–8 days)
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 This is where the design becomes a real, functioning website. The
                 development phase takes the longest because it involves building
@@ -226,32 +184,25 @@ export default function HowLongToBuildWebsite() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
-                Phase 4: Review & launch (3–5 days)
+                Phase 4: Review & launch (1–2 days)
               </h2>
               <p
-                className="text-[#7a7a7a] mb-4"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 mb-4 font-sans text-xs leading-relaxed"
               >
                 Before going live, we go through a final review and quality check.
               </p>
@@ -265,52 +216,48 @@ export default function HowLongToBuildWebsite() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
-              <div className="gradient-divider my-8" />
+              <div className="gradient-divider my-8 bg-border h-[1px] transition-colors duration-300" />
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 Typical timelines by project type
               </h2>
               <ul className="space-y-2 mb-6">
                 {[
                   "Single-page landing site: 1 week",
-                  "Multi-page business site (3–5 pages): 2–3 weeks",
-                  "Full website with custom features or e-commerce: 4–6 weeks",
-                  "Web application or custom platform: 6+ weeks",
+                  "Multi-page business site (3–5 pages): 1–2 weeks",
+                  "Full website with custom features or e-commerce: 2 weeks",
+                  "Web application or custom platform: 2 weeks",
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <h2
-                className="text-[#1d1d1f] font-semibold mt-8 mb-3"
-                style={{ fontSize: "20px", letterSpacing: "-0.28px" }}
+                className="text-foreground font-sans font-bold mt-8 mb-3 uppercase tracking-wide text-sm transition-colors duration-300"
               >
                 How to speed things up
               </h2>
@@ -324,26 +271,20 @@ export default function HowLongToBuildWebsite() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[#7a7a7a]"
+                    className="flex items-start gap-2.5 text-muted-foreground transition-colors duration-300"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "13px",
                       lineHeight: "1.6",
-                      letterSpacing: "-0.224px",
                     }}
                   >
-                    <span className="text-[#0066cc] mt-0.5">&#8226;</span>
+                    <span className="text-[#D4AF37] mt-0.5">&#8226;</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
               <p
-                className="text-[#7a7a7a]"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: "1.7",
-                  letterSpacing: "-0.224px",
-                }}
+                className="text-muted-foreground transition-colors duration-300 font-sans text-xs leading-relaxed"
               >
                 A custom website is an investment in your business. While it takes
                 longer than dragging and dropping a template, the result is a site
@@ -360,24 +301,22 @@ export default function HowLongToBuildWebsite() {
       </AnimatedSection>
 
       <AnimatedSection delay={0.1}>
-        <section className="bg-white">
+        <section className="bg-background transition-colors duration-300">
           <div className="mx-auto max-w-[980px] px-6 text-center apple-section-spacing">
             <h2
-              className="text-[#1d1d1f] font-semibold"
+              className="text-foreground font-sans font-bold uppercase tracking-tight"
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                letterSpacing: "-0.28px",
                 lineHeight: "1.1",
               }}
             >
               Ready to get started?
             </h2>
             <p
-              className="mx-auto mt-4 mb-8 max-w-md text-[#7a7a7a]"
+              className="mx-auto mt-4 mb-8 max-w-md text-muted-foreground transition-colors duration-300 font-sans"
               style={{
-                fontSize: "17px",
-                lineHeight: "1.6",
-                letterSpacing: "-0.374px",
+                fontSize: "16px",
+                lineHeight: "1.65",
               }}
             >
               Free mockup and quote — we&apos;ll give you a clear timeline before
@@ -385,8 +324,8 @@ export default function HowLongToBuildWebsite() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] text-white hover:bg-[#0071e3] transition-all active:scale-[0.97]"
-              style={{ padding: "12px 24px", fontSize: "16px", fontWeight: 500, lineHeight: "1" }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] text-[#0A0A0A] hover:bg-foreground hover:text-background transition-all font-semibold tracking-wider uppercase text-xs shadow-lg shadow-[#D4AF37]/10"
+              style={{ padding: "14px 28px" }}
             >
               Get a free quote <ArrowRight className="h-4 w-4" />
             </Link>
@@ -401,12 +340,12 @@ export default function HowLongToBuildWebsite() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valorewebdesign.com/blog" },
+              { "@type": "ListItem", position: 1, name: "Blog", item: "https://valore.co/blog" },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "How Long Does It Take to Build a Custom Website?",
-                item: "https://valorewebdesign.com/blog/how-long-to-build-website",
+                item: "https://valore.co/blog/how-long-to-build-website",
               },
             ],
           }).replace(/</g, "\\u003c"),
@@ -425,17 +364,17 @@ export default function HowLongToBuildWebsite() {
             dateModified: "2026-05-12",
             author: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             publisher: {
               "@type": "Organization",
-              name: "Valore Web Design",
+              name: "VALORE",
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://valorewebdesign.com/blog/how-long-to-build-website",
+              "@id": "https://valore.co/blog/how-long-to-build-website",
             },
-            image: "https://valorewebdesign.com/og-image.png",
+            image: "https://valore.co/og-image.png",
           }).replace(/</g, "\\u003c"),
         }}
       />

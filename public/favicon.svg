@@ -1,4 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0066cc"/>
-  <text x="16" y="22" text-anchor="middle" fill="white" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="20">V</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Left diagonal leg in Gold gradient -->
+  <path d="M22 18 L46 80 H56 L32 18 Z" fill="url(#logoGoldGrad)" />
+  <!-- Right diagonal leg in Silver gradient -->
+  <path d="M78 18 L54 80 H44 L68 18 Z" fill="url(#logoSilverGrad)" />
+  <defs>
+    <linearGradient id="logoGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F6E7B6" />
+      <stop offset="50%" stopColor="#D4AF37" />
+      <stop offset="100%" stopColor="#AA7C11" />
+    </linearGradient>
+    <linearGradient id="logoSilverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFFFFF" />
+      <stop offset="50%" stopColor="#C0C0C0" />
+      <stop offset="100%" stopColor="#8A8A8A" />
+    </linearGradient>
+  </defs>
 </svg>

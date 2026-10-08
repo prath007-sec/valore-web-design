@@ -122,7 +122,7 @@ export default function FeaturedCaseStudy() {
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
                   <Image
                     src="/work/kicks-chicken.png"
-                    alt="Kick's Chicken live website preview"
+                    alt="Kick's Chicken — High-speed digital menu platform and local SEO architecture in Springfield, MO"
                     fill
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 550px"

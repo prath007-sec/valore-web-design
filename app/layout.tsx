@@ -3,9 +3,11 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeContext";
+import CookieBanner from "@/components/CookieBanner";
+import BackToTop from "@/components/BackToTop";
 import Script from "next/script";
 
-const siteUrl = "https://valore.co";
+const siteUrl = "https://valorewebdesign.com";
 
 export const metadata: Metadata = {
   title: {
@@ -150,6 +152,8 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CookieBanner />
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

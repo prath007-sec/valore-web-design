@@ -15,7 +15,7 @@ function ThankYouContent() {
   const isConsultation = searchParams.get("type") === "consultation" || Boolean(date && time);
 
   useEffect(() => {
-    document.title = "Discovery Call Confirmed | Valore";
+    document.title = "Specification Received | Studio Valore";
   }, []);
 
   return (

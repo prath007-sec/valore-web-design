@@ -63,21 +63,17 @@ export default function DiscoveryScheduler({ id = "book-discovery" }: { id?: str
     setLoading(true);
     setError("");
 
-    const formData = new FormData();
-    formData.append("access_key", "94fc2fd5-4066-49f4-b618-58e6512698a8");
-    formData.append("subject", `[DISCOVERY CALL] ${name} from ${businessName || "New Client"}`);
-    formData.append("from_name", name);
-    formData.append("email", email);
-    formData.append("brand_name", businessName || "N/A");
-    formData.append("scheduled_date", selectedDay);
-    formData.append("scheduled_time", selectedTime);
-    formData.append("consultation_focus", selectedTopic);
-    formData.append("message", `Focus: ${selectedTopic}\nRequested Time: ${selectedDay} at ${selectedTime}\nBottleneck / Notes: ${notes || "None provided"}`);
-
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          website: businessName || "N/A",
+          projectType: `Discovery Call: ${selectedTopic}`,
+          message: `Requested Time: ${selectedDay} at ${selectedTime}\nConsultation Focus: ${selectedTopic}\nClient Notes: ${notes || "None provided"}`,
+        }),
       });
 
       const data = await res.json();

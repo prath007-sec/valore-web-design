@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useEffect } from "react";
 
@@ -73,6 +74,10 @@ export default function BlogPage() {
     <>
       <section className="pt-32 pb-16 bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[980px] px-6 text-center">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs items={[{ label: "Insights & Perspectives", href: "/blog" }]} />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

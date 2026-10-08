@@ -1,93 +1,120 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect } from "react";
+import { ShieldCheck, Lock, EyeOff, FileText } from "lucide-react";
 
 export default function PrivacyPage() {
   useEffect(() => {
-    document.title = "Privacy Policy | VALORE";
+    document.title = "Privacy Policy & Data Governance | Studio Valore";
   }, []);
+
   return (
     <>
-      <section className="pt-32 pb-16 bg-[#0A0A0A]">
-        <div className="mx-auto max-w-[700px] px-6">
-          <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-[#C0C0C0] hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to home
-            </Link>
-          </motion.div>
+      <section className="pt-32 pb-20 bg-background text-foreground transition-colors duration-300">
+        <div className="mx-auto max-w-[760px] px-6">
+          <div className="mb-8">
+            <Breadcrumbs items={[{ label: "Privacy Specification", href: "/privacy" }]} />
+          </div>
 
-          <motion.h1
-            className="text-[#F5F5F5] font-sans font-bold uppercase tracking-tight mb-2"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", lineHeight: "1.1" }}
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Privacy Policy
-          </motion.h1>
-          <motion.p
-            className="text-[#D4AF37] mb-10 font-sans text-[10px] uppercase tracking-wider font-semibold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Last updated: May 2026
-          </motion.p>
+            <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full border border-border bg-card">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#D4AF37]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Data Governance &bull; GDPR &bull; CCPA / CPRA
+              </span>
+            </div>
+
+            <h1
+              className="font-sans font-bold uppercase tracking-tight mb-2 text-foreground"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "1.08" }}
+            >
+              Privacy Policy & Data Integrity.
+            </h1>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-10">
+              Effective Date: January 2025 &bull; Last Audited: October 2026
+            </p>
+          </motion.div>
 
           <motion.div
-            className="space-y-8 text-[#C0C0C0] font-sans text-xs leading-relaxed"
+            className="space-y-10 font-sans text-sm leading-relaxed text-muted-foreground"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
+            <section className="rounded-2xl border border-border bg-card p-6">
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-base mb-3 flex items-center gap-2">
+                <Lock className="h-4 w-4 text-[#D4AF37]" />
+                1. Data Minimization & Necessary Collection Only
+              </h2>
+              <p className="mb-3">
+                Studio Valore enforces strict data minimization principles. We collect <strong>only the information strictly necessary</strong> to deliver custom architectural proposals, answer technical inquiries, or provide contracted services.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground/90 pl-1">
+                <li>Direct contact submissions: Your name, business email address, requested technical scope, and project brief.</li>
+                <li>Commercial transactions: Encrypted payments processed directly through Stripe API rails. We do not store or process raw credit card numbers.</li>
+                <li>Zero invasive telemetry: We do not log behavioral tracking cookies, cross-site pixels, or biometric data.</li>
+              </ul>
+            </section>
+
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">1. Information We Collect</h2>
-              <p className="text-[#C0C0C0]">
-                We collect only the information you provide directly — your name, email address, and project details when you fill out the contact form or request a quote. We do not collect any information automatically beyond standard server logs (IP address, browser type, pages visited).
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                2. GDPR (European Union) & UK Compliance
+              </h2>
+              <p>
+                If you reside within the European Economic Area (EEA) or United Kingdom, your data is processed in accordance with the General Data Protection Regulation (GDPR). Our lawful basis for processing is contractual necessity and legitimate interest in delivering engineering proposals. You retain rights to access, rectify, restrict, or erase your personal records upon request.
               </p>
             </section>
 
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">2. How We Use Your Information</h2>
-              <p className="text-[#C0C0C0]">
-                Your information is used solely to respond to your inquiries, provide the services you request, and communicate with you about your project. We do not sell, rent, or share your personal information with third parties for their marketing purposes.
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                3. CCPA / CPRA (California) & State Laws Compliance
+              </h2>
+              <p className="mb-2">
+                Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA), as well as consumer laws in Virginia (VCDPA), Colorado (CPA), and Connecticut (CTDPA):
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground/90 pl-1">
+                <li><strong>No Sale or Sharing:</strong> We do not sell, rent, monetize, or share your personal data with third-party data brokers or marketing networks.</li>
+                <li><strong>Right to Know & Delete:</strong> You may request full disclosure or deletion of all personal details provided to us without penalty or discriminatory pricing.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3 flex items-center gap-2">
+                <EyeOff className="h-4 w-4 text-[#D4AF37]" />
+                4. Cookies & Local Storage
+              </h2>
+              <p>
+                This site operates using strictly necessary functional cookies (theme mode preference and session security tokens). Optional analytical preferences are governed by our on-site Cookie Preferences Banner, where users may select &ldquo;Essential Only&rdquo; at any time.
               </p>
             </section>
 
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">3. Data Storage & Security</h2>
-              <p className="text-[#C0C0C0]">
-                Any information you submit through our contact forms is transmitted over HTTPS and stored securely. We retain your information only as long as necessary to provide our services or as required by law.
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                5. Data Retention & Secure Transport
+              </h2>
+              <p>
+                All communications and form data are encrypted in transit via Transport Layer Security (TLS 1.3/HTTPS). Records are retained solely for the duration of the active client engagement or prospective evaluation, after which inactive inquiry records are purged.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">4. Third-Party Services</h2>
-              <p className="text-[#C0C0C0]">
-                We may use third-party services such as Stripe for payment processing. These services have their own privacy policies governing the use of your information. We do not store or process payment card details directly.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">5. Cookies</h2>
-              <p className="text-[#C0C0C0]">
-                This website does not use tracking cookies. We may use essential cookies required for the functionality of the site, such as session management for the cart feature.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">6. Contact</h2>
-              <p className="text-[#C0C0C0]">
-                If you have any questions about this privacy policy, please reach out at{" "}
-                <a href="mailto:contact@valorewebdesign.com" className="text-[#D4AF37] hover:underline">
+            <section className="pt-6 border-t border-border">
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                6. Contact the Data Controller
+              </h2>
+              <p>
+                To exercise any privacy rights, request data deletion, or query our data governance policies, contact lead architect Pratham Verma directly at:{" "}
+                <a
+                  href="mailto:contact@valorewebdesign.com"
+                  className="text-foreground font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+                >
                   contact@valorewebdesign.com
-                </a>.
+                </a>
               </p>
             </section>
           </motion.div>

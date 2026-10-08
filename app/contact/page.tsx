@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Clock, Sparkles, Send, Bot, Globe, ShieldCheck, ArrowRight } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import DiscoveryScheduler from "@/components/DiscoveryScheduler";
 import { useEffect, useState } from "react";
@@ -34,19 +35,17 @@ export default function ContactPage() {
     setLoading(true);
     setError("");
 
-    const formData = new FormData();
-    formData.append("access_key", "94fc2fd5-4066-49f4-b618-58e6512698a8");
-    formData.append("subject", `[SPEC INQUIRY] New project from ${name}`);
-    formData.append("from_name", name);
-    formData.append("email", email);
-    formData.append("brand_name", website || "N/A");
-    formData.append("project_type", projectTypes.find((t) => t.value === projectType)?.label || "");
-    formData.append("message", message);
-
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          website: website || "N/A",
+          projectType: projectTypes.find((t) => t.value === projectType)?.label || "",
+          message,
+        }),
       });
 
       const data = await res.json();
@@ -67,6 +66,10 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="pt-32 pb-14 bg-background transition-colors duration-300 relative">
         <div className="mx-auto max-w-[980px] px-6 text-center">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs items={[{ label: "Direct Consultation", href: "/contact" }]} />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}

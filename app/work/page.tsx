@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Globe, Sparkles, Zap, Utensils, ShoppingCart, Layers, Building } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect, useState } from "react";
 
 const projects = [
@@ -117,14 +118,9 @@ export default function WorkPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 bg-background transition-colors duration-300 relative">
         <div className="mx-auto max-w-[1100px] px-6">
-          <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-semibold"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to home
-            </Link>
-          </motion.div>
+          <div className="mb-8">
+            <Breadcrumbs items={[{ label: "Selected Commissions", href: "/work" }]} />
+          </div>
 
           <motion.div
             className="text-center mb-6"
@@ -191,7 +187,7 @@ export default function WorkPage() {
                 >
                   <Image
                     src={project.image}
-                    alt={`${project.name} preview`}
+                    alt={`${project.name} live web architecture platform preview — ${project.location}`}
                     fill
                     className="object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700 scale-[1.01] group-hover:scale-[1.03]"
                     sizes="(max-width: 1100px) 100vw, 1100px"

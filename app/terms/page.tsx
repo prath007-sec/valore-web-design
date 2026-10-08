@@ -1,93 +1,100 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useEffect } from "react";
+import { Scale, FileText } from "lucide-react";
 
 export default function TermsPage() {
   useEffect(() => {
-    document.title = "Terms of Service | VALORE";
+    document.title = "Terms of Engagement & Service | Studio Valore";
   }, []);
+
   return (
     <>
-      <section className="pt-32 pb-16 bg-[#0A0A0A]">
-        <div className="mx-auto max-w-[700px] px-6">
-          <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-[#C0C0C0] hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to home
-            </Link>
-          </motion.div>
+      <section className="pt-32 pb-20 bg-background text-foreground transition-colors duration-300">
+        <div className="mx-auto max-w-[760px] px-6">
+          <div className="mb-8">
+            <Breadcrumbs items={[{ label: "Terms of Engagement", href: "/terms" }]} />
+          </div>
 
-          <motion.h1
-            className="text-[#F5F5F5] font-sans font-bold uppercase tracking-tight mb-2"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", lineHeight: "1.1" }}
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Terms of Service
-          </motion.h1>
-          <motion.p
-            className="text-[#D4AF37] mb-10 font-sans text-[10px] uppercase tracking-wider font-semibold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Last updated: May 2026
-          </motion.p>
+            <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full border border-border bg-card">
+              <Scale className="h-3.5 w-3.5 text-[#D4AF37]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Client Agreement &bull; Engineering Terms
+              </span>
+            </div>
+
+            <h1
+              className="font-sans font-bold uppercase tracking-tight mb-2 text-foreground"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: "1.08" }}
+            >
+              Terms of Engagement.
+            </h1>
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-10">
+              Effective Date: January 2025 &bull; Last Audited: October 2026
+            </p>
+          </motion.div>
 
           <motion.div
-            className="space-y-8 text-[#C0C0C0] font-sans text-xs leading-relaxed"
+            className="space-y-10 font-sans text-sm leading-relaxed text-muted-foreground"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">1. Services</h2>
-              <p className="text-[#C0C0C0]">
-                VALORE provides digital identity systems, web architecture, and AI consulting services as described in the project proposal and statement of work (SOW) agreed upon by both parties. Each project is unique and the specific deliverables, timeline, and price will be outlined in a written agreement.
+            <section className="rounded-2xl border border-border bg-card p-6">
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-base mb-3">
+                1. Scope of Architecture Services
+              </h2>
+              <p>
+                Studio Valore provides bespoke software engineering, web application development, brand identity systems, and automation infrastructure. Every engagement operates under an itemized statement of work (SOW) defining explicit deliverables, milestones, and timelines.
               </p>
             </section>
 
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">2. Payments</h2>
-              <p className="text-[#C0C0C0]">
-                Full payment is required upfront before work begins. You approve a mockup first, then pay in full, and development starts. All payments are processed securely through Stripe.
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                2. Full Intellectual Property (IP) Transfer
+              </h2>
+              <p>
+                Upon receipt of full and final project investment milestone payments, all bespoke codebases, custom UI designs, graphic components, and documentation transfer entirely to the client. Studio Valore retains zero proprietary locks or recurring builder license fees.
               </p>
             </section>
 
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">3. Ownership</h2>
-              <p className="text-[#C0C0C0]">
-                Upon full payment, you own the completed work — source code, design assets, and any deliverables created specifically for your project. We retain the right to display completed work in our portfolio unless otherwise agreed.
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                3. Milestone Commitments & Payment Rails
+              </h2>
+              <p>
+                Projects are structured around transparent milestone disbursements (typically 50% mobilization deposit and 50% upon final deployment verification). Payments are processed securely via Stripe. Invoices past 30 days are subject to work stoppage.
               </p>
             </section>
 
             <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">4. Maintenance & Support</h2>
-              <p className="text-[#C0C0C0]">
-                Ongoing maintenance and support are available through separate agreements. Without a maintenance plan, we are not responsible for updates, security patches, or issues arising from third-party platform changes after project completion.
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                4. Production Hosting & Third-Party Dependencies
+              </h2>
+              <p>
+                We build on production-grade infrastructure (Vercel, AWS, Cloudflare, Supabase, Stripe). The client maintains direct ownership of third-party platform credentials and hosting accounts to ensure absolute operational independence.
               </p>
             </section>
 
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">5. Limitation of Liability</h2>
-              <p className="text-[#C0C0C0]">
-                VALORE is not liable for any damages arising from the use or inability to use the delivered website, including but not limited to lost revenue, data loss, or business interruption, to the fullest extent permitted by law.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-[#F5F5F5] font-sans font-bold uppercase tracking-wide text-sm mb-3">6. Contact</h2>
-              <p className="text-[#C0C0C0]">
-                For questions about these terms, reach out at{" "}
-                <a href="mailto:contact@valorewebdesign.com" className="text-[#D4AF37] hover:underline">
+            <section className="pt-6 border-t border-border">
+              <h2 className="font-sans font-bold uppercase tracking-wide text-foreground text-sm mb-3">
+                5. Inquiries & Legal Notices
+              </h2>
+              <p>
+                For questions regarding engagement contracts, custom enterprise MSAs, or service level commitments, reach out directly to:{" "}
+                <a
+                  href="mailto:contact@valorewebdesign.com"
+                  className="text-foreground font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+                >
                   contact@valorewebdesign.com
-                </a>.
+                </a>
               </p>
             </section>
           </motion.div>

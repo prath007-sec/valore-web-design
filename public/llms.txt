@@ -1,0 +1,44 @@
+# Studio Valore — Bespoke Web Architecture & Digital Systems
+
+> High-performance digital platforms, pristine brand identities, and custom web architecture engineered with senior engineering rigor by Pratham Verma.
+
+## Studio Overview
+- **Name**: Studio Valore
+- **Founder & Lead Architect**: Pratham Verma
+- **Established**: 2025
+- **Primary Domain**: https://valorewebdesign.com
+- **Contact Email**: contact@valorewebdesign.com
+- **Headquarters**: Springfield, MO & Global Edge Infrastructure
+
+## Core Principles & Performance Metrics
+- **Sub-80ms Global TTFB**: Multi-region edge deployment powered by Next.js 16 and Vercel Edge Network.
+- **100/100 Core Web Vitals**: Strict performance budgets, critically damped animations, zero render-blocking layout shifts.
+- **0% Bloat**: No page builders (WordPress, Webflow, Squarespace, Wix). 100% custom TypeScript, React 19, and Tailwind CSS.
+- **Direct Lead Architect Model**: Clients work directly with Pratham Verma without account managers or junior delegation.
+
+## Core Capabilities & Services
+1. **Bespoke Web Architecture**: Hand-coded Next.js web applications, dynamic App Router rendering, sub-second latency.
+2. **E-Commerce Systems**: Custom Stripe checkout pipelines, inventory sync, optimized checkout funnels without monthly SaaS transaction fees.
+3. **Automated Client Workflows**: Lead routing, instant SMS/email dispatches, CRM webhooks, and AI automation logic.
+4. **Brand Identity & Spatial Typography**: High-contrast, minimal editorial typography, custom iconography, Apple-grade motion systems.
+5. **SEO & Knowledge Graph Infrastructure**: Validated JSON-LD schemas, automated sitemaps, semantic hierarchy, and Google Core Web Vitals compliance.
+
+## Selected Client Deployments
+- **Kick's Chicken** (Springfield, MO): Online restaurant ordering architecture, sub-800ms carryout routing, 80+ 5-star Google review growth. Live: https://www.kickschicken.com/
+- **LÜM Studio** (St. Louis, MO): Minimalist apparel e-commerce, custom Stripe payment rails, zero-friction catalog. Live: https://lumstudio.netlify.app/
+- **Vanguard Architects** (New York, NY): Editorial portfolio with 100/100 Lighthouse score and kinetic transitions. Live: https://vangaurdarchitects.netlify.app/
+- **Harbor & Hearth** (Ann Arbor, MI): Real estate listing pipeline with dynamic property filtering and automated lead dispatch. Live: https://harbor-hearth.vercel.app/
+
+## Milestone Investment Tiers
+- **Launch Architecture**: $1,800 one-time (5 bespoke pages, sub-80ms edge delivery, 100/100 Lighthouse).
+- **Commercial System**: $3,600 one-time (Full custom architecture, interactive workflows, Stripe checkout, advanced SEO schema).
+- **Enterprise Custom Platform**: $6,500+ (High-intent web application, bespoke database/APIs, AI automation integrations).
+
+## Canonical Endpoints
+- Homepage: https://valorewebdesign.com
+- Portfolio & Case Studies: https://valorewebdesign.com/work
+- Pricing & Scopes: https://valorewebdesign.com/pricing
+- Engineering Process: https://valorewebdesign.com/process
+- Direct Consultation: https://valorewebdesign.com/contact
+- Essays & Blog: https://valorewebdesign.com/blog
+- Sitemap: https://valorewebdesign.com/sitemap.xml

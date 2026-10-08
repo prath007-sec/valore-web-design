@@ -5,6 +5,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import PricingQuoteSection from "@/components/PricingQuoteSection";
 import DiscoveryScheduler from "@/components/DiscoveryScheduler";
 import { ChevronDown, MessageCircle, ArrowRight, Mail, Sparkles, Clock, CheckCircle2 } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -89,6 +90,10 @@ export default function PricingPage() {
       {/* Hero */}
       <section className="pt-32 pb-12 bg-background transition-colors duration-300 relative">
         <div className="mx-auto max-w-[1000px] px-6 text-center">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs items={[{ label: "Investment & Scopes", href: "/pricing" }]} />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

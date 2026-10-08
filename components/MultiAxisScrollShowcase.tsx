@@ -182,7 +182,7 @@ export default function MultiAxisScrollShowcase() {
                     >
                       <Image
                         src={project.image}
-                        alt={`${project.name} website preview`}
+                        alt={`${project.name} — ${project.businessType} live platform deployment in ${project.location}`}
                         fill
                         className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/img:scale-[1.03]"
                         sizes="620px"
@@ -281,7 +281,7 @@ export default function MultiAxisScrollShowcase() {
                 >
                   <Image
                     src={project.image}
-                    alt={`${project.name} website preview`}
+                    alt={`${project.name} — ${project.businessType} live platform deployment in ${project.location}`}
                     fill
                     className="object-cover object-top"
                     sizes="340px"

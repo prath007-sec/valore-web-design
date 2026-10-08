@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Target, Palette, RefreshCw, Rocket, CheckCircle2, Clock, Bot, Sparkles, Terminal } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useEffect } from "react";
 
@@ -78,6 +79,10 @@ export default function ProcessPage() {
     <>
       <section className="pt-32 pb-16 bg-background transition-colors duration-300 relative">
         <div className="mx-auto max-w-[980px] px-6 text-center">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs items={[{ label: "Delivery Architecture", href: "/process" }]} />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}

@@ -3,12 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useEffect } from "react";
 
 export default function NextjsVsWordPress() {
   useEffect(() => {
-    document.title = "Next.js vs. WordPress | VALORE";
+    document.title = "Next.js vs. WordPress Comparison | Studio Valore";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Compare Next.js and WordPress for modern website development. Performance, SEO, security, and cost — find out which platform is right for your business.");
   }, []);
 
@@ -16,18 +17,14 @@ export default function NextjsVsWordPress() {
     <>
       <section className="pt-32 pb-16 bg-background transition-colors duration-300">
         <div className="mx-auto max-w-[720px] px-6">
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-[#D4AF37] transition-colors mb-8 uppercase tracking-widest font-bold"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to blog
-            </Link>
-          </motion.div>
+          <div className="mb-8">
+            <Breadcrumbs
+              items={[
+                { label: "Blog", href: "/blog" },
+                { label: "Next.js vs WordPress" },
+              ]}
+            />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

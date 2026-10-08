@@ -41,13 +41,7 @@ export default function AboutMeSection() {
   ];
 
   return (
-    <section className="bg-black text-[#F5F5F7] border-b border-white/[0.08] relative overflow-hidden py-28 sm:py-36">
-      {/* Precision ambient lighting */}
-      <div 
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-white/[0.02] blur-[160px] rounded-full" 
-      />
-
+    <section className="bg-background text-foreground border-b border-border relative overflow-hidden py-28 sm:py-36 transition-colors duration-300">
       <div className="mx-auto max-w-[1140px] px-6 relative z-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Studio Narrative */}
@@ -59,7 +53,7 @@ export default function AboutMeSection() {
               transition={{ duration: 0.6 }}
               className="mb-4"
             >
-              <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+              <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
                 Studio Philosophy &bull; Leadership
               </span>
             </motion.div>
@@ -70,17 +64,17 @@ export default function AboutMeSection() {
                 "SENIOR ARCHITECTURE.",
                 "ZERO AGENCY BUREAUCRACY."
               ]}
-              className="text-white font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase mb-6"
-              lineClassName="text-[clamp(2rem,4.5vw,3.25rem)] bg-gradient-to-b from-white via-[#EFEFF0] to-[#88888C] bg-clip-text text-transparent"
+              className="text-foreground font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase mb-6"
+              lineClassName="text-[clamp(2rem,4.5vw,3.25rem)] text-foreground"
               delay={0.1}
               stagger={0.12}
             />
 
-            <p className="text-[#86868B] font-sans text-sm sm:text-base leading-relaxed mb-6">
-              Founded and led by <strong className="text-white font-semibold">Pratham Verma</strong>, Studio Valore engineers custom digital systems for ambitious founders and enterprises who demand uncompromising craft.
+            <p className="text-muted-foreground font-sans text-sm sm:text-base leading-relaxed mb-6">
+              Founded and led by <strong className="text-foreground font-semibold">Pratham Verma</strong>, Studio Valore engineers custom digital systems for ambitious founders and enterprises who demand uncompromising craft.
             </p>
 
-            <p className="text-[#86868B] font-sans text-xs sm:text-sm leading-relaxed mb-10">
+            <p className="text-muted-foreground font-sans text-xs sm:text-sm leading-relaxed mb-10">
               Traditional marketing agencies outsource their development to bloated templates and overburdened juniors. We work on a selective, high-touch retainer model — crafting every digital touchpoint with architectural precision, sub-second performance, and aesthetic authority.
             </p>
 
@@ -89,15 +83,15 @@ export default function AboutMeSection() {
               {principles.map((item) => (
                 <div
                   key={item.num}
-                  className="p-5 rounded-2xl bg-[#0A0A0D] border border-white/[0.08] hover:border-white/20 transition-all"
+                  className="p-5 rounded-2xl bg-card border border-border hover:border-foreground/30 transition-all shadow-sm"
                 >
-                  <span className="font-mono text-[10px] tracking-[0.2em] text-[#86868B] block mb-2">
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground block mb-2">
                     {item.num} // PRINCIPLE
                   </span>
-                  <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-white mb-1.5">
+                  <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-foreground mb-1.5">
                     {item.title}
                   </h4>
-                  <p className="text-[#86868B] text-xs leading-relaxed">
+                  <p className="text-muted-foreground text-xs leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -108,17 +102,17 @@ export default function AboutMeSection() {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#book-discovery"
-                className="group relative inline-flex items-center gap-2 rounded-full bg-white text-black font-mono text-[11px] tracking-wider uppercase px-7 py-3.5 hover:bg-[#F5F5F7] transition-all shadow-xl active:scale-[0.97]"
+                className="group relative inline-flex items-center gap-2 rounded-full bg-foreground text-background font-mono text-[11px] tracking-wider uppercase px-7 py-3.5 hover:opacity-90 transition-all shadow-md active:scale-[0.97]"
               >
-                <RollingText duplicateClassName="text-black">Schedule Consultation</RollingText>
+                <RollingText duplicateClassName="text-background">Schedule Consultation</RollingText>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 
               <Link
                 href="/work"
-                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#86868B] hover:text-white transition-colors"
+                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
               >
-                <RollingText duplicateClassName="text-white">View Production Archive</RollingText>
+                <RollingText duplicateClassName="text-foreground">View Production Archive</RollingText>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -127,15 +121,15 @@ export default function AboutMeSection() {
           {/* Right Column: Technical Terminal */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Monogram Card */}
-            <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0D] p-7 flex items-center justify-between">
+            <div className="rounded-3xl border border-border bg-card p-7 flex items-center justify-between shadow-md">
               <div>
-                <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase block mb-1">
+                <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase block mb-1">
                   Studio Registry
                 </span>
-                <h3 className="font-sans font-bold text-lg text-white uppercase tracking-tight">
+                <h3 className="font-sans font-bold text-lg text-foreground uppercase tracking-tight">
                   Valore Studio Practice
                 </h3>
-                <p className="font-mono text-xs text-[#86868B] mt-1">
+                <p className="font-mono text-xs text-muted-foreground mt-1">
                   Lead Architect &bull; Pratham Verma
                 </p>
               </div>
@@ -143,15 +137,15 @@ export default function AboutMeSection() {
             </div>
 
             {/* Technical Stack Card */}
-            <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0D] p-7">
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5">
+            <div className="rounded-3xl border border-border bg-card p-7 shadow-md">
+              <div className="flex items-center justify-between pb-4 border-b border-border mb-5">
                 <div className="flex items-center gap-2">
-                  <Terminal className="h-4 w-4 text-white/70" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-white">
+                  <Terminal className="h-4 w-4 text-muted-foreground" />
+                  <span className="font-mono text-xs uppercase tracking-wider text-foreground font-semibold">
                     Primary Production Stack
                   </span>
                 </div>
-                <span className="font-mono text-[10px] text-[#86868B]">
+                <span className="font-mono text-[10px] text-muted-foreground">
                   v2026.4
                 </span>
               </div>
@@ -160,21 +154,20 @@ export default function AboutMeSection() {
                 {TECH_STACK.map((tech) => (
                   <div
                     key={tech.name}
-                    className="p-3.5 rounded-xl bg-[#111116] border border-white/[0.06] flex flex-col justify-center"
+                    className="p-3.5 rounded-xl bg-muted/40 border border-border flex flex-col justify-center"
                   >
-                    <span className="font-sans font-bold text-xs text-white">
+                    <span className="font-sans font-bold text-xs text-foreground">
                       {tech.name}
                     </span>
-                    <span className="font-mono text-[9px] text-[#86868B] uppercase mt-0.5">
+                    <span className="font-mono text-[9px] text-muted-foreground uppercase mt-0.5">
                       {tech.category}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono uppercase text-[#86868B]">
-                <span className="flex items-center gap-1.5 text-emerald-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-[10px] font-mono uppercase text-muted-foreground">
+                <span className="text-foreground font-semibold">
                   Global Edge Deployed
                 </span>
                 <span>Sub-80ms Latency</span>

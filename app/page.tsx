@@ -107,7 +107,7 @@ export default function Home() {
 
       {/* ─── PORTFOLIO SHOWCASE ─── */}
       <AnimatedSection>
-        <section id="work" className="bg-black text-[#F5F5F7] border-b border-white/[0.08] relative scroll-mt-20 py-28 sm:py-36">
+        <section id="work" className="bg-background text-foreground border-b border-border relative scroll-mt-20 py-28 sm:py-36 transition-colors duration-300">
           <div className="mx-auto max-w-[1140px] px-6">
             <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
               <motion.div
@@ -117,7 +117,7 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="mb-4"
               >
-                <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+                <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
                   Production Archive &bull; Live Deployments
                 </span>
               </motion.div>
@@ -128,14 +128,14 @@ export default function Home() {
                   "SELECTED COMMISSIONS.",
                   "BUILT FOR SCALE."
                 ]}
-                className="text-white font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
-                lineClassName="text-[clamp(2.2rem,5vw,3.75rem)] bg-gradient-to-b from-white via-[#EFEFF0] to-[#88888C] bg-clip-text text-transparent"
+                className="text-foreground font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
+                lineClassName="text-[clamp(2.2rem,5vw,3.75rem)] text-foreground"
                 delay={0.1}
                 stagger={0.12}
               />
 
               <motion.p
-                className="mt-6 text-sm sm:text-base text-[#86868B] font-sans leading-relaxed tracking-tight max-w-xl mx-auto"
+                className="mt-6 text-sm sm:text-base text-muted-foreground font-sans leading-relaxed tracking-tight max-w-xl mx-auto"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -150,7 +150,7 @@ export default function Home() {
               {portfolioProjects.map((project, idx) => (
                 <motion.div
                   key={project.name}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-white/[0.08] bg-[#0A0A0D] overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-[#101014] hover:shadow-2xl"
+                  className="group relative flex flex-col justify-between rounded-3xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-foreground/30 hover:shadow-xl"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -166,7 +166,7 @@ export default function Home() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block relative aspect-[16/10] overflow-hidden bg-black"
+                    className="block relative aspect-[16/10] overflow-hidden bg-muted"
                   >
                     <Image
                       src={project.image}
@@ -175,7 +175,7 @@ export default function Home() {
                       className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                       sizes="(max-width: 768px) 100vw, 550px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0D] via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-black font-mono text-[10px] font-bold uppercase tracking-wider shadow-xl">
@@ -184,7 +184,7 @@ export default function Home() {
                     </div>
 
                     <div className="absolute bottom-5 left-6 right-6">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#E5D3B3] block mb-1">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F6E7B6] block mb-1">
                         {project.category}
                       </span>
                       <h3 className="text-white font-bold text-xl sm:text-2xl uppercase tracking-tight">
@@ -195,21 +195,21 @@ export default function Home() {
 
                   {/* Card bottom details */}
                   <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
-                    <p className="text-xs sm:text-sm text-[#86868B] font-sans leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-muted-foreground font-sans leading-relaxed mb-6">
                       {project.highlight}
                     </p>
 
-                    <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                      <span className="font-mono text-[10px] text-[#86868B] uppercase tracking-wider">
+                    <div className="pt-5 border-t border-border flex items-center justify-between">
+                      <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
                         {project.location}
                       </span>
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-1 font-mono text-[11px] tracking-wider uppercase text-white hover:text-[#E5D3B3] transition-colors"
+                        className="group/link inline-flex items-center gap-1 font-mono text-[11px] tracking-wider uppercase text-foreground hover:opacity-80 transition-opacity"
                       >
-                        <RollingText duplicateClassName="text-[#E5D3B3]">Explore System</RollingText>
+                        <RollingText duplicateClassName="text-foreground">Explore System</RollingText>
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
                     </div>
@@ -221,9 +221,9 @@ export default function Home() {
             <div className="mt-14 text-center">
               <Link
                 href="/work"
-                className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-8 py-3.5 font-mono text-[11px] tracking-[0.2em] uppercase text-white hover:bg-white hover:text-black transition-all duration-300 active:scale-[0.97]"
+                className="group inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-3.5 font-mono text-[11px] tracking-[0.2em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-300 active:scale-[0.97]"
               >
-                <RollingText duplicateClassName="text-black">View Full Commission Archive</RollingText>
+                <RollingText duplicateClassName="text-background">View Full Commission Archive</RollingText>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -247,11 +247,11 @@ export default function Home() {
 
       {/* ─── TESTIMONIALS (FOUNDER FEEDBACK) ─── */}
       <AnimatedSection>
-        <section className="bg-black text-[#F5F5F7] border-b border-white/[0.08] py-28 sm:py-36">
+        <section className="bg-background text-foreground border-b border-border py-28 sm:py-36 transition-colors duration-300">
           <div className="mx-auto max-w-[980px] px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="mb-4">
-                <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+                <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
                   Client Verification &bull; Endorsements
                 </span>
               </div>
@@ -260,11 +260,11 @@ export default function Home() {
                 text={[
                   "PROVEN BY LEADERS."
                 ]}
-                className="text-white font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
-                lineClassName="text-[clamp(2.2rem,4.5vw,3.5rem)] bg-gradient-to-b from-white via-[#EFEFF0] to-[#88888C] bg-clip-text text-transparent"
+                className="text-foreground font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"
+                lineClassName="text-[clamp(2.2rem,4.5vw,3.5rem)] text-foreground"
                 delay={0.1}
               />
-              <p className="mt-4 text-xs sm:text-sm text-[#86868B] font-sans leading-relaxed">
+              <p className="mt-4 text-xs sm:text-sm text-muted-foreground font-sans leading-relaxed">
                 Direct statements from real business partners and founders.
               </p>
             </div>
@@ -277,17 +277,17 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="rounded-3xl border border-white/[0.08] bg-[#0A0A0D] p-8 sm:p-10 flex flex-col items-center text-center shadow-2xl"
+                  className="rounded-3xl border border-border bg-card p-8 sm:p-10 flex flex-col items-center text-center shadow-lg"
                 >
-                  <p className="text-[#ECECEE] font-sans text-sm sm:text-base leading-relaxed max-w-lg mb-8">
+                  <p className="text-foreground font-sans text-sm sm:text-base leading-relaxed max-w-lg mb-8">
                     &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                   </p>
 
-                  <div className="pt-6 border-t border-white/[0.06] w-full max-w-[280px] mx-auto text-center">
-                    <p className="text-white font-sans font-bold text-sm">
+                  <div className="pt-6 border-t border-border w-full max-w-[280px] mx-auto text-center">
+                    <p className="text-foreground font-sans font-bold text-sm">
                       {testimonials[currentTestimonial].name}
                     </p>
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-[#86868B] mt-1">
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
                       {testimonials[currentTestimonial].title}, {testimonials[currentTestimonial].company}
                     </p>
                   </div>
@@ -295,7 +295,7 @@ export default function Home() {
               </AnimatePresence>
             </div>
 
-            {/* Dots indicator with Apple touch targets */}
+            {/* Slider bar indicator */}
             <div className="flex justify-center items-center gap-2.5 mt-8">
               {testimonials.map((_, idx) => (
                 <button
@@ -303,8 +303,8 @@ export default function Home() {
                   onClick={() => setCurrentTestimonial(idx)}
                   className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                     currentTestimonial === idx
-                      ? "bg-white w-7"
-                      : "bg-white/20 hover:bg-white/40 w-2"
+                      ? "bg-foreground w-7"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/60 w-2"
                   }`}
                   aria-label={`Go to testimonial ${idx + 1}`}
                 />

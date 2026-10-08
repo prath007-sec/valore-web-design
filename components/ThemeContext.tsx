@@ -12,13 +12,13 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read theme from localStorage or document attribute, fallback to dark
+    // Read theme from localStorage or document attribute, fallback to light
     const saved = localStorage.getItem("theme") as Theme | null;
-    const currentTheme = saved || (document.documentElement.getAttribute("data-theme") as Theme) || "dark";
+    const currentTheme = saved || (document.documentElement.getAttribute("data-theme") as Theme) || "light";
     setTheme(currentTheme);
     document.documentElement.setAttribute("data-theme", currentTheme);
     setMounted(true);
@@ -32,7 +32,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: mounted ? theme : "dark", toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: mounted ? theme : "light", toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -159,7 +159,7 @@ export default function WorkPage() {
               <motion.div
                 key={project.id}
                 id={project.id}
-                className="scroll-mt-28 apple-bento-card p-6 sm:p-10 border border-white/[0.08]"
+                className="scroll-mt-28 apple-bento-card p-6 sm:p-10 border border-border"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -187,7 +187,7 @@ export default function WorkPage() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/[0.1] bg-black mb-8 shadow-2xl"
+                  className="group block relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-border bg-muted mb-8 shadow-xl"
                 >
                   <Image
                     src={project.image}

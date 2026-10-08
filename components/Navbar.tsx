@@ -50,8 +50,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "backdrop-blur-2xl bg-black/80 border-b border-white/[0.08] shadow-2xl py-3"
-            : "backdrop-blur-xl bg-black/40 border-b border-white/[0.04] py-4"
+            ? "backdrop-blur-2xl bg-background/85 border-b border-border shadow-sm py-3"
+            : "backdrop-blur-xl bg-background/60 border-b border-border/40 py-4"
         }`}
       >
         <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6">
@@ -74,11 +74,11 @@ export default function Navbar() {
                       href={link.href}
                       className={`group relative block py-1 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 ${
                         isActive
-                          ? "text-white font-semibold"
-                          : "text-[#86868B] hover:text-[#F5F5F7]"
+                          ? "text-foreground font-semibold"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
-                      <RollingText duplicateClassName="text-white">
+                      <RollingText duplicateClassName="text-foreground">
                         {link.label}
                       </RollingText>
                     </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center p-2 rounded-full transition-colors text-[#86868B] hover:text-white hover:bg-white/5"
+              className="flex items-center justify-center p-2 rounded-full transition-colors text-muted-foreground hover:text-foreground hover:bg-muted"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -103,9 +103,9 @@ export default function Navbar() {
             {/* Apple-style Initiate Project CTA */}
             <a
               href="/#book-discovery"
-              className="group hidden sm:inline-flex items-center rounded-full border border-white/20 bg-white/[0.08] backdrop-blur-xl px-5 py-2 text-[11px] font-mono tracking-[0.18em] uppercase text-[#F5F5F7] transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-lg active:scale-[0.96]"
+              className="group hidden sm:inline-flex items-center rounded-full bg-foreground text-background px-5 py-2 text-[11px] font-mono tracking-[0.18em] uppercase transition-all duration-300 hover:opacity-90 shadow-md active:scale-[0.96]"
             >
-              <RollingText duplicateClassName="text-black">
+              <RollingText duplicateClassName="text-background">
                 Initiate Project
               </RollingText>
             </a>
@@ -113,7 +113,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex lg:hidden p-2 text-[#86868B] hover:text-white transition-colors"
+              className="flex lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -130,19 +130,19 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-3xl pt-28 px-8 pb-10 overflow-y-auto lg:hidden flex flex-col justify-between"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-3xl pt-28 px-8 pb-10 overflow-y-auto lg:hidden flex flex-col justify-between"
           >
             <div className="flex flex-col gap-6 max-w-md mx-auto w-full">
-              <span className="font-mono text-[10px] tracking-[0.25em] text-[#86868B] uppercase">
+              <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
                 Navigation Index
               </span>
-              <ul className="flex flex-col gap-5 border-b border-white/[0.08] pb-8">
+              <ul className="flex flex-col gap-5 border-b border-border pb-8">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-2xl font-bold tracking-tight uppercase text-[#F5F5F7] hover:text-white transition-colors"
+                      className="block text-2xl font-bold tracking-tight uppercase text-foreground hover:opacity-75 transition-opacity"
                     >
                       {link.label}
                     </Link>
@@ -154,7 +154,7 @@ export default function Navbar() {
                 <a
                   href="/#book-discovery"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center rounded-full bg-white text-black font-mono text-xs tracking-wider uppercase py-4 px-6 active:scale-[0.96] shadow-xl"
+                  className="w-full inline-flex items-center justify-center rounded-full bg-foreground text-background font-mono text-xs tracking-wider uppercase py-4 px-6 active:scale-[0.96] shadow-xl"
                 >
                   Initiate Project Spec
                 </a>
@@ -162,14 +162,14 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.04] text-[#F5F5F7] font-mono text-xs tracking-wider uppercase py-3.5 px-6"
+                  className="w-full inline-flex items-center justify-center rounded-full border border-border bg-card text-foreground font-mono text-xs tracking-wider uppercase py-3.5 px-6"
                 >
                   Direct Inquiry
                 </Link>
               </div>
             </div>
 
-            <div className="max-w-md mx-auto w-full pt-8 border-t border-white/[0.08] flex items-center justify-between text-[#86868B] font-mono text-[10px] uppercase tracking-widest">
+            <div className="max-w-md mx-auto w-full pt-8 border-t border-border flex items-center justify-between text-muted-foreground font-mono text-[10px] uppercase tracking-widest">
               <span>Studio Valore &bull; 2026</span>
               <span>Bespoke Architecture</span>
             </div>

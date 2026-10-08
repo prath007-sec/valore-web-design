@@ -83,14 +83,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="h-full antialiased scroll-smooth" data-theme="light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  const saved = localStorage.getItem('theme') || 'dark';
+                  const saved = localStorage.getItem('theme') || 'light';
                   document.documentElement.setAttribute('data-theme', saved);
                 } catch (e) {}
               })();

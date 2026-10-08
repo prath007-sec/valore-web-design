@@ -170,7 +170,7 @@ export default function Navbar() {
             </div>
 
             <div className="max-w-md mx-auto w-full pt-8 border-t border-border flex items-center justify-between text-muted-foreground font-mono text-[10px] uppercase tracking-widest">
-              <span>Studio Valore &bull; 2026</span>
+              <span>Studio Valore &bull; Est. 2025</span>
               <span>Bespoke Architecture</span>
             </div>
           </motion.div>

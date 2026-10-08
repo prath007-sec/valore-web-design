@@ -115,7 +115,7 @@ export default function RootLayout({
                     email: "contact@valorewebdesign.com",
                     description:
                       "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
-                    foundingDate: "2026",
+                    foundingDate: "2025",
                     founder: [
                       { "@type": "Person", name: "Pratham Verma", jobTitle: "Founder & Lead Architect" }
                     ],

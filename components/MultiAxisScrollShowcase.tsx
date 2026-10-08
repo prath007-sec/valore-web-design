@@ -4,533 +4,347 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink, MoveRight, MoveDown, CornerDownRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import RollingText from "./ui/RollingText";
-import ScrambleText from "./ui/ScrambleText";
-import MaskedText from "./ui/MaskedText";
 
 interface ProjectItem {
   id: string;
   name: string;
-  category: string;
+  businessType: string;
   location: string;
-  tagline: string;
-  highlight: string;
+  description: string;
   url: string;
-  image?: string;
-  specs: string[];
-  metricValue: string;
-  metricLabel: string;
-  arm: "horizontal" | "corner" | "vertical";
+  image: string;
+  ctaText?: string;
 }
 
 const projects: ProjectItem[] = [
   {
     id: "kicks-chicken",
     name: "Kick's Chicken",
-    category: "01 // RESTAURANT WEB ARCHITECTURE",
+    businessType: "Restaurant Web Architecture",
     location: "Springfield, MO",
-    tagline: "High-Speed Menu System & Local SEO Engine",
-    highlight: "80+ Verified 5-Star Reviews & Peak Rush Carryout Optimization",
+    description: "High-speed online ordering system with sub-800ms carryout routing and local discovery optimization.",
     url: "https://www.kickschicken.com/",
     image: "/work/kicks-chicken.png",
-    specs: ["Sub-800ms TTFB", "JSON-LD Local Schema", "One-Tap Callout Routing", "Next.js App Router"],
-    metricValue: "< 0.8s",
-    metricLabel: "Carryout Speed",
-    arm: "horizontal",
+    ctaText: "Visit Live Site",
   },
   {
     id: "lum-studio",
     name: "LÜM Studio",
-    category: "02 // MINIMALIST E-COMMERCE",
+    businessType: "Minimalist E-Commerce",
     location: "St. Louis, MO",
-    tagline: "Sub-Second Funnel & Contemporary Design Storefront",
-    highlight: "Custom Stripe Checkout Rails & Zero Bloat Catalog Experience",
+    description: "Clean Stripe checkout rails and sub-second catalog transitions engineered for zero cart abandonment.",
     url: "https://lumstudio.netlify.app/",
     image: "/work/lum-studio.png",
-    specs: ["Stripe Checkout", "Instant Page Transitions", "Cart State Sync", "Monochrome Identity"],
-    metricValue: "+42%",
-    metricLabel: "Checkout Flow",
-    arm: "horizontal",
+    ctaText: "Visit Live Site",
   },
   {
     id: "vanguard-architects",
     name: "Vanguard Architects",
-    category: "03 // ARCHITECTURAL PORTFOLIO [PIVOT]",
+    businessType: "Architectural Practice",
     location: "New York, NY",
-    tagline: "Editorial Typography & Spatial Digital Experience",
-    highlight: "100/100 Core Web Vitals with Custom Kinetic Transitions",
+    description: "Spatial editorial typography and 100/100 Core Web Vitals built for high-value client acquisitions.",
     url: "https://vangaurdarchitects.netlify.app/",
     image: "/work/vangaurd.png",
-    specs: ["100/100 Lighthouse", "Sub-60ms Edge Latency", "Precision Typography", "Full Git Ownership"],
-    metricValue: "100/100",
-    metricLabel: "Vitals Score",
-    arm: "corner",
+    ctaText: "Visit Live Site",
   },
   {
     id: "harbor-hearth",
     name: "Harbor & Hearth",
-    category: "04 // REAL ESTATE INFRASTRUCTURE",
+    businessType: "Real Estate Infrastructure",
     location: "Ann Arbor, MI",
-    tagline: "Dynamic Property Data & Instant Filter Pipeline",
-    highlight: "Interactive Listing Funnel Engineered for High-Intent Inquiries",
+    description: "Dynamic property filtering engine and automated lead routing designed to cut inquiry friction by 65%.",
     url: "https://harbor-hearth.vercel.app/",
     image: "/work/harbor-hearth.png",
-    specs: ["Dynamic Server Rendering", "Instant Filtering", "Automated Lead Dispatch", "Edge Architecture"],
-    metricValue: "-65%",
-    metricLabel: "Inquiry Friction",
-    arm: "vertical",
-  },
-  {
-    id: "valore-bespoke-spec",
-    name: "Studio Valore Flagship",
-    category: "05 // ENTERPRISE SPECIFICATION",
-    location: "Global Edge Infrastructure",
-    tagline: "Custom Architectural Engineering & Autonomous Workflows",
-    highlight: "Zero Template Subscriptions. Full Intellectual Property Rights.",
-    url: "#book-discovery",
-    specs: ["Next.js 16 + React 19", "Autonomous Lead Sync", "Stripe Payment Rails", "Senior Lead Architect"],
-    metricValue: "0% Bloat",
-    metricLabel: "Bespoke Codebase",
-    arm: "vertical",
+    ctaText: "Visit Live Site",
   },
 ];
 
 export default function MultiAxisScrollShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  const [activeStep, setActiveStep] = useState(1);
-  const [currentAxis, setCurrentAxis] = useState<"horizontal" | "corner" | "vertical">("horizontal");
-  const [dimensions, setDimensions] = useState({ stepX: 620, stepY: 520, cardW: 580, cardH: 480, isMobile: false });
+  const [activeCardIndex, setActiveCardIndex] = useState(1);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+  const [maxDistance, setMaxDistance] = useState(1800);
 
-  // Measure window for responsive travel distances
+  // Measure exact horizontal distance needed so the last card stops cleanly in view
   useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
-      const cardW = isMobile ? Math.min(window.innerWidth * 0.86, 360) : Math.min(Math.max(window.innerWidth * 0.46, 440), 580);
-      const cardH = isMobile ? Math.min(window.innerHeight * 0.68, 480) : Math.min(Math.max(window.innerHeight * 0.62, 420), 510);
-      const gap = isMobile ? 20 : 32;
-
-      setDimensions({
-        stepX: cardW + gap,
-        stepY: cardH + gap,
-        cardW,
-        cardH,
-        isMobile,
-      });
+    const calculateDistance = () => {
+      if (!trackRef.current) return;
+      const trackWidth = trackRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      // Last card should sit comfortably in the frame with right padding
+      const rightPadding = Math.max(48, Math.min(viewportWidth * 0.08, 120));
+      const distance = Math.max(0, trackWidth - viewportWidth + rightPadding);
+      setMaxDistance(distance);
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    calculateDistance();
+    window.addEventListener("resize", calculateDistance);
+    return () => window.removeEventListener("resize", calculateDistance);
   }, []);
 
+  // Track vertical scroll through container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Smooth springs for camera travel (Apple Design: critically damped, zero bounce)
+  // Step 3: Add Inertia (smooth momentum physics with Apple-style critically damped spring)
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 95,
+    stiffness: 65,
     damping: 24,
-    restDelta: 0.001,
+    mass: 0.5,
+    restDelta: 0.0001,
   });
 
-  // Multi-Axis Travel Transforms:
-  // Phase 1 (0 -> 0.45): Horizontal Pan to the Right (X-axis shifts)
-  // Phase Corner (0.45 -> 0.52): Smooth 90-degree corner transition
-  // Phase 2 (0.52 -> 1.0): Vertical Descent (Y-axis shifts)
-  const rawX = useTransform(
-    smoothProgress,
-    [0, 0.45, 0.52, 1],
-    [0, -2 * dimensions.stepX, -2 * dimensions.stepX, -2 * dimensions.stepX]
-  );
+  // Step 1 & 2: Pure horizontal slide across from right to left
+  const smoothX = useTransform(smoothProgress, [0, 1], [0, -maxDistance]);
 
-  const rawY = useTransform(
-    smoothProgress,
-    [0, 0.45, 0.52, 1],
-    [0, 0, 0, -2 * dimensions.stepY]
-  );
-
-  // Monitor scroll progress to update technical HUD state
+  // Update clean 1 / 4 counter based on scroll position
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      if (latest < 0.42) {
-        setCurrentAxis("horizontal");
-        setActiveStep(latest < 0.22 ? 1 : 2);
-      } else if (latest < 0.55) {
-        setCurrentAxis("corner");
-        setActiveStep(3);
-      } else {
-        setCurrentAxis("vertical");
-        setActiveStep(latest < 0.78 ? 4 : 5);
-      }
+      if (latest < 0.28) setActiveCardIndex(1);
+      else if (latest < 0.58) setActiveCardIndex(2);
+      else if (latest < 0.88) setActiveCardIndex(3);
+      else setActiveCardIndex(4);
     });
   }, [scrollYProgress]);
 
-  // Jump to specific step by scrolling the container
-  const scrollToStep = (stepNumber: number) => {
-    if (!containerRef.current) return;
-    const containerTop = containerRef.current.offsetTop;
-    const containerHeight = containerRef.current.offsetHeight - window.innerHeight;
-    
-    // Map step to progress
-    const progressMap: Record<number, number> = {
-      1: 0.05,
-      2: 0.25,
-      3: 0.50,
-      4: 0.75,
-      5: 0.95,
-    };
-
-    const targetProgress = progressMap[stepNumber] ?? 0;
-    const targetScrollY = containerTop + containerHeight * targetProgress;
-
-    window.scrollTo({
-      top: targetScrollY,
-      behavior: "smooth",
-    });
+  // Handle native touch scroll for mobile
+  const handleMobileScroll = () => {
+    if (!mobileScrollRef.current) return;
+    const { scrollLeft, clientWidth } = mobileScrollRef.current;
+    const index = Math.round(scrollLeft / (clientWidth * 0.82));
+    setActiveMobileIndex(Math.max(0, Math.min(projects.length - 1, index)));
   };
 
   return (
-    <section
-      ref={containerRef}
-      id="work"
-      className="relative bg-background text-foreground border-b border-border transition-colors duration-300"
-      style={{ height: "340vh" }}
-    >
-      {/* Pinned Sticky Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between pt-24 pb-8 px-4 sm:px-8 select-none">
-        {/* ─── TECHNICAL HUD TOP BAR ─── */}
-        <div className="mx-auto w-full max-w-7xl z-30 flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-border">
-          {/* Section Kicker with letter scramble */}
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
-              Production Archive
-            </span>
-            <span className="text-muted-foreground/30">&bull;</span>
-            <ScrambleText
-              text={
-                currentAxis === "horizontal"
-                  ? "VECTOR: [ LATERAL // HORIZONTAL TRACK → ]"
-                  : currentAxis === "corner"
-                  ? "VECTOR: [ 90° PIVOT NODE // ROTATING AXIS ⤵ ]"
-                  : "VECTOR: [ VERTICAL // DESCENDING DOWN ↓ ]"
-              }
-              className="font-mono text-[10px] sm:text-[11px] tracking-[0.18em] text-foreground font-semibold uppercase"
-            />
-          </div>
-
-          {/* Spatial Blueprint Path Radar & Step Buttons */}
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-1.5 font-mono text-[10px] uppercase text-muted-foreground mr-2">
-              <span>Path:</span>
-              <span className={activeStep <= 3 ? "text-foreground font-bold" : "text-muted-foreground/60"}>
-                X [1→2→3]
+    <section id="work" className="bg-background text-foreground transition-colors duration-300">
+      {/* ─── DESKTOP EXPERIENCE: LOCKED VIEWPORT HORIZONTAL GLIDE WITH INERTIA (md:block) ─── */}
+      <div
+        ref={containerRef}
+        className="hidden md:block relative border-b border-border"
+        style={{ height: "290vh" }}
+      >
+        {/* Pinned Sticky Viewport: locks screen in place while cards glide */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-12 px-8 lg:px-14 select-none">
+          {/* Header Row: Clean, Uncluttered Title + Minimal 1 / 4 Progress */}
+          <div className="mx-auto w-full max-w-7xl flex items-end justify-between pb-6 border-b border-border z-20">
+            <div>
+              <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase block mb-2">
+                Selected Work &bull; Live Deployments
               </span>
-              <span>&rarr;</span>
-              <span className={activeStep >= 3 ? "text-foreground font-bold" : "text-muted-foreground/60"}>
-                Y [3↓4↓5]
-              </span>
+              <h2 className="font-sans font-bold text-2xl lg:text-3xl uppercase tracking-tight text-foreground">
+                Engineered for Scale
+              </h2>
             </div>
 
-            {/* Quick jump step pills */}
-            <div className="flex items-center gap-1 bg-card border border-border p-1 rounded-full shadow-sm">
-              {[1, 2, 3, 4, 5].map((step) => (
-                <button
-                  key={step}
-                  onClick={() => scrollToStep(step)}
-                  className={`w-6 h-6 rounded-full font-mono text-[10px] flex items-center justify-center transition-all ${
-                    activeStep === step
-                      ? "bg-foreground text-background font-bold shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  aria-label={`Jump to Commission ${step}`}
+            {/* Clean Progress Tracker (replaces complex telemetry) */}
+            <div className="flex items-center gap-4">
+              <span className="font-mono text-xs font-semibold tracking-wider text-foreground">
+                0{activeCardIndex} / 04
+              </span>
+              <div className="w-28 h-1 bg-border rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-foreground rounded-full transition-all duration-300"
+                  style={{ width: `${(activeCardIndex / 4) * 100}%` }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Horizontal Track Canvas: Single-Axis Movement With Inertia */}
+          <div className="relative flex-1 w-full overflow-hidden flex items-center">
+            <motion.div
+              ref={trackRef}
+              style={{
+                x: smoothX,
+                willChange: "transform",
+              }}
+              className="flex gap-8 pl-4 lg:pl-10 pr-16 items-center"
+            >
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className="group relative w-[520px] lg:w-[580px] xl:w-[620px] flex-shrink-0 rounded-3xl border border-border bg-card p-6 lg:p-7 shadow-sm hover:shadow-xl hover:border-foreground/30 transition-all duration-300 flex flex-col justify-between"
                 >
-                  {step}
-                </button>
+                  <div>
+                    {/* 1. Crisp Preview of the Website */}
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-border bg-muted mb-5 group/img"
+                    >
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} website preview`}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/img:scale-[1.03]"
+                        sizes="620px"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors duration-300" />
+                    </a>
+
+                    {/* 2. Client Name & Business Type */}
+                    <div className="mb-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-1">
+                        {project.businessType}
+                      </span>
+                      <h3 className="font-sans font-bold text-xl lg:text-2xl text-foreground uppercase tracking-tight">
+                        {project.name}
+                      </h3>
+                    </div>
+
+                    <p className="text-xs lg:text-sm text-muted-foreground font-sans leading-relaxed line-clamp-2 mb-6">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* 3. One Single Obvious Button */}
+                  <div className="pt-4 border-t border-border flex items-center justify-between">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
+                    >
+                      <span>{project.ctaText ?? "Visit Live Site"}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                      {project.location}
+                    </span>
+                  </div>
+                </div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
 
-        {/* ─── MULTI-AXIS CINEMATIC STAGE ─── */}
-        <div className="relative flex-1 w-full overflow-hidden flex items-center justify-start my-4">
-          <motion.div
-            style={{
-              x: rawX,
-              y: rawY,
-              willChange: "transform",
-            }}
-            className="absolute left-[8vw] sm:left-[12vw] top-[6vh] sm:top-[8vh]"
-          >
-            {/* L-SHAPED CANVAS CONTAINER */}
-            <div className="relative">
-              {/* Architectural Haired Guide Path SVG Line */}
-              <svg
-                className="pointer-events-none absolute -top-8 -left-8 w-[2400px] h-[1800px] z-0 opacity-40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Horizontal Guide Vector */}
-                <line
-                  x1="50"
-                  y1="50"
-                  x2={50 + 2 * dimensions.stepX}
-                  y2="50"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeDasharray="4 4"
-                  className="text-border"
-                />
-                {/* Corner Right-Angle Arc */}
-                <path
-                  d={`M ${50 + 2 * dimensions.stepX} 50 L ${50 + 2 * dimensions.stepX} ${50 + 2 * dimensions.stepY}`}
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeDasharray="4 4"
-                  className="text-border"
-                />
-              </svg>
-
-              {/* CARD 1: Kick's Chicken (X: 0, Y: 0) */}
-              <div
-                style={{
-                  width: `${dimensions.cardW}px`,
-                  height: `${dimensions.cardH}px`,
-                  position: "absolute",
-                  left: 0,
-                  top: 0,
-                }}
-              >
-                <CommissionCard project={projects[0]} active={activeStep === 1} />
-              </div>
-
-              {/* CARD 2: LÜM Studio (X: stepX, Y: 0) */}
-              <div
-                style={{
-                  width: `${dimensions.cardW}px`,
-                  height: `${dimensions.cardH}px`,
-                  position: "absolute",
-                  left: `${dimensions.stepX}px`,
-                  top: 0,
-                }}
-              >
-                <CommissionCard project={projects[1]} active={activeStep === 2} />
-              </div>
-
-              {/* CARD 3: Vanguard Architects — THE CORNER PIVOT (X: 2*stepX, Y: 0) */}
-              <div
-                style={{
-                  width: `${dimensions.cardW}px`,
-                  height: `${dimensions.cardH}px`,
-                  position: "absolute",
-                  left: `${2 * dimensions.stepX}px`,
-                  top: 0,
-                }}
-              >
-                <CommissionCard project={projects[2]} active={activeStep === 3} isPivot />
-              </div>
-
-              {/* CARD 4: Harbor & Hearth — VERTICAL ARM (X: 2*stepX, Y: stepY) */}
-              <div
-                style={{
-                  width: `${dimensions.cardW}px`,
-                  height: `${dimensions.cardH}px`,
-                  position: "absolute",
-                  left: `${2 * dimensions.stepX}px`,
-                  top: `${dimensions.stepY}px`,
-                }}
-              >
-                <CommissionCard project={projects[3]} active={activeStep === 4} />
-              </div>
-
-              {/* CARD 5: Studio Valore Flagship Spec — TERMINAL (X: 2*stepX, Y: 2*stepY) */}
-              <div
-                style={{
-                  width: `${dimensions.cardW}px`,
-                  height: `${dimensions.cardH}px`,
-                  position: "absolute",
-                  left: `${2 * dimensions.stepX}px`,
-                  top: `${2 * dimensions.stepY}px`,
-                }}
-              >
-                <CommissionCard project={projects[4]} active={activeStep === 5} isTerminal />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* ─── TECHNICAL HUD BOTTOM SCRUBBER BAR ─── */}
-        <div className="mx-auto w-full max-w-7xl z-30 pt-3 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
-          <div className="flex items-center gap-3">
+          {/* Desktop Footer Row */}
+          <div className="mx-auto w-full max-w-7xl pt-4 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground z-20">
             <span className="text-[11px] uppercase tracking-wider">
-              {currentAxis === "horizontal" ? (
-                <span className="flex items-center gap-1.5 text-foreground font-semibold">
-                  <MoveRight className="h-3.5 w-3.5" />
-                  Phase 1: Lateral Track Across Systems
-                </span>
-              ) : currentAxis === "corner" ? (
-                <span className="flex items-center gap-1.5 text-foreground font-semibold">
-                  <CornerDownRight className="h-3.5 w-3.5 text-[#D4AF37]" />
-                  Pivot Node: 90° Trajectory Shift
-                </span>
-              ) : (
-                <span className="flex items-center gap-1.5 text-foreground font-semibold">
-                  <MoveDown className="h-3.5 w-3.5" />
-                  Phase 2: Vertical Descent into Architecture
-                </span>
-              )}
+              Turn scroll wheel to slide across commissions
             </span>
-          </div>
 
-          <div className="flex items-center gap-4">
-            <span className="text-[10px] uppercase tracking-widest text-muted-foreground/80">
-              Scroll down to navigate 2D canvas
-            </span>
             <Link
               href="/work"
-              className="group inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase text-foreground hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wider uppercase text-foreground hover:opacity-80 transition-opacity font-semibold"
             >
-              <RollingText duplicateClassName="text-foreground">Full Archive</RollingText>
-              <ArrowUpRight className="h-3 w-3" />
+              <RollingText duplicateClassName="text-foreground">View Full Commission Archive</RollingText>
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </div>
-    </section>
-  );
-}
 
-/**
- * High-performance commission hardware card for spatial multi-axis stage
- */
-function CommissionCard({
-  project,
-  active = false,
-  isPivot = false,
-  isTerminal = false,
-}: {
-  project: ProjectItem;
-  active?: boolean;
-  isPivot?: boolean;
-  isTerminal?: boolean;
-}) {
-  return (
-    <div
-      className={`group relative h-full w-full rounded-3xl border transition-all duration-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 ${
-        active
-          ? "border-foreground/40 bg-card shadow-2xl scale-[1.01]"
-          : "border-border bg-card/90 shadow-lg hover:border-foreground/20"
-      }`}
-    >
-      {/* Top Header Row */}
-      <div>
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-border">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
-              {project.category}
+      {/* ─── MOBILE EXPERIENCE (Step 5): NORMAL THUMB SWIPE CAROUSEL (NO SCROLL LOCK) ─── */}
+      <div className="md:hidden py-14 px-4 border-b border-border">
+        <div className="px-2 mb-6 flex items-end justify-between">
+          <div>
+            <span className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase block mb-1">
+              Selected Work
             </span>
-            {isPivot && (
-              <span className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-full bg-foreground text-background font-bold tracking-wider">
-                90° Pivot
-              </span>
-            )}
-            {isTerminal && (
-              <span className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-full bg-[#D4AF37] text-black font-bold tracking-wider">
-                Terminal
-              </span>
-            )}
+            <h2 className="font-sans font-bold text-2xl uppercase tracking-tight text-foreground">
+              Live Deployments
+            </h2>
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-            {project.location}
+          <span className="font-mono text-xs font-semibold text-muted-foreground">
+            0{activeMobileIndex + 1} / 04
           </span>
         </div>
 
-        <h3 className="font-sans font-bold text-xl sm:text-2xl text-foreground uppercase tracking-tight mb-1.5">
-          {project.name}
-        </h3>
-        <p className="text-xs text-muted-foreground font-sans line-clamp-2 leading-relaxed mb-4">
-          {project.highlight}
-        </p>
-
-        {/* Visual Preview Container */}
-        {project.image ? (
-          <a
-            href={project.url}
-            target={project.url.startsWith("http") ? "_blank" : undefined}
-            rel="noopener noreferrer"
-            className="block relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-border bg-muted mb-4 group/img shadow-md"
-          >
-            <Image
-              src={project.image}
-              alt={`${project.name} preview`}
-              fill
-              className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/img:scale-105"
-              sizes="600px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-between p-3.5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white font-mono text-[10px] uppercase tracking-wider border border-white/10">
-                {project.metricValue} &bull; {project.metricLabel}
-              </span>
-              <span className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity">
-                <ExternalLink className="h-3 w-3" />
-              </span>
-            </div>
-          </a>
-        ) : (
-          /* Terminal Spec Box for Flagship Spec */
-          <div className="aspect-[16/9] w-full rounded-2xl border border-border bg-muted/40 p-5 flex flex-col justify-between mb-4">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Architecture Delivery Blueprint
-            </span>
-            <div>
-              <p className="font-sans font-bold text-lg text-foreground uppercase tracking-tight">
-                Senior Engineering Rigor
-              </p>
-              <p className="text-xs text-muted-foreground font-sans mt-0.5">
-                Bespoke codebases crafted with zero builder overhead.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 font-mono text-[10px] text-foreground font-semibold">
-              <CheckCircle2 className="h-3.5 w-3.5 text-[#D4AF37]" />
-              Guaranteed Milestone Scopes
-            </div>
-          </div>
-        )}
-
-        {/* Hardware Spec Tags */}
-        <div className="flex flex-wrap gap-1.5">
-          {project.specs.map((spec, sIdx) => (
-            <span
-              key={sIdx}
-              className="px-2.5 py-1 rounded-full bg-muted/60 border border-border text-[9.5px] font-mono uppercase tracking-wider text-muted-foreground"
+        {/* Native Touch-Momentum Horizontal Swipe Strip */}
+        <div
+          ref={mobileScrollRef}
+          onScroll={handleMobileScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-4 px-4"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="w-[84vw] max-w-[340px] flex-shrink-0 snap-center rounded-3xl border border-border bg-card p-5 shadow-sm flex flex-col justify-between"
             >
-              {spec}
-            </span>
+              <div>
+                {/* 1. Website Preview */}
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-border bg-muted mb-4"
+                >
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} website preview`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="340px"
+                  />
+                </a>
+
+                {/* 2. Client Name & Type */}
+                <div className="mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground block mb-0.5">
+                    {project.businessType}
+                  </span>
+                  <h3 className="font-sans font-bold text-lg text-foreground uppercase tracking-tight">
+                    {project.name}
+                  </h3>
+                </div>
+
+                <p className="text-xs text-muted-foreground font-sans leading-relaxed line-clamp-2 mb-4">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* 3. Obvious Button */}
+              <div className="pt-3 border-t border-border flex items-center justify-between">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-foreground text-background px-4 py-2 font-mono text-[10px] uppercase tracking-wider font-semibold"
+                >
+                  <span>Visit Live Site</span>
+                  <ArrowUpRight className="h-3 w-3" />
+                </a>
+
+                <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
+                  {project.location}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
 
-      {/* Card Footer Link */}
-      <div className="pt-4 border-t border-border flex items-center justify-between mt-3">
-        <a
-          href={project.url}
-          target={project.url.startsWith("http") ? "_blank" : undefined}
-          rel="noopener noreferrer"
-          className="group/link inline-flex items-center gap-1.5 font-mono text-[11px] tracking-wider uppercase text-foreground hover:opacity-80 transition-opacity font-semibold"
-        >
-          <RollingText duplicateClassName="text-foreground">
-            {isTerminal ? "Initiate Project Spec" : "Explore System"}
-          </RollingText>
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-        </a>
+        {/* Minimal Swipe Dot Indicator */}
+        <div className="flex justify-center items-center gap-2 mt-4">
+          {projects.map((_, idx) => (
+            <div
+              key={idx}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeMobileIndex === idx ? "w-6 bg-foreground" : "w-1.5 bg-muted-foreground/30"
+              }`}
+            />
+          ))}
+        </div>
 
-        <span className="font-mono text-[10px] text-muted-foreground uppercase">
-          {project.tagline.split("&")[0]}
-        </span>
+        <div className="mt-6 text-center">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase text-foreground"
+          >
+            <span>View Full Commission Archive</span>
+            <ArrowUpRight className="h-3 w-3" />
+          </Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -25,7 +25,7 @@ export default function Footer() {
               Founded and engineered by <strong className="text-foreground font-semibold">Pratham Verma</strong>. Equipping ambitious brands and enterprises with bespoke web architecture, sub-second latency, and aesthetic supremacy.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1 text-[10px] font-mono tracking-[0.2em] text-muted-foreground uppercase">
-              Studio Valore &bull; Est. 2026
+              Studio Valore &bull; Est. 2025
             </div>
           </div>
 

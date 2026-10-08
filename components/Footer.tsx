@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="md:col-span-5 flex flex-col items-start gap-5">
             <ValoreLogo size="sm" />
             <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed max-w-sm mt-1 font-sans">
-              Founded and engineered by <strong className="text-foreground font-semibold">Pratham Verma</strong>. Equipping ambitious brands and enterprises with bespoke web architecture, sub-second latency, and aesthetic supremacy.
+              Founded and engineered by <strong className="text-foreground font-semibold">Pratham Verma</strong>. Equipping ambitious brands and enterprises with custom web architecture, sub-second latency, and aesthetic supremacy.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1 text-[10px] font-mono tracking-[0.2em] text-muted-foreground uppercase">
               Studio Valore &bull; Est. 2025

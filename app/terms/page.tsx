@@ -52,7 +52,7 @@ export default function TermsPage() {
                 1. Scope of Architecture Services
               </h2>
               <p>
-                Studio Valore provides bespoke software engineering, web application development, brand identity systems, and automation infrastructure. Every engagement operates under an itemized statement of work (SOW) defining explicit deliverables, milestones, and timelines.
+                Studio Valore provides custom software engineering, web application development, brand identity systems, and automation infrastructure. Every engagement operates under an itemized statement of work (SOW) defining explicit deliverables, milestones, and timelines.
               </p>
             </section>
 
@@ -61,7 +61,7 @@ export default function TermsPage() {
                 2. Full Intellectual Property (IP) Transfer
               </h2>
               <p>
-                Upon receipt of full and final project investment milestone payments, all bespoke codebases, custom UI designs, graphic components, and documentation transfer entirely to the client. Studio Valore retains zero proprietary locks or recurring builder license fees.
+                Upon receipt of full and final project investment milestone payments, all tailored codebases, custom UI designs, graphic components, and documentation transfer entirely to the client. Studio Valore retains zero proprietary locks or recurring builder license fees.
               </p>
             </section>
 

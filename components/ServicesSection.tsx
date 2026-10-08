@@ -13,7 +13,7 @@ export default function ServicesSection() {
     {
       num: "01",
       category: "CORE ARCHITECTURE",
-      title: "Bespoke Web Engineering",
+      title: "Custom Web Engineering",
       desc: "Handcrafted Next.js 16 and React 19 platforms engineered for sub-second speeds, zero template bloat, and infinite scalability.",
       specs: ["Next.js App Router", "Sub-80ms Global TTFB", "100/100 Core Web Vitals", "Edge-Rendered SSR"],
       icon: Terminal,
@@ -157,7 +157,7 @@ export default function ServicesSection() {
               Engineering Standard
             </span>
             <h4 className="font-sans font-bold text-lg sm:text-xl text-foreground uppercase tracking-tight">
-              100% Bespoke Codebase. Full Client Ownership.
+              100% Hand-Coded Architecture. Full Client Ownership.
             </h4>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-xl">
               You receive full intellectual property and Git repository ownership. No vendor lock-in, no hidden recurring builder fees.

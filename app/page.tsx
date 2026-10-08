@@ -43,7 +43,7 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
-    document.title = "Valore Studio — Bespoke Web Architecture & Digital Systems";
+    document.title = "Studio Valore — Custom Web Architecture & Digital Systems";
   }, []);
 
   useEffect(() => {

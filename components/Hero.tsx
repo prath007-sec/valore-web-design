@@ -4,23 +4,30 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Sparkles, Loader2 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { ArrowUpRight, CheckCircle2, ShieldCheck, ChevronDown, Loader2 } from "lucide-react";
 import ValoreLogo from "./ui/ValoreLogo";
 import MaskedText from "./ui/MaskedText";
 import RollingText from "./ui/RollingText";
 import ScrambleText from "./ui/ScrambleText";
 
+// Dynamically load MeshGradient on client side to guarantee zero SSR hydration mismatches
+const MeshGradient = dynamic(
+  () => import("@paper-design/shaders-react").then((mod) => mod.MeshGradient),
+  { ssr: false }
+);
+
 const scopeOptions = [
-  { value: "bespoke-web", label: "Bespoke Web Architecture" },
+  { value: "custom-web", label: "Custom Web Architecture" },
   { value: "ecommerce", label: "E-Commerce System (Stripe)" },
   { value: "replatform", label: "Replatform & Modernization" },
   { value: "ai-workflows", label: "AI & Automated Workflows" },
 ];
 
 const budgetOptions = [
-  { value: "launch", label: "$2,000 – $4,000" },
-  { value: "commercial", label: "$4,000 – $8,000" },
-  { value: "enterprise", label: "$8,000+" },
+  { value: "launch", label: "$2,000 – $4,000", shortLabel: "$2k – $4k" },
+  { value: "commercial", label: "$4,000 – $8,000", shortLabel: "$4k – $8k" },
+  { value: "enterprise", label: "$8,000+", shortLabel: "$8k+" },
 ];
 
 export default function Hero() {
@@ -29,7 +36,7 @@ export default function Hero() {
   // Contact Form State
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [scope, setScope] = useState("bespoke-web");
+  const [scope, setScope] = useState("custom-web");
   const [budget, setBudget] = useState("commercial");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -73,13 +80,24 @@ export default function Hero() {
   const metrics = [
     { label: "EDGE LATENCY", value: "< 80ms", desc: "Global TTFB" },
     { label: "CORE VITALS", value: "100/100", desc: "Lighthouse Score" },
-    { label: "ARCHITECTURE", value: "0% Bloat", desc: "Bespoke Clean Code" },
+    { label: "ARCHITECTURE", value: "0% Bloat", desc: "Hand-Coded Clean Code" },
     { label: "FRAMEWORK", value: "Next.js 16", desc: "React 19 & Turbopack" },
   ];
 
   return (
     <section className="relative min-h-[94vh] flex flex-col justify-center bg-background text-foreground pt-32 pb-20 overflow-hidden transition-colors duration-300">
-      <div className="mx-auto max-w-[1240px] px-6 z-10 w-full">
+      {/* ─── KINETIC SHADER MESH GRADIENT (INTEGRATED AMBIENT CANVAS) ─── */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-35 overflow-hidden">
+        <MeshGradient
+          className="w-full h-full"
+          colors={["#000000", "#1a1a1a", "#2e2e2e", "#ffffff"]}
+          speed={0.18}
+          distortion={0.3}
+          swirl={0.1}
+        />
+      </div>
+
+      <div className="mx-auto max-w-[1240px] px-6 z-10 w-full relative">
         {/* ─── 2-COLUMN SPLIT GRID: CONTENT ON LEFT, CONTACT FORM ON RIGHT ─── */}
         <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
           {/* ─── LEFT COLUMN: STUDIO IDENTITY, HEADLINE, CTAs, METRICS ─── */}
@@ -103,7 +121,7 @@ export default function Hero() {
             >
               <div className="inline-flex items-center gap-2">
                 <ScrambleText
-                  text="STUDIO VALORE // BESPOKE ARCHITECTURE & DIGITAL SYSTEMS"
+                  text="STUDIO VALORE // CUSTOM ARCHITECTURE & DIGITAL SYSTEMS"
                   className="font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-muted-foreground uppercase cursor-default"
                   delay={200}
                 />
@@ -134,7 +152,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              We design and build bespoke web platforms, pristine brand identities, and high-performance digital systems for ambitious founders and enterprises.
+              We design and build custom web platforms, pristine brand identities, and high-performance digital systems for ambitious founders and enterprises.
             </motion.p>
 
             {/* Dual Action CTAs */}
@@ -152,7 +170,7 @@ export default function Hero() {
                   const nameInput = document.getElementById("hero-name-input");
                   if (nameInput) nameInput.focus();
                 }}
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-foreground text-background px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-foreground text-background px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg cursor-pointer"
               >
                 <RollingText duplicateClassName="text-background">Initiate Project Spec</RollingText>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -198,18 +216,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-2xl relative overflow-hidden"
+              className="rounded-3xl border border-border bg-card/95 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden"
             >
-              {/* Card Header & Lead Architect Availability */}
+              {/* Card Header (Green dot removed) */}
               <div className="pb-5 mb-5 border-b border-border">
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
-                      Lead Architect Available
-                    </span>
-                  </div>
-                  <span className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-full border border-border bg-muted text-muted-foreground">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Lead Architect Available
+                  </span>
+                  <span className="font-mono text-[9px] uppercase px-2.5 py-0.5 rounded-full border border-border bg-background text-muted-foreground font-medium">
                     Direct Inquiry
                   </span>
                 </div>
@@ -231,8 +246,8 @@ export default function Hero() {
                     exit={{ opacity: 0 }}
                     className="py-12 flex flex-col items-center text-center"
                   >
-                    <div className="h-12 w-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
-                      <CheckCircle2 className="h-6 w-6" />
+                    <div className="h-12 w-12 rounded-full bg-foreground/10 text-foreground flex items-center justify-center mb-4">
+                      <CheckCircle2 className="h-6 w-6 text-[#D4AF37]" />
                     </div>
                     <h4 className="font-sans font-bold text-lg uppercase tracking-tight text-foreground">
                       Specification Logged
@@ -274,28 +289,31 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    {/* Scope Selector */}
+                    {/* Scope Selector with Fixed Dropdown Arrow Position */}
                     <div>
                       <label className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
                         Architecture Scope
                       </label>
-                      <select
-                        value={scope}
-                        onChange={(e) => setScope(e.target.value)}
-                        className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs text-foreground focus:outline-none focus:border-foreground transition-colors cursor-pointer"
-                      >
-                        {scopeOptions.map((opt) => (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <select
+                          value={scope}
+                          onChange={(e) => setScope(e.target.value)}
+                          className="w-full appearance-none rounded-xl border border-border bg-background pl-3.5 pr-10 py-2.5 text-xs text-foreground focus:outline-none focus:border-foreground transition-colors cursor-pointer"
+                        >
+                          {scopeOptions.map((opt) => (
+                            <option key={opt.value} value={opt.value} className="bg-card text-foreground">
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground transition-colors" />
+                      </div>
                     </div>
 
-                    {/* Budget Tier Buttons */}
+                    {/* Target Investment Tier Buttons */}
                     <div>
                       <label className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">
-                        Target Investment Tier
+                        Target Investment
                       </label>
                       <div className="grid grid-cols-3 gap-2">
                         {budgetOptions.map((b) => (
@@ -303,13 +321,13 @@ export default function Hero() {
                             key={b.value}
                             type="button"
                             onClick={() => setBudget(b.value)}
-                            className={`py-2 px-2 rounded-xl font-mono text-[10px] text-center transition-all border ${
+                            className={`py-2 px-2 rounded-xl font-mono text-[10.5px] text-center transition-all border cursor-pointer ${
                               budget === b.value
                                 ? "border-foreground bg-foreground text-background font-bold shadow-sm"
-                                : "border-border bg-background text-muted-foreground hover:text-foreground"
+                                : "border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30"
                             }`}
                           >
-                            {b.label}
+                            {b.shortLabel}
                           </button>
                         ))}
                       </div>

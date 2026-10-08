@@ -12,7 +12,7 @@ export default function NotFound() {
     { label: "Selected Commissions", href: "/work", desc: "Live production portfolio & case studies" },
     { label: "Investment & Scopes", href: "/pricing", desc: "Milestone pricing specifications" },
     { label: "Architectural Process", href: "/process", desc: "Our 4-stage engineering delivery" },
-    { label: "Direct Consultation", href: "/contact", desc: "Initiate bespoke architecture inquiry" },
+    { label: "Direct Consultation", href: "/contact", desc: "Initiate custom architecture inquiry" },
   ];
 
   return (

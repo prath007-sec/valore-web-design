@@ -9,7 +9,7 @@ export default function PricingQuoteSection() {
   const tiers = [
     {
       title: "Rapid Web Commission",
-      tagline: "Essential Bespoke Production",
+      tagline: "Essential Custom Production",
       description: "A pristine, handcrafted web architecture engineered to replace outdated sites and establish commanding market credibility.",
       icon: Globe,
       timeline: "Delivery in 1–2 Weeks",
@@ -28,7 +28,7 @@ export default function PricingQuoteSection() {
     {
       title: "Flagship Digital Platform",
       tagline: "Custom Architecture + Payment Rails",
-      description: "Our comprehensive digital system. Bespoke Next.js web application paired with Stripe checkout pipelines and automated backend workflows.",
+      description: "Our comprehensive digital system. Hand-coded Next.js web application paired with Stripe checkout pipelines and automated backend workflows.",
       icon: Layers,
       timeline: "Delivery in 2–3 Weeks",
       specs: [
@@ -85,7 +85,7 @@ export default function PricingQuoteSection() {
           <MaskedText
             as="h2"
             text={[
-              "BESPOKE ARCHITECTURE.",
+              "CUSTOM ARCHITECTURE.",
               "PREDICTABLE VALUE."
             ]}
             className="text-foreground font-sans font-bold leading-[1.05] tracking-[-0.03em] uppercase text-center"

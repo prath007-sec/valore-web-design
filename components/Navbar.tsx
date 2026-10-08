@@ -171,7 +171,7 @@ export default function Navbar() {
 
             <div className="max-w-md mx-auto w-full pt-8 border-t border-border flex items-center justify-between text-muted-foreground font-mono text-[10px] uppercase tracking-widest">
               <span>Studio Valore &bull; Est. 2025</span>
-              <span>Bespoke Architecture</span>
+              <span>Custom Architecture</span>
             </div>
           </motion.div>
         )}

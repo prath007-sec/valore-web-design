@@ -25,7 +25,7 @@ export default function AboutMeSection() {
     },
     {
       num: "02",
-      title: "Bespoke Clean Code",
+      title: "Hand-Coded Clean Architecture",
       desc: "Engineered from a blank canvas in Next.js. No bloated WordPress themes, no fragile plugins, and zero recurring template subscriptions.",
     },
     {

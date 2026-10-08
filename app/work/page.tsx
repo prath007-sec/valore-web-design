@@ -20,7 +20,7 @@ const projects = [
     problem:
       "During peak lunch and dinner rushes, phone lines backed up with customers asking about menu options, sauces, and store hours. Their paper menus and social photos could not properly spotlight high-margin loaded macs and signature tenders, and diners lacked an instant mobile carryout interface.",
     solution:
-      "Engineered a bespoke, mobile-optimized web app featuring a categorized 20+ item visual menu, Springfield local business JSON-LD schema, interactive item customization modals, and automated dual marquee social proof highlighting 80+ 5-star Google reviews.",
+      "Engineered a custom, mobile-optimized web app featuring a categorized 20+ item visual menu, Springfield local business JSON-LD schema, interactive item customization modals, and automated dual marquee social proof highlighting 80+ 5-star Google reviews.",
     result:
       "Staff phone time dropped significantly as customers checked items and sauces online before ordering. 4.6★ local visibility surged across Springfield search queries, driving immediate foot traffic and establishing the exact infrastructure for automated online ordering.",
     elements: [
@@ -45,7 +45,7 @@ const projects = [
     problem:
       "Generic Shopify themes bloated the site, slowed down page loads on mobile, and failed to reflect the high-end architectural aesthetic demanded by their clientele.",
     solution:
-      "Developed a custom Next.js storefront with bespoke typography, sub-second product page transitions, seamless cart state management, and direct Stripe checkout.",
+      "Developed a custom Next.js storefront with tailored typography, sub-second product page transitions, seamless cart state management, and direct Stripe checkout.",
     result:
       "Mobile bounce rates decreased by 42% and customer cart completions doubled within 60 days of deployment.",
     elements: [

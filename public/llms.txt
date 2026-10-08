@@ -1,4 +1,4 @@
-# Studio Valore — Bespoke Web Architecture & Digital Systems
+# Studio Valore — Custom Web Architecture & Digital Systems
 
 > High-performance digital platforms, pristine brand identities, and custom web architecture engineered with senior engineering rigor by Pratham Verma.
 
@@ -17,7 +17,7 @@
 - **Direct Lead Architect Model**: Clients work directly with Pratham Verma without account managers or junior delegation.
 
 ## Core Capabilities & Services
-1. **Bespoke Web Architecture**: Hand-coded Next.js web applications, dynamic App Router rendering, sub-second latency.
+1. **Custom Web Architecture**: Hand-coded Next.js web applications, dynamic App Router rendering, sub-second latency.
 2. **E-Commerce Systems**: Custom Stripe checkout pipelines, inventory sync, optimized checkout funnels without monthly SaaS transaction fees.
 3. **Automated Client Workflows**: Lead routing, instant SMS/email dispatches, CRM webhooks, and AI automation logic.
 4. **Brand Identity & Spatial Typography**: High-contrast, minimal editorial typography, custom iconography, Apple-grade motion systems.
@@ -30,9 +30,9 @@
 - **Harbor & Hearth** (Ann Arbor, MI): Real estate listing pipeline with dynamic property filtering and automated lead dispatch. Live: https://harbor-hearth.vercel.app/
 
 ## Milestone Investment Tiers
-- **Launch Architecture**: $1,800 one-time (5 bespoke pages, sub-80ms edge delivery, 100/100 Lighthouse).
+- **Launch Architecture**: $1,800 one-time (5 custom pages, sub-80ms edge delivery, 100/100 Lighthouse).
 - **Commercial System**: $3,600 one-time (Full custom architecture, interactive workflows, Stripe checkout, advanced SEO schema).
-- **Enterprise Custom Platform**: $6,500+ (High-intent web application, bespoke database/APIs, AI automation integrations).
+- **Enterprise Custom Platform**: $6,500+ (High-intent web application, custom database/APIs, AI automation integrations).
 
 ## Canonical Endpoints
 - Homepage: https://valorewebdesign.com

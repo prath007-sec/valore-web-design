@@ -11,19 +11,19 @@ const siteUrl = "https://valorewebdesign.com";
 
 export const metadata: Metadata = {
   title: {
-    default: "Studio Valore — Bespoke Web Architecture & Digital Systems",
+    default: "Studio Valore — Custom Web Architecture & Digital Systems",
     template: "%s | Studio Valore",
   },
   description:
-    "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+    "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Studio Valore — Bespoke Web Architecture & Digital Systems",
+    title: "Studio Valore — Custom Web Architecture & Digital Systems",
     description:
-      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     url: siteUrl,
     siteName: "Studio Valore",
     locale: "en_US",
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Studio Valore — Bespoke Web Architecture by Pratham Verma",
+        alt: "Studio Valore — Custom Web Architecture by Pratham Verma",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Valore — Bespoke Web Architecture & Digital Systems",
+    title: "Studio Valore — Custom Web Architecture & Digital Systems",
     description:
-      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   keywords: [
-    "bespoke web architecture",
+    "custom web architecture",
     "Studio Valore",
     "Pratham Verma",
     "custom web development",
@@ -116,7 +116,7 @@ export default function RootLayout({
                     url: siteUrl,
                     email: "contact@valorewebdesign.com",
                     description:
-                      "Studio Valore crafts bespoke web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
+                      "Studio Valore crafts custom web architecture, brand identity systems, and high-performance digital platforms with senior engineering rigor by Pratham Verma.",
                     foundingDate: "2025",
                     founder: [
                       { "@type": "Person", name: "Pratham Verma", jobTitle: "Founder & Lead Architect" }

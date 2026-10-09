@@ -115,7 +115,7 @@ export default function Hero() {
             >
               <div className="inline-flex items-center gap-2">
                 <ScrambleText
-                  text="STUDIO VALORE // CUSTOM ARCHITECTURE & DIGITAL SYSTEMS"
+                  text="STUDIO VALORE // AI CONSULTING & DIGITAL IDENTITY"
                   className="font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-muted-foreground uppercase cursor-default"
                   delay={200}
                 />
@@ -127,9 +127,8 @@ export default function Hero() {
               <MaskedText
                 as="h1"
                 text={[
-                  "DIGITAL ARCHITECTURE.",
-                  "ENGINEERED WITHOUT",
-                  "COMPROMISE."
+                  "MORE TRAFFIC & SALES.",
+                  "POWERED BY AI."
                 ]}
                 className="text-foreground font-sans font-bold leading-[0.98] tracking-[-0.035em] uppercase text-left"
                 lineClassName="text-[clamp(2.4rem,5.6vw,4.75rem)] text-foreground"
@@ -146,7 +145,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              We design and build custom web platforms, pristine brand identities, and high-performance digital systems for ambitious founders and enterprises.
+              We are an AI consultancy and digital design firm. We elevate your digital identity and deploy intelligent systems that drive foot traffic, generate qualified leads, and increase sales.
             </motion.p>
 
             {/* Dual Action CTAs */}
@@ -323,7 +322,7 @@ export default function Hero() {
                           type="text"
                           value={budget}
                           onChange={(e) => setBudget(e.target.value)}
-                          placeholder="e.g. $3,500 or $5,000 – $8,000"
+                          placeholder="e.g. $500 – $1,000 or $1,000 – $2,500"
                           className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
                         />
                       </div>
